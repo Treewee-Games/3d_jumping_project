@@ -15,10 +15,6 @@ run/main_scene="res://Test_Level/level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[global_group]
-
-player=""
-
 [input]
 
 ui_accept={
