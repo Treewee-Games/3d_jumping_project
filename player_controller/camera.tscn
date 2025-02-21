@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cswh4jkbxedf"]
+
+[ext_resource type="Script" path="res://player_controller/camera/camera.gd" id="1_yi8tf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_swbov"]
+
+[node name="Camera" type="SpringArm3D"]
+shape = SubResource("SphereShape3D_swbov")
+spring_length = 3.0
+script = ExtResource("1_yi8tf")
+min_limit_x = -1.0
+max_limit_x = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.953853, 0.300273, 0, -0.300273, 0.953853, 0.0118384, 4.13207, 6.60568)
+fov = 91.3096

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://creuusrbcuth8"]
+
+[ext_resource type="Script" path="res://player_controller/player.gd" id="1_th52k"]
+[ext_resource type="PackedScene" uid="uid://cswh4jkbxedf" path="res://player_controller/camera.tscn" id="2_chvh2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pneb0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl5tp"]
+
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+script = ExtResource("1_th52k")
+camera = NodePath("Camera/Camera3D")
+acceleration = 0.5
+max_speed = 6.0
+jump_velocity = 8.0
+jump_time = 4.5
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_pneb0")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rl5tp")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="JumpHeightTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera" parent="." instance=ExtResource("2_chvh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609774, 0.320532)
+
+[connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
+
+[editable path="Camera"]

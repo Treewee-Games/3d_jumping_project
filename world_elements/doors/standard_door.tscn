@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://earksnkumevx"]
+
+[ext_resource type="Script" path="res://world_elements/doors/standard_door.gd" id="1_triet"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihqj4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_028xb"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nicjf"]
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_triet")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(3.67097, 0, 0, 0, 4.62596, 0, 0, 0, 1, 0, 2.3, 0)
+mesh = SubResource("BoxMesh_ihqj4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(3.67097, 0, 0, 0, 4.62596, 0, 0, 0, 1, 0, 2.3, 0)
+shape = SubResource("ConvexPolygonShape3D_028xb")
+
+[node name="door_trigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_trigger"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_nicjf")
+
+[connection signal="body_entered" from="door_trigger" to="." method="_on_door_trigger_body_entered"]
+[connection signal="body_exited" from="door_trigger" to="." method="_on_door_trigger_body_exited"]
