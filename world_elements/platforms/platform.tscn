@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cywe4dkniuoq8"]
+[gd_scene load_steps=8 format=3 uid="uid://cywe4dkniuoq8"]
 
-[ext_resource type="Script" path="res://world_elements/buttons/button_platform.gd" id="1_c4uki"]
+[ext_resource type="Script" path="res://world_elements/platforms/platform.gd" id="1_ptbr6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lwenc"]
+rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvrp3"]
 
@@ -18,20 +21,20 @@ albedo_texture = SubResource("NoiseTexture2D_d2b35")
 [sub_resource type="BoxMesh" id="BoxMesh_m10rf"]
 material = SubResource("StandardMaterial3D_ww5mh")
 
-[node name="button_platform" type="Node3D"]
+[node name="platform" type="Node3D"]
 transform = Transform3D(0.22838, 0, 0, 0, 12.9534, 0, 0, 0, 0.210233, 0, 0, 0)
-script = ExtResource("1_c4uki")
+script = ExtResource("1_ptbr6")
 
 [node name="origin" type="Marker3D" parent="."]
 
 [node name="platform" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_lwenc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
 shape = SubResource("BoxShape3D_hvrp3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="platform/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_m10rf")
 skeleton = NodePath("../../../../../..")

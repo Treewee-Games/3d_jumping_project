@@ -15,6 +15,10 @@ run/main_scene="res://Test_Level/level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalStats="*res://globals/stats/global_stats.gd"
+
 [input]
 
 ui_accept={
@@ -50,3 +54,8 @@ crouch={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"

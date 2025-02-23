@@ -4,6 +4,7 @@ extends Node3D
 @onready var player = get_tree().get_first_node_in_group("player") as CharacterBody3D
 @onready var area = $Area3D
 
+@warning_ignore("unused_signal")
 signal trigger_effect
 signal exit_effect
 

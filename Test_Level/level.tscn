@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq8pyg0f83g7x"]
+[gd_scene load_steps=12 format=3 uid="uid://dq8pyg0f83g7x"]
 
-[ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/button_platform.tscn" id="1_62wv8"]
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player.tscn" id="1_jxnkr"]
-[ext_resource type="PackedScene" uid="uid://buqmxxjjp5000" path="res://world_elements/buttons/simple_button.tscn" id="2_iu1h2"]
+[ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="1_srgtm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -48,6 +47,20 @@ environment = SubResource("Environment_2fufs")
 
 [node name="Platforms" type="Node3D" parent="Enviroment"]
 
+[node name="platform" parent="Enviroment/Platforms" instance=ExtResource("1_srgtm")]
+transform = Transform3D(0.22838, 0, 0, 0, 12.9534, 0, 0, 0, 0.210233, 65.1913, 0.0890179, -25.1573)
+move_distance_y = 0.0
+move_distance_z = 40.0
+move_time = 5.0
+timing = 5.0
+
+[node name="platform2" parent="Enviroment/Platforms" instance=ExtResource("1_srgtm")]
+transform = Transform3D(0.22838, 0, 0, 0, -3.67029, 0.201617, 0, -12.4225, -0.0595687, 77.9869, -3.23567, 0)
+move_distance_y = 0.0
+move_distance_z = -25.0
+move_time = 5.0
+timing = 5.0
+
 [node name="Blocking" type="Node3D" parent="Enviroment"]
 
 [node name="Flatblocks" type="Node3D" parent="Enviroment/Blocking"]
@@ -65,6 +78,8 @@ skeleton = NodePath("../../../..")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Enviroment/Blocking/Flatblocks"]
 transform = Transform3D(0.821851, 0, 0, 0, 1, 0, 0, 0, 1, -4.30357, 19.47, -0.489912)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D10"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
@@ -99,14 +114,38 @@ transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("BoxMesh_m10rf")
 skeleton = NodePath("../../../..")
 
+[node name="StaticBody3D12" type="StaticBody3D" parent="Enviroment/Blocking/Flatblocks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.584184, 39.793, 0, -7.787)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D12"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
+shape = SubResource("BoxShape3D_hvrp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D12"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("BoxMesh_m10rf")
+skeleton = NodePath("../../../..")
+
 [node name="StaticBody3D2" type="StaticBody3D" parent="Enviroment/Blocking/Flatblocks"]
-transform = Transform3D(-2.81674e-08, -1.22808, 0, 0.644395, -5.36811e-08, 0, 0, 0, 0.923279, 19.8542, 6.64869, 0.0085144)
+transform = Transform3D(-2.81674e-08, -1.22808, 0, 0.644395, -5.36811e-08, 0, 0, 0, 0.501066, 19.8542, 6.64869, -11.6321)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D2"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
 shape = SubResource("BoxShape3D_hvrp3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D2"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("BoxMesh_m10rf")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="Enviroment/Blocking/Flatblocks"]
+transform = Transform3D(-2.81674e-08, -1.22808, 0, 0.644395, -5.36811e-08, 0, 0, 0, 0.501066, 19.8542, 6.64869, 11.9271)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D8"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
+shape = SubResource("BoxShape3D_hvrp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Flatblocks/StaticBody3D8"]
 transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("BoxMesh_m10rf")
 skeleton = NodePath("../../../..")
@@ -159,9 +198,6 @@ transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("BoxMesh_m10rf")
 skeleton = NodePath("../../../..")
 
-[node name="button_platform" parent="Enviroment/Blocking/Flatblocks" instance=ExtResource("1_62wv8")]
-transform = Transform3D(0.22838, 0, 0, 0, 12.9534, 0, 0, 0, 0.210233, 12.5, 8.5, 11.5)
-
 [node name="Doors" type="Node3D" parent="Enviroment/Blocking"]
 
 [node name="Door" parent="Enviroment/Blocking/Doors" instance=ExtResource("1_a17sf")]
@@ -172,17 +208,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11501, 4.84669, -18.9793)
 
 [node name="Buttons" type="Node3D" parent="Enviroment/Blocking"]
 
-[node name="Button" parent="Enviroment/Blocking/Buttons" instance=ExtResource("2_iu1h2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.126, 4.87752, 1.22441)
-
 [node name="Triggers" type="Node3D" parent="Enviroment"]
 
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98646, 5.83036, 0)
-
-[connection signal="exit_effect" from="Enviroment/Blocking/Buttons/Button" to="Enviroment/Blocking/Flatblocks/button_platform" method="_on_button_exit_effect"]
-[connection signal="trigger_effect" from="Enviroment/Blocking/Buttons/Button" to="Enviroment/Blocking/Flatblocks/button_platform" method="_on_button_trigger_effect"]
-
-[editable path="Enviroment/Blocking/Flatblocks/button_platform"]
+transform = Transform3D(-0.0239262, 0, -0.999714, 0, 1, 0, 0.999714, 0, -0.0239262, 50.1914, 1.1, -12.2618)
