@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player.tscn" id="1_jxnkr"]
-[ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="1_srgtm"]
+[ext_resource type="PackedScene" uid="uid://vfyag0ovipq7" path="res://world_elements/climbable/ladder.tscn" id="2_j8r4s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,7 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_mk158")
 background_mode = 2
 sky = SubResource("Sky_433yw")
 tonemap_mode = 2
-tonemap_exposure = 5.44
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvrp3"]
@@ -46,20 +45,6 @@ shadow_enabled = true
 environment = SubResource("Environment_2fufs")
 
 [node name="Platforms" type="Node3D" parent="Enviroment"]
-
-[node name="platform" parent="Enviroment/Platforms" instance=ExtResource("1_srgtm")]
-transform = Transform3D(0.22838, 0, 0, 0, 12.9534, 0, 0, 0, 0.210233, 65.1913, 0.0890179, -25.1573)
-move_distance_y = 0.0
-move_distance_z = 40.0
-move_time = 5.0
-timing = 5.0
-
-[node name="platform2" parent="Enviroment/Platforms" instance=ExtResource("1_srgtm")]
-transform = Transform3D(0.22838, 0, 0, 0, -3.67029, 0.201617, 0, -12.4225, -0.0595687, 77.9869, -3.23567, 0)
-move_distance_y = 0.0
-move_distance_z = -25.0
-move_time = 5.0
-timing = 5.0
 
 [node name="Blocking" type="Node3D" parent="Enviroment"]
 
@@ -208,9 +193,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11501, 4.84669, -18.9793)
 
 [node name="Buttons" type="Node3D" parent="Enviroment/Blocking"]
 
-[node name="Triggers" type="Node3D" parent="Enviroment"]
+[node name="collectibles" type="Node3D" parent="Enviroment"]
+
+[node name="ladder" parent="Enviroment" instance=ExtResource("2_j8r4s")]
+transform = Transform3D(-0.0641491, 0, 0.99794, 0, 1.42926, 0, -0.99794, 0, -0.0641491, 12.1276, 0, 7.65159)
 
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(-0.0239262, 0, -0.999714, 0, 1, 0, 0.999714, 0, -0.0239262, 50.1914, 1.1, -12.2618)
+transform = Transform3D(-0.0239262, 0, -0.999714, 0, 1, 0, 0.999714, 0, -0.0239262, 3.65209, 1.0784, 2.49322)
+
+[connection signal="climbing" from="Enviroment/ladder" to="entities/player" method="_on_ladder_climbing"]
+[connection signal="not_climbing" from="Enviroment/ladder" to="entities/player" method="_on_ladder_not_climbing"]

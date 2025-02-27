@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgduhuw6qs3lj"]
+
+[ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="1_g1rvi"]
+[ext_resource type="Script" path="res://world_elements/platforms/danger_platform.gd" id="2_h3cjd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m003"]
+
+[node name="danger_platform" instance=ExtResource("1_g1rvi")]
+script = ExtResource("2_h3cjd")
+
+[node name="damaged_area" type="Area3D" parent="platform" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform/damaged_area" index="0"]
+transform = Transform3D(40, 0, 0, 0, 0.2, 0, 0, 0, 40, 0, 0.0907689, 0)
+shape = SubResource("BoxShape3D_1m003")
+
+[connection signal="body_entered" from="platform/damaged_area" to="." method="_on_area_3d_body_entered"]

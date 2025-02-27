@@ -1,0 +1,119 @@
+[gd_scene load_steps=25 format=3 uid="uid://chs6jkadawrs1"]
+
+[ext_resource type="PackedScene" uid="uid://dbrbfclk70br4" path="res://blends/player/Lil_D3.0.blend" id="1_puebm"]
+[ext_resource type="Script" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.gd" id="2_v0jwb"]
+
+[sub_resource type="Gradient" id="Gradient_oppkm"]
+colors = PackedColorArray(0, 0.235057, 0.238254, 1, 0.196078, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fbqns"]
+gradient = SubResource("Gradient_oppkm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4pu2"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.196078, 1, 1, 1)
+emission = Color(0.585062, 0.585062, 0.585062, 1)
+emission_energy_multiplier = 0.1
+emission_operator = 1
+emission_texture = SubResource("GradientTexture1D_fbqns")
+rim = 0.0
+rim_tint = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r530q"]
+diffuse_mode = 3
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mfwtd"]
+animation = &"crouch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nf5i0"]
+animation = &"crouch_crawl"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2n4va"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2q6y"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rlxb1"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yvteu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfyov"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7i2tq"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_181ue"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6i05p"]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ddok"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tt86t"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cx3l"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ebmki"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3v30t"]
+xfade_time = 0.05
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uv8su"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c7i0t"]
+states/Start/position = Vector2(162, 110)
+states/crouch/node = SubResource("AnimationNodeAnimation_mfwtd")
+states/crouch/position = Vector2(304, 26)
+states/crouch_crawl/node = SubResource("AnimationNodeAnimation_nf5i0")
+states/crouch_crawl/position = Vector2(542, 26)
+states/idle/node = SubResource("AnimationNodeAnimation_2n4va")
+states/idle/position = Vector2(304, 110)
+states/jump/node = SubResource("AnimationNodeAnimation_m2q6y")
+states/jump/position = Vector2(405, 259)
+states/walk/node = SubResource("AnimationNodeAnimation_rlxb1")
+states/walk/position = Vector2(514, 110)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_yvteu"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_bfyov"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_7i2tq"), "crouch", "crouch_crawl", SubResource("AnimationNodeStateMachineTransition_181ue"), "crouch_crawl", "crouch", SubResource("AnimationNodeStateMachineTransition_6i05p"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_8ddok"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_tt86t"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_8cx3l"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_ebmki"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_3v30t"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_uv8su")]
+graph_offset = Vector2(-537, -106)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kl35k"]
+graph_offset = Vector2(-1616.81, 0)
+nodes/move_state_machine/node = SubResource("AnimationNodeStateMachine_c7i0t")
+nodes/move_state_machine/position = Vector2(-870.223, 163.713)
+node_connections = [&"output", 0, &"move_state_machine"]
+
+[node name="lil_skin" instance=ExtResource("1_puebm")]
+script = ExtResource("2_v0jwb")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/0/scale = Vector3(0.950271, 0.950271, 0.950271)
+bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
+bones/3/scale = Vector3(0.826021, 0.826021, 0.826021)
+bones/4/position = Vector3(0, -0.0581067, 0)
+
+[node name="Cloak" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q4pu2")
+
+[node name="skull" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r530q")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"
+speed_scale = 3.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_kl35k")
+anim_player = NodePath("../AnimationPlayer")

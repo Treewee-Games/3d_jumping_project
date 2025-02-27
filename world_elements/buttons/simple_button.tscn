@@ -43,14 +43,14 @@ mesh = SubResource("CylinderMesh_6qred")
 transform = Transform3D(0.808878, 0, 0, 0, 0.0753245, 0, 0, 0, 0.866814, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_tuj34")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="The button trigger" type="Area3D" parent="."]
 transform = Transform3D(2.14981, 0, 0, 0, 1.67585, 0, 0, 0, 2.15019, 0, 0.159066, 0)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="The button trigger"]
 transform = Transform3D(0.708828, 0, 0, 0, 0.12306, 0, 0, 0, 0.767421, 0, 0, 0)
 shape = SubResource("CylinderShape3D_ih34u")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="The button trigger" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="The button trigger" to="." method="_on_area_3d_body_exited"]

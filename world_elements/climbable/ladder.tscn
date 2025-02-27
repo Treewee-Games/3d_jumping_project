@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://vfyag0ovipq7"]
+
+[ext_resource type="PackedScene" uid="uid://bfrmv0dewulfx" path="res://blends/enviorment/climbables/ladder.blend" id="1_cwxvg"]
+[ext_resource type="Script" path="res://world_elements/climbable/ladder.gd" id="2_aj3i7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deq6q"]
+size = Vector3(1.698, 0.51886, 0.323975)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0dvsy"]
+points = PackedVector3Array(1.20507, 13.7392, 0.315114, -1.11606, -1.11606, -0.381088, -1.11606, -1.11606, 0.315114, -1.11606, 13.7392, -0.381088, 1.20507, -1.11606, -0.381088, 1.20507, -1.11606, 0.315114, -1.11606, 13.7392, 0.315114, 1.20507, 13.7392, -0.381088)
+
+[node name="ladder" groups=["climbable"] instance=ExtResource("1_cwxvg")]
+script = ExtResource("2_aj3i7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 34
+collision_mask = 34
+
+[node name="climbable area" type="Area3D" parent="StaticBody3D" index="0" groups=["climbable"]]
+transform = Transform3D(1.17524, 0, 0, 0, 1.03989, 0, 0, 0, 1.40723, 0, 0, 0)
+collision_layer = 34
+collision_mask = 34
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/climbable area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 27.1933, 0, 0, 0, 1, -0.0140381, 7.09545, -0.0324038)
+shape = SubResource("BoxShape3D_deq6q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.844133, 0, 0, 0, 0.844133, 0, 0, 0, 0.683364, 0, 0.986591, -0.0445387)
+shape = SubResource("ConvexPolygonShape3D_0dvsy")
+
+[connection signal="body_entered" from="StaticBody3D/climbable area" to="." method="_on_climbable_area_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/climbable area" to="." method="_on_climbable_area_body_exited"]

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalStats="*res://globals/stats/global_stats.gd"
 
+[global_group]
+
+climbable=""
+
 [input]
 
 ui_accept={
@@ -59,3 +63,4 @@ crouch={
 
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
+3d_physics/layer_6="Climbable"

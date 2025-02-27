@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvfy3e7uxov2g"]
+
+[ext_resource type="Script" path="res://world_elements/collectibles/currencies/soul.gd" id="1_6k2cg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wxb72"]
+bounce = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nt6q4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejpms"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.360784)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4il8j"]
+material = SubResource("StandardMaterial3D_ejpms")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ukvyh"]
+
+[node name="soul" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_6k2cg")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+collision_layer = 2
+collision_mask = 3
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_wxb72")
+gravity_scale = 0.5
+constant_force = Vector3(0, 0.2, 0)
+constant_torque = Vector3(0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_nt6q4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_4il8j")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="collision_collection" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_ukvyh")
+
+[connection signal="body_entered" from="RigidBody3D/Area3D" to="." method="_on_area_3d_body_entered"]

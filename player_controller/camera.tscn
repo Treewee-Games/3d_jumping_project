@@ -6,7 +6,7 @@
 
 [node name="Camera" type="SpringArm3D"]
 shape = SubResource("SphereShape3D_swbov")
-spring_length = 3.0
+spring_length = 4.0
 script = ExtResource("1_yi8tf")
 min_limit_x = -1.0
 max_limit_x = 0.5
