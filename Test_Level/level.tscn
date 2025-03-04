@@ -201,7 +201,3 @@ transform = Transform3D(-0.0641491, 0, 0.99794, 0, 1.42926, 0, -0.99794, 0, -0.0
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(-0.0239262, 0, -0.999714, 0, 1, 0, 0.999714, 0, -0.0239262, 3.65209, 1.0784, 2.49322)
-
-[connection signal="climbing" from="Enviroment/ladder" to="entities/player" method="_on_ladder_climbing"]
-[connection signal="not_climbing" from="Enviroment/ladder" to="entities/player" method="_on_ladder_not_climbing"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://chs6jkadawrs1"]
+[gd_scene load_steps=26 format=3 uid="uid://chs6jkadawrs1"]
 
 [ext_resource type="PackedScene" uid="uid://dbrbfclk70br4" path="res://blends/player/Lil_D3.0.blend" id="1_puebm"]
 [ext_resource type="Script" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.gd" id="2_v0jwb"]
+[ext_resource type="PackedScene" uid="uid://bstwxe1iv8icb" path="res://player_controller/skins/particles/fire.tscn" id="3_2euri"]
 
 [sub_resource type="Gradient" id="Gradient_oppkm"]
 colors = PackedColorArray(0, 0.235057, 0.238254, 1, 0.196078, 1, 1, 1)
@@ -61,17 +62,17 @@ xfade_time = 0.2
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cx3l"]
-xfade_time = 0.05
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ebmki"]
 xfade_time = 0.2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ebmki"]
+xfade_time = 0.3
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3v30t"]
-xfade_time = 0.05
+xfade_time = 0.2
 priority = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uv8su"]
-xfade_time = 0.2
+xfade_time = 0.3
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c7i0t"]
 states/Start/position = Vector2(162, 110)
@@ -89,7 +90,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-537, -106)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kl35k"]
-graph_offset = Vector2(-1616.81, 0)
 nodes/move_state_machine/node = SubResource("AnimationNodeStateMachine_c7i0t")
 nodes/move_state_machine/position = Vector2(-870.223, 163.713)
 node_connections = [&"output", 0, &"move_state_machine"]
@@ -99,16 +99,22 @@ script = ExtResource("2_v0jwb")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/scale = Vector3(0.950271, 0.950271, 0.950271)
+bones/0/scale = Vector3(0.952636, 0.952636, 0.952636)
 bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.826021, 0.826021, 0.826021)
-bones/4/position = Vector3(0, -0.0581067, 0)
+bones/3/scale = Vector3(0.834293, 0.834293, 0.834293)
+bones/4/position = Vector3(0, -0.0553437, 0)
 
 [node name="Cloak" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_q4pu2")
 
 [node name="skull" parent="Armature/Skeleton3D" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_r530q")
+
+[node name="r_eye" parent="Armature/Skeleton3D/skull" index="0" instance=ExtResource("3_2euri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335693, 0.60086, 0.116478)
+
+[node name="l_eye" parent="Armature/Skeleton3D/skull" index="1" instance=ExtResource("3_2euri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335693, 0.60086, -0.168735)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"

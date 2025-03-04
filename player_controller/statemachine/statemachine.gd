@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		States.CROUCHING:
 			state_crouching()
 		States.CLIMBING:
-			pass
+			state_climbing()
 			
 func change_state(new_state):
 	if current_state != new_state:
@@ -58,8 +58,8 @@ func exit_state(state):
 		stand_up_player()
 
 func state_idle():
-	
-	
+	if player.is_climbing:
+		change_state(States.CLIMBING)
 	if player.falling:
 		change_state(States.FALLING)
 	elif player.is_airborne:
@@ -73,7 +73,6 @@ func state_idle():
 func state_moving():
 	if player.is_climbing:
 		change_state(States.CLIMBING)
-	
 	elif player.falling:
 		change_state(States.FALLING)
 	if player.movement_input == Vector2.ZERO and player.is_on_floor():
@@ -83,6 +82,8 @@ func state_moving():
 	#print("moving?")	
 	
 func state_jumping():
+	if player.is_climbing:
+		change_state(States.CLIMBING)
 	if player.falling:
 		change_state(States.FALLING)
 	elif player.is_on_floor():
@@ -96,6 +97,7 @@ func state_falling():
 	if player.is_on_floor():
 		change_state(States.IDLE)
 
+#region crouching
 func state_crouching():
 	if not player.movement_input.is_zero_approx():
 		skin.set_move_state("crouch_crawl")
@@ -126,3 +128,13 @@ func stand_up_player():
 		#tween.tween_property(player.collision_mesh, "scale", Vector3(1,1,1),.1).set_ease(Tween.EASE_OUT)
 		
 		crouching = false
+#endregion
+
+func state_climbing():
+	if player.is_climbing:
+		return
+	else:
+		if player.is_on_floor():
+			change_state(States.IDLE)
+		if player.is_airborne:
+			change_state(States.JUMPING)
