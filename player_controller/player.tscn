@@ -10,8 +10,8 @@
 radius = 0.229416
 height = 1.55679
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00695419, 0.999999, 0.00573158)
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light_area") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00695419, 0.999999, 0.00573158)
 collision_layer = 2
 collision_mask = 33
 script = ExtResource("1_th52k")
@@ -20,17 +20,33 @@ acceleration = 1.0
 air_acceleration = 3.0
 jump_velocity = 8.0
 jump_time = 4.5
+light_area = NodePath("lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_pl103")]
 player = NodePath("..")
 
 [node name="lil_skin" parent="." instance=ExtResource("2_vilyh")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lil_skin/Armature" index="0"]
-bones/0/scale = Vector3(0.960571, 0.960571, 0.960571)
-bones/3/scale = Vector3(0.862057, 0.862057, 0.862057)
-bones/4/position = Vector3(0, -0.0460711, 0)
+bones/0/scale = Vector3(0.992611, 0.992611, 0.992611)
+bones/3/scale = Vector3(0.97415, 0.97415, 0.97415)
+bones/4/position = Vector3(0, -0.0086334, 0)
+
+[node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0, 0.992611, 0, -0.992611, 0, 7.49401e-08, 7.49401e-08, 0, 0.992611, -9.24441e-10, 0.992611, 0)
+
+[node name="l_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="0"]
+visible = false
+
+[node name="SpotLight3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.123792, 0, 0)
+
+[node name="CollisionShape3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.99389, 0, 0)
+
+[node name="r_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="1"]
+visible = false
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
@@ -47,7 +63,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Camera" parent="." instance=ExtResource("2_chvh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609774, 0.320532)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.609774, 0.320532)
 
 [node name="world_checker" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, -0.292156, 0)
@@ -64,7 +80,9 @@ lifetime = 0.3
 transform = Transform3D(-0.500061, 7.96137e-08, -0.00459722, -0.00411821, 0.0236091, 0.55785, 0.000106803, 0.910705, -0.0144617, -0.0340532, 0.00071919, 0.0217217)
 amount = 200
 
+[connection signal="area_entered" from="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" to="." method="_on_light_area_area_entered"]
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 
 [editable path="lil_skin"]
+[editable path="lil_skin/Armature/Skeleton3D/skullarea/l_eye"]
 [editable path="Camera"]

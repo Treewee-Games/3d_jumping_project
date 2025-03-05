@@ -3,6 +3,8 @@ extends Node
 #playerstats
 var player_health := 4
 var soul_count : int
+var key_count : int
+var boss_key_count : int
 #enemythings
 var enemy_health : float
 

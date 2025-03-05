@@ -111,21 +111,12 @@ func crouch_player():
 	if crouching:
 		return
 	skin.set_move_state("crouch")
-	#var tween = player.create_tween()
-	#tween.tween_property(player.mesh, "position", Vector3(0,-.5,0),.01).set_ease(Tween.EASE_IN)
-	#tween.tween_property(player.collision_mesh, "position", Vector3(0,-.5,0),.01).set_ease(Tween.EASE_IN)
-	#tween.tween_property(player.mesh, "scale", Vector3(1,.5,1),.1).set_ease(Tween.EASE_IN)
-	#tween.tween_property(player.collision_mesh, "scale", Vector3(1,.5,1),.1).set_ease(Tween.EASE_IN)
+
 	
 	crouching = true
 func stand_up_player():
 	if not player.ceiling_check:
 		skin.set_move_state("idle")
-		#var tween = player.create_tween()
-		#tween.tween_property(player.mesh, "position", Vector3(0,0,0),.01).set_ease(Tween.EASE_OUT)
-		#tween.tween_property(player.collision_mesh, "position", Vector3(0,0,0),.01).set_ease(Tween.EASE_OUT)
-		#tween.tween_property(player.mesh, "scale", Vector3(1,1,1),.1).set_ease(Tween.EASE_OUT)
-		#tween.tween_property(player.collision_mesh, "scale", Vector3(1,1,1),.1).set_ease(Tween.EASE_OUT)
 		
 		crouching = false
 #endregion

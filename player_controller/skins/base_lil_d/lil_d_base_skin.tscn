@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dbrbfclk70br4" path="res://blends/player/Lil_D3.0.blend" id="1_puebm"]
 [ext_resource type="Script" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.gd" id="2_v0jwb"]
-[ext_resource type="PackedScene" uid="uid://bstwxe1iv8icb" path="res://player_controller/skins/particles/fire.tscn" id="3_2euri"]
+[ext_resource type="PackedScene" uid="uid://bstwxe1iv8icb" path="res://player_controller/skins/particles/eye_lights.tscn" id="3_2euri"]
 
 [sub_resource type="Gradient" id="Gradient_oppkm"]
 colors = PackedColorArray(0, 0.235057, 0.238254, 1, 0.196078, 1, 1, 1)
@@ -50,16 +50,16 @@ xfade_time = 0.2
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_181ue"]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6i05p"]
-xfade_time = 1.0
+xfade_time = 0.5
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ddok"]
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tt86t"]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cx3l"]
 xfade_time = 0.2
@@ -87,9 +87,10 @@ states/jump/position = Vector2(405, 259)
 states/walk/node = SubResource("AnimationNodeAnimation_rlxb1")
 states/walk/position = Vector2(514, 110)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_yvteu"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_bfyov"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_7i2tq"), "crouch", "crouch_crawl", SubResource("AnimationNodeStateMachineTransition_181ue"), "crouch_crawl", "crouch", SubResource("AnimationNodeStateMachineTransition_6i05p"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_8ddok"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_tt86t"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_8cx3l"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_ebmki"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_3v30t"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_uv8su")]
-graph_offset = Vector2(-537, -106)
+graph_offset = Vector2(-439, -28)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kl35k"]
+graph_offset = Vector2(-966.678, 75.4967)
 nodes/move_state_machine/node = SubResource("AnimationNodeStateMachine_c7i0t")
 nodes/move_state_machine/position = Vector2(-870.223, 163.713)
 node_connections = [&"output", 0, &"move_state_machine"]
@@ -99,10 +100,10 @@ script = ExtResource("2_v0jwb")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/scale = Vector3(0.952636, 0.952636, 0.952636)
+bones/0/scale = Vector3(0.956221, 0.956221, 0.956221)
 bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.834293, 0.834293, 0.834293)
-bones/4/position = Vector3(0, -0.0553437, 0)
+bones/3/scale = Vector3(0.846838, 0.846838, 0.846838)
+bones/4/position = Vector3(0, -0.051154, 0)
 
 [node name="Cloak" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_q4pu2")
@@ -110,11 +111,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_q4pu2")
 [node name="skull" parent="Armature/Skeleton3D" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_r530q")
 
-[node name="r_eye" parent="Armature/Skeleton3D/skull" index="0" instance=ExtResource("3_2euri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335693, 0.60086, 0.116478)
+[node name="skullarea" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(0, 0.956221, 0, -0.956221, 0, 7.21927e-08, 7.21927e-08, 0, 0.956221, -8.9055e-10, 0.956221, 0)
+bone_name = "tophead"
+bone_idx = 1
 
-[node name="l_eye" parent="Armature/Skeleton3D/skull" index="1" instance=ExtResource("3_2euri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335693, 0.60086, -0.168735)
+[node name="l_eye" parent="Armature/Skeleton3D/skullarea" index="0" instance=ExtResource("3_2euri")]
+transform = Transform3D(0, -1.01138, 7.63567e-08, 1.01138, 0, 0, 0, 7.63567e-08, 1.01138, 0.392164, 0.339822, -0.170922)
+
+[node name="r_eye" parent="Armature/Skeleton3D/skullarea" index="1" instance=ExtResource("3_2euri")]
+transform = Transform3D(0, -1.02664, 7.75091e-08, 1.02664, 0, 0, 0, 7.75091e-08, 1.02664, 0.38299, 0.344951, 0.11909)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"

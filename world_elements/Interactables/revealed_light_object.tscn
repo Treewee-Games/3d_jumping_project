@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://de8oi1sfspwb2"]
+
+[ext_resource type="Script" path="res://world_elements/Interactables/revealed_light_object.gd" id="1_afwkd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nlsw4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6d06"]
+transparency = 1
+albedo_color = Color(0.155, 0.155, 0.155, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxh6h"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="RevealedLightObject" type="Area3D" node_paths=PackedStringArray("hidden_object", "static_body")]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_afwkd")
+hidden_object = NodePath("MeshInstance3D")
+static_body = NodePath("RevealObject")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nlsw4")
+surface_material_override/0 = SubResource("StandardMaterial3D_t6d06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_uxh6h")
+
+[node name="RevealObject" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RevealObject"]
+shape = SubResource("ConvexPolygonShape3D_uxh6h")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

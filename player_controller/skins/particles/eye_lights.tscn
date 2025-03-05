@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bstwxe1iv8icb"]
+[gd_scene load_steps=10 format=3 uid="uid://bstwxe1iv8icb"]
 
 [ext_resource type="Shader" path="res://globals/shaders/fire.gdshader" id="1_g5f7q"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w5x03"]
 seed = 5
-frequency = 0.0128
+frequency = 0.0015
 offset = Vector3(0, -608.7, 0)
 fractal_octaves = 10
 fractal_lacunarity = 0.495
@@ -14,6 +14,7 @@ domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hemqw"]
 seamless = true
+seamless_blend_skirt = 0.0
 bump_strength = 31.0
 noise = SubResource("FastNoiseLite_w5x03")
 
@@ -28,10 +29,10 @@ shader_parameter/horizontal_frequency = 1.0
 shader_parameter/vertical_frequency = 5.0
 shader_parameter/size = -0.3
 shader_parameter/core_size = 1.1
-shader_parameter/color1 = Color(0.87658, 0.594058, 3.85046e-07, 1)
-shader_parameter/color2 = Color(0.611981, 0.0845268, 0.0926568, 1)
-shader_parameter/color3 = Color(0.818173, 0.921168, 0, 1)
-shader_parameter/color4 = Color(7.70092e-07, 0.739323, 0.987214, 1)
+shader_parameter/color1 = Color(0.817195, 0.525069, 0, 1)
+shader_parameter/color2 = Color(0.662606, 0.743921, 7.70092e-07, 1)
+shader_parameter/color3 = Color(0.5315, 0.60068, 0, 1)
+shader_parameter/color4 = Color(1, 0.640205, 0.368093, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_hemqw")
 
 [sub_resource type="Curve" id="Curve_w4h22"]
@@ -51,7 +52,11 @@ hue_variation_max = 0.83
 
 [sub_resource type="SphereMesh" id="SphereMesh_oojs2"]
 
-[node name="GPUParticles3D" type="GPUParticles3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24il2"]
+radius = 2.27434
+height = 7.39531
+
+[node name="Eye_Lights" type="GPUParticles3D"]
 material_override = SubResource("ShaderMaterial_vwk22")
 amount = 5
 lifetime = 0.01
@@ -60,3 +65,21 @@ fixed_fps = 60
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_f0e1v")
 draw_pass_1 = SubResource("SphereMesh_oojs2")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.123792, 0, 0)
+light_energy = 20.0
+light_size = 0.383
+spot_range = 3.808
+spot_angle = 80.32
+
+[node name="Light_Area" type="Area3D" parent="." groups=["Light Area"]]
+transform = Transform3D(1.53833, 0, 0, 0, 1.55412, 0, 0, 0, 1, -1.09502, 0, 0)
+collision_layer = 64
+collision_mask = 64
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Light_Area"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.28724, 0, 0)
+shape = SubResource("CapsuleShape3D_24il2")

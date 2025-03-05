@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwskdbteqiwyr"]
+
+[ext_resource type="PackedScene" uid="uid://cvfy3e7uxov2g" path="res://world_elements/collectibles/collectible.tscn" id="1_2dr3i"]
+[ext_resource type="Script" path="res://world_elements/collectibles/keys/key.gd" id="2_5l5uf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q0xjt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qs4m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j284y"]
+
+[node name="key" instance=ExtResource("1_2dr3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990714, 0)
+script = ExtResource("2_5l5uf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_q0xjt")
+skeleton = NodePath("../CollisionShape3D2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_5qs4m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_j284y")
