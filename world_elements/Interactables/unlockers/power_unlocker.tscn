@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ah6bqbkhrfh"]
+
+[ext_resource type="Script" path="res://world_elements/Interactables/unlockers/power_unlocker.gd" id="1_nie4h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_og8lr"]
+radius = 1.27195
+
+[node name="power unlocker" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nie4h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_og8lr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

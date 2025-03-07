@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://k8ym120xhwi8"]
+
+[ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="1_yy76r"]
+[ext_resource type="Script" path="res://world_elements/platforms/falling_platform.gd" id="2_d0gb5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2vts7"]
+radius = 0.347683
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klc5n"]
+albedo_color = Color(0.690586, 0.108173, 0.253847, 1)
+
+[node name="falling_platform" instance=ExtResource("1_yy76r")]
+script = ExtResource("2_d0gb5")
+falling_time = 3.5
+button_or_not = true
+
+[node name="falling_trigger" type="Area3D" parent="origin" index="0"]
+transform = Transform3D(55.4883, 0, 0, 0, 0.2, 0, 0, 0, 51.7644, 0, -0.0269356, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="origin/falling_trigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743913, 0)
+shape = SubResource("SphereShape3D_2vts7")
+
+[node name="MeshInstance3D" parent="platform/CollisionShape3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_klc5n")
+
+[connection signal="body_entered" from="origin/falling_trigger" to="." method="_on_falling_trigger_body_entered"]

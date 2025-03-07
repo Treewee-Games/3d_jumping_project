@@ -68,6 +68,9 @@ func _physics_process(delta: float) -> void:
 	_movement_logic(delta)
 	toggle_light()
 	can_stand_up()
+	
+	if Input.is_action_just_pressed("test button"):
+		GlobalStats.unlock_powers("Light Power")
 
 #region jump functions
 func _jumping_logic(delta)-> void:
@@ -210,12 +213,13 @@ func _on_ladder_not_climbing() -> void:
 
 #region Light Ability
 func toggle_light()->void:
-	if Input.is_action_just_pressed("ability_1"):
-		light_on = !light_on
-		l_eye.visible = light_on #Turn the actual light on/off
-		r_eye.visible = light_on
-		light_area.set_collision_layer_value(7, light_on)
-		light_area.set_collision_mask_value(7, light_on)
+	if GlobalStats.has_power("Light Power"):
+		if Input.is_action_just_pressed("ability_1"):
+			light_on = !light_on
+			l_eye.visible = light_on #Turn the actual light on/off
+			r_eye.visible = light_on
+			light_area.set_collision_layer_value(7, light_on)
+			light_area.set_collision_mask_value(7, light_on)
 func _on_light_area_area_entered(area: Area3D) -> void:
 	if area.has_method("dissolve_darkness"):
 		area.dissolve_darkness()

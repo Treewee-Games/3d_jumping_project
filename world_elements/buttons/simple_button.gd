@@ -5,8 +5,7 @@ extends Node3D
 
 @warning_ignore("unused_signal")
 signal trigger_effect
-@warning_ignore("unused_signal")
-signal exit_effect
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player:
@@ -18,4 +17,3 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(_body: Node3D) -> void:
 	var tween = create_tween()
 	tween.tween_property(button, "position", Vector3(0, 0.152, 0), 3)
-	emit_signal("exit_effect")
