@@ -36,6 +36,8 @@ func platform_movement_up()-> void:
 			var tween = create_tween()
 			tween.tween_property(platform, "global_position", target_position , move_time).set_ease(Tween.EASE_IN_OUT)
 			platform.constant_linear_velocity = Vector3(move_distance_x, move_distance_y, move_distance_z)/move_time
+			await tween.finished
+			platform.constant_linear_velocity = Vector3.ZERO
 			await get_tree().create_timer(timing).timeout
 			platform_movement_down()
 
@@ -44,5 +46,7 @@ func platform_movement_down()-> void:
 	var tween = create_tween()
 	tween.tween_property(platform, "global_position", origin.global_position, move_time)
 	platform.constant_linear_velocity = Vector3(-move_distance_x, -move_distance_y, -move_distance_z)/move_time
+	await tween.finished
+	platform.constant_linear_velocity = Vector3.ZERO
 	await get_tree().create_timer(timing).timeout
 	platform_up = false

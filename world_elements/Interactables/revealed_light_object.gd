@@ -10,12 +10,14 @@ var light_count := 0
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Light Area"):
+		print("yep")
 		light_count += 1
 		if light_count == 1:
 			reveal_object()
 
 func _on_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Light Area"):
+		print("lame")
 		light_count = max(0, light_count-1)#Decrease the light_count
 		if light_count ==0:
 			hide_object()
@@ -30,5 +32,4 @@ func hide_object():
 	var material = hidden_object.get_surface_override_material(0)
 	var tween = create_tween()
 	tween.tween_property(material, "albedo_color", Color(material.albedo_color.r, material.albedo_color.g, material.albedo_color.b, 0), hide_time)
-	await tween.finished
 	static_body.set_collision_layer_value(1, false)

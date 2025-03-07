@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@onready var spring_arm := $Camera as SpringArm3D
 @export var camera:= Camera3D
 @onready var state_machine = $StateMachine
 
@@ -164,6 +165,7 @@ func gravity_stuff(delta)-> void:
 		coyote_time_counter = COYOTE_TIME #Reset coyote timer when grounded
 		is_airborne = false
 		falling = false
+	await get_tree().create_timer(.02).timeout
 	if velocity.y < 0: falling = true
 #endregion
 
@@ -212,9 +214,8 @@ func toggle_light()->void:
 		light_on = !light_on
 		l_eye.visible = light_on #Turn the actual light on/off
 		r_eye.visible = light_on
-		light_area.monitoring = light_on
-		light_area.monitorable = light_on
 		light_area.set_collision_layer_value(7, light_on)
+		light_area.set_collision_mask_value(7, light_on)
 func _on_light_area_area_entered(area: Area3D) -> void:
 	if area.has_method("dissolve_darkness"):
 		area.dissolve_darkness()

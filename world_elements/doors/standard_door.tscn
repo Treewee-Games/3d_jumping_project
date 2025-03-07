@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://earksnkumevx"]
+[gd_scene load_steps=6 format=3 uid="uid://earksnkumevx"]
 
 [ext_resource type="Script" path="res://world_elements/doors/standard_door.gd" id="1_triet"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeqy8"]
+albedo_color = Color(0.754568, 0.25133, 0.167759, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_ihqj4"]
+material = SubResource("StandardMaterial3D_oeqy8")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_028xb"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)

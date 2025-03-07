@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwskdbteqiwyr"]
+[gd_scene load_steps=7 format=3 uid="uid://dwskdbteqiwyr"]
 
 [ext_resource type="PackedScene" uid="uid://cvfy3e7uxov2g" path="res://world_elements/collectibles/collectible.tscn" id="1_2dr3i"]
 [ext_resource type="Script" path="res://world_elements/collectibles/keys/key.gd" id="2_5l5uf"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp8dp"]
+albedo_color = Color(0.159719, 0.116798, 0.851815, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_q0xjt"]
+material = SubResource("StandardMaterial3D_jp8dp")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qs4m"]
 

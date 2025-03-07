@@ -29,24 +29,27 @@ player = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lil_skin/Armature" index="0"]
-bones/0/scale = Vector3(0.992611, 0.992611, 0.992611)
-bones/3/scale = Vector3(0.97415, 0.97415, 0.97415)
-bones/4/position = Vector3(0, -0.0086334, 0)
+bones/0/scale = Vector3(0.962091, 0.962091, 0.962091)
+bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
+bones/3/scale = Vector3(0.867375, 0.867375, 0.867375)
+bones/4/position = Vector3(0, -0.0442948, 0)
 
 [node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.992611, 0, -0.992611, 0, 7.49401e-08, 7.49401e-08, 0, 0.992611, -9.24441e-10, 0.992611, 0)
+transform = Transform3D(0, 0.962091, 0, -0.962091, 0, 7.26359e-08, 7.26359e-08, 0, 0.962091, -8.96017e-10, 0.962091, 0)
 
 [node name="l_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="0"]
 visible = false
-
-[node name="SpotLight3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.123792, 0, 0)
 
 [node name="CollisionShape3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.99389, 0, 0)
 
 [node name="r_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="1"]
 visible = false
+
+[node name="smoke" parent="lil_skin/Armature/Skeleton3D/skullarea" index="2" instance=ExtResource("5_l6l35")]
+transform = Transform3D(-1.15178e-08, -0.261798, 0, 0.263496, -1.14436e-08, 0, 0, 0, 0.260002, 0.526034, 0.0978641, -0.00741941)
+amount = 200
+lifetime = 1.5
 
 [node name="collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
@@ -62,9 +65,6 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="Camera" parent="." instance=ExtResource("2_chvh2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.609774, 0.320532)
-
 [node name="world_checker" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, -0.292156, 0)
 hit_from_inside = true
@@ -73,12 +73,12 @@ collide_with_areas = true
 [node name="Effects" type="Node" parent="."]
 
 [node name="smoke_cloak" parent="." instance=ExtResource("5_l6l35")]
-transform = Transform3D(9.55343e-16, 2.18557e-08, 0.5, 0.5, -2.18557e-08, 0, 2.18557e-08, 0.5, -2.18557e-08, 0.0127358, -0.815265, 0.0295235)
+transform = Transform3D(3.31957e-17, 2.72883e-09, 0.120108, 0.0173737, -2.72883e-09, 0, 7.59429e-10, 0.0624284, -5.25011e-09, -0.0664488, -0.817348, -0.0314902)
 lifetime = 0.3
 
-[node name="smoke" parent="." instance=ExtResource("5_l6l35")]
-transform = Transform3D(-0.500061, 7.96137e-08, -0.00459722, -0.00411821, 0.0236091, 0.55785, 0.000106803, 0.910705, -0.0144617, -0.0340532, 0.00071919, 0.0217217)
-amount = 200
+[node name="Camera" parent="." instance=ExtResource("2_chvh2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+spring_length = 4.0
 
 [connection signal="area_entered" from="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" to="." method="_on_light_area_area_entered"]
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]

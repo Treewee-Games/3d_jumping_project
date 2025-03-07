@@ -110,14 +110,31 @@ func state_crouching():
 func crouch_player():
 	if crouching:
 		return
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(player.spring_arm, "spring_length", 1, .5).set_ease(Tween.EASE_IN)
+	tween.tween_property(player.spring_arm, "position", Vector3(0, -.5, 0), .5)
+	tween.tween_property(player.collision_mesh, "scale", Vector3(1, .5, 1), .3).set_ease(Tween.EASE_IN)
+	tween.tween_property(player.collision_mesh, "position", Vector3(0,-.6, 0), .3).set_ease(Tween.EASE_IN)
+	
+	
+	await tween.finished
 	skin.set_move_state("crouch")
 
 	
 	crouching = true
 func stand_up_player():
 	if not player.ceiling_check:
-		skin.set_move_state("idle")
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(player.spring_arm, "spring_length", 4, .5).set_ease(Tween.EASE_OUT)
+		tween.tween_property(player.spring_arm, "position", Vector3(0, 0, 0), .5)
+		tween.tween_property(player.collision_mesh, "position", Vector3(0,-.2, 0), .01)
+		tween.tween_property(player.collision_mesh, "scale", Vector3(1, 1, 1), .01)
 		
+		
+		await tween.finished
+		skin.set_move_state("idle")
 		crouching = false
 #endregion
 
