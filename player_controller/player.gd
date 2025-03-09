@@ -62,12 +62,14 @@ var falling := false
 #endregion
 
 func _physics_process(delta: float) -> void:
+	print(skin.attacking)
 	gravity_stuff(delta)
 	state_machine._process(delta)
 	_jumping_logic(delta)
 	_movement_logic(delta)
 	toggle_light()
 	can_stand_up()
+	attacked()
 	
 	if Input.is_action_just_pressed("test button"):
 		GlobalStats.unlock_powers("Light Power")
@@ -223,4 +225,11 @@ func toggle_light()->void:
 func _on_light_area_area_entered(area: Area3D) -> void:
 	if area.has_method("dissolve_darkness"):
 		area.dissolve_darkness()
+#endregion
+
+#region Attacking
+func attacked()->void:
+	if Input.is_action_just_pressed("attack"):
+		skin.attack()
+
 #endregion

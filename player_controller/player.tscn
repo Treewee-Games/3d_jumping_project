@@ -29,19 +29,15 @@ player = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lil_skin/Armature" index="0"]
-bones/0/scale = Vector3(0.962091, 0.962091, 0.962091)
-bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.867375, 0.867375, 0.867375)
-bones/4/position = Vector3(0, -0.0442948, 0)
+bones/0/scale = Vector3(0.990727, 0.990727, 0.990727)
+bones/3/scale = Vector3(0.967558, 0.967558, 0.967558)
+bones/4/position = Vector3(0, -0.0108352, 0)
 
 [node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.962091, 0, -0.962091, 0, 7.26359e-08, 7.26359e-08, 0, 0.962091, -8.96017e-10, 0.962091, 0)
+transform = Transform3D(0, 0.990727, 0, -0.990727, 0, 7.47978e-08, 7.47978e-08, 0, 0.990727, -9.22686e-10, 0.990727, 0)
 
 [node name="l_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="0"]
 visible = false
-
-[node name="CollisionShape3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.99389, 0, 0)
 
 [node name="r_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="1"]
 visible = false
@@ -80,9 +76,7 @@ lifetime = 0.3
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 spring_length = 4.0
 
-[connection signal="area_entered" from="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" to="." method="_on_light_area_area_entered"]
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 
 [editable path="lil_skin"]
-[editable path="lil_skin/Armature/Skeleton3D/skullarea/l_eye"]
 [editable path="Camera"]
