@@ -47,32 +47,45 @@ var jump_buffer_counter := 0.0
 @export var light_area: Area3D
 var light_on := false
 #endregion
+#region Menus
+@onready var pause_menu: Control = $PauseMenu
+#endregion
+
 #region Additional Variables
 @onready var skin: Node3D = $lil_skin
 @onready var collision_mesh := $collision
 @onready var world_checker: RayCast3D = $world_checker
 @onready var l_eye: GPUParticles3D = $lil_skin/Armature/Skeleton3D/skullarea/l_eye
 @onready var r_eye: GPUParticles3D = $lil_skin/Armature/Skeleton3D/skullarea/r_eye
+@onready var l_claws: Node3D = $lil_skin/Armature/Skeleton3D/l_equip/claws
+@onready var r_claws: Node3D = $lil_skin/Armature/Skeleton3D/r_equip/claws
 var ceiling_check := false
 var was_in_air := false
 var gravity := Vector3.ZERO
 var is_airborne := false
 var falling := false
+var attack_check : float
 #please look over all of these as they are not exports
 #endregion
 
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause_menu.toggle_pause_menu()
+	menu_action()
+
 func _physics_process(delta: float) -> void:
-	print(skin.attacking)
-	gravity_stuff(delta)
-	state_machine._process(delta)
-	_jumping_logic(delta)
-	_movement_logic(delta)
-	toggle_light()
-	can_stand_up()
-	attacked()
+	if not pause_menu.is_paused:
+		gravity_stuff(delta)
+		state_machine._process(delta)
+		_jumping_logic(delta)
+		_movement_logic(delta)
+		toggle_light()
+		can_stand_up()
+		attacked()
 	
 	if Input.is_action_just_pressed("test button"):
-		GlobalStats.unlock_powers("Light Power")
+		GlobalStats.unlock_powers("Claws")
 
 #region jump functions
 func _jumping_logic(delta)-> void:
@@ -84,7 +97,6 @@ func jumping(delta: float)-> void:
 		jump_buffer_counter = JUMP_BUFFER_TIME
 		if jump_buffer_counter > 0:
 			jump_buffer_counter -= 1 * delta
-			skin.set_anim_speed(jump_buffer_counter)
 		if (is_on_floor() or coyote_time_counter > 0) and jump_buffer_counter > 0:
 			var jump_height:int = (jump_count)*2
 			var tween = create_tween()
@@ -231,5 +243,16 @@ func _on_light_area_area_entered(area: Area3D) -> void:
 func attacked()->void:
 	if Input.is_action_just_pressed("attack"):
 		skin.attack()
+		if skin.attacking:
+			attack_check += 1
+		if attack_check > 1:
+			skin.is_attacking(false)
+			attack_check = 0
 
 #endregion
+
+#region Menu Actions
+func menu_action()->void:
+	if pause_menu.is_paused:
+		if Input.is_action_just_pressed("Use"):
+			pause_menu._on_shield_slot_pressed()

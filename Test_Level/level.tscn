@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://dq8pyg0f83g7x"]
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
-[ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player.tscn" id="1_jxnkr"]
+[ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player/player.tscn" id="1_jxnkr"]
 [ext_resource type="ArrayMesh" uid="uid://jvjbb77wklf1" path="res://blends/enviorment/structures/floors/floor.res" id="1_s85jt"]
 [ext_resource type="PackedScene" uid="uid://qjhb0kcsqc5w" path="res://world_elements/Interactables/Darkness.tscn" id="3_m8l2y"]
 [ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="4_ue48o"]
@@ -1582,7 +1582,7 @@ timing = 5.0
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2828, 9.81009, 16.1448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2828, 0.941345, 16.1448)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Power_room/interactables/Button" to="Enviroment/Blocking/Power_room/platforms/platform" method="_on_button_trigger_effect"]

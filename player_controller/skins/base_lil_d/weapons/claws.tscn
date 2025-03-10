@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5a5mhfp81xcv"]
+
+[ext_resource type="PackedScene" uid="uid://c3y07u8fja7hm" path="res://blends/player/weapons/claws.blend" id="1_s2ak0"]
+[ext_resource type="Material" uid="uid://v4dku2drvm2k" path="res://globals/shader_materials/n64_metal.tres" id="2_2qied"]
+[ext_resource type="Shader" path="res://globals/shaders/layered_fire.gdshader" id="2_7ctya"]
+[ext_resource type="Script" path="res://player_controller/skins/base_lil_d/weapons/claws.gd" id="2_auxk4"]
+[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="5_v5q3g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hpho"]
+render_priority = 0
+shader = ExtResource("2_7ctya")
+shader_parameter/time_speed = 0.12
+shader_parameter/spin = 0.06
+shader_parameter/flame_brightness = 0.085
+shader_parameter/color_intensity = 0.785
+shader_parameter/horizontal_frequency = 11.895
+shader_parameter/vertical_frequency = 1.195
+shader_parameter/size = -1.2
+shader_parameter/core_size = 1.275
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/color3 = Color(0, 0, 0, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = ExtResource("5_v5q3g")
+
+[sub_resource type="Curve" id="Curve_3of6t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s3pnv"]
+curve = SubResource("Curve_3of6t")
+
+[sub_resource type="Curve" id="Curve_hq2rf"]
+min_value = -1.0
+_data = [Vector2(0, -0.89011), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i1hsw"]
+curve = SubResource("Curve_hq2rf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ebk30"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 2
+emission_sphere_radius = 3.0
+angle_min = -399.5
+angle_max = 222.2
+direction = Vector3(0, 0, 0)
+spread = 153.976
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+alpha_curve = SubResource("CurveTexture_s3pnv")
+hue_variation_min = -0.98
+hue_variation_max = 0.71
+hue_variation_curve = SubResource("CurveTexture_i1hsw")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p1cwe"]
+
+[node name="claws" instance=ExtResource("1_s2ak0")]
+script = ExtResource("2_auxk4")
+
+[node name="claw" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2qied")
+
+[node name="claw_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_2qied")
+
+[node name="claw_002" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_2qied")
+
+[node name="claw_003" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_2qied")
+
+[node name="trail" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(0.0973289, 0, 0, 0, -0.0135768, -0.0771829, 0, 0.291353, -0.00359665, 0.0530621, 0.0957301, -0.936949)
+material_override = SubResource("ShaderMaterial_5hpho")
+transparency = 0.5
+extra_cull_margin = 7943.76
+lifetime = 2.0
+interp_to_end = 1.0
+speed_scale = 3.0
+fixed_fps = 60
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_ebk30")
+draw_pass_1 = SubResource("CapsuleMesh_p1cwe")

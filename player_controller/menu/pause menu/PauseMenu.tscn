@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://ey4by73m13kb"]
+
+[ext_resource type="Script" path="res://player_controller/menu/pause menu/pause_menu.gd" id="1_06vcc"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06vcc")
+
+[node name="PauseUI" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tabs" type="HBoxContainer" parent="PauseUI"]
+layout_mode = 2
+
+[node name="EquipmentTab" type="TextureButton" parent="PauseUI/Tabs"]
+layout_mode = 2
+
+[node name="InventoryTab" type="TextureButton" parent="PauseUI/Tabs"]
+layout_mode = 2
+
+[node name="MapTab" type="TextureButton" parent="PauseUI/Tabs"]
+layout_mode = 2
+
+[node name="SaveTab" type="TextureButton" parent="PauseUI/Tabs"]
+layout_mode = 2
+
+[node name="EquipmentScreen" type="Control" parent="PauseUI"]
+layout_mode = 2
+
+[node name="SwordSlot" type="Label" parent="PauseUI/EquipmentScreen"]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+
+[node name="ShieldSlot" type="Label" parent="PauseUI/EquipmentScreen"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 30.0
+offset_bottom = 80.0
+
+[node name="BootsSlot" type="Label" parent="PauseUI/EquipmentScreen"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 40.0
+offset_bottom = 103.0
+
+[node name="InventoryScreen" type="Control" parent="PauseUI"]
+layout_mode = 2
+
+[node name="MapScreen" type="Control" parent="PauseUI"]
+layout_mode = 2
+
+[node name="SaveScreen" type="Control" parent="PauseUI"]
+layout_mode = 2

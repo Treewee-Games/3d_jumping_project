@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://creuusrbcuth8"]
+[gd_scene load_steps=8 format=3 uid="uid://creuusrbcuth8"]
 
-[ext_resource type="Script" path="res://player_controller/player.gd" id="1_th52k"]
-[ext_resource type="PackedScene" uid="uid://cswh4jkbxedf" path="res://player_controller/camera.tscn" id="2_chvh2"]
+[ext_resource type="Script" path="res://player_controller/player/player.gd" id="1_th52k"]
+[ext_resource type="PackedScene" uid="uid://cswh4jkbxedf" path="res://player_controller/camera/camera.tscn" id="2_chvh2"]
 [ext_resource type="PackedScene" uid="uid://me85m6wuhaq4" path="res://player_controller/statemachine/state_machine.tscn" id="2_pl103"]
 [ext_resource type="PackedScene" uid="uid://chs6jkadawrs1" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.tscn" id="2_vilyh"]
 [ext_resource type="PackedScene" uid="uid://c84sebry3iv3k" path="res://player_controller/skins/particles/smoke.tscn" id="5_l6l35"]
+[ext_resource type="PackedScene" uid="uid://ey4by73m13kb" path="res://player_controller/menu/pause menu/PauseMenu.tscn" id="6_qlx4q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl5tp"]
 radius = 0.229416
 height = 1.55679
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "light_area") groups=["player"]]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00695419, 0.999999, 0.00573158)
 collision_layer = 2
 collision_mask = 33
@@ -26,15 +28,21 @@ light_area = NodePath("lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area")
 player = NodePath("..")
 
 [node name="lil_skin" parent="." instance=ExtResource("2_vilyh")]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lil_skin/Armature" index="0"]
-bones/0/scale = Vector3(0.990727, 0.990727, 0.990727)
-bones/3/scale = Vector3(0.967558, 0.967558, 0.967558)
-bones/4/position = Vector3(0, -0.0108352, 0)
+bones/0/scale = Vector3(0.979537, 0.979537, 0.979537)
+bones/3/scale = Vector3(0.928409, 0.928409, 0.928409)
+bones/4/position = Vector3(0, -0.0239104, 0)
+bones/5/position = Vector3(0, -0.022244, 0)
+bones/7/position = Vector3(8.70045e-10, 0.831553, 3.99751e-09)
+bones/7/rotation = Quaternion(-0.357158, -2.969e-08, 1.2773e-07, 0.934044)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-2.44915e-13, -0.022244, -4.47364e-11)
 
 [node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.990727, 0, -0.990727, 0, 7.47978e-08, 7.47978e-08, 0, 0.990727, -9.22686e-10, 0.990727, 0)
+transform = Transform3D(0, 0.979537, 0, -0.979537, 0, 7.3953e-08, 7.3953e-08, 0, 0.979537, -9.12265e-10, 0.979537, 0)
 
 [node name="l_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="0"]
 visible = false
@@ -47,7 +55,17 @@ transform = Transform3D(-1.15178e-08, -0.261798, 0, 0.263496, -1.14436e-08, 0, 0
 amount = 200
 lifetime = 1.5
 
+[node name="l_equip" parent="lil_skin/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-1, 7.24754e-13, 3.89415e-07, -2.25694e-07, -0.814922, -0.579571, 3.17342e-07, -0.579571, 0.814922, -1.80133e-09, -0.848564, 0.380525)
+
+[node name="claws" parent="lil_skin/Armature/Skeleton3D/l_equip" index="0"]
+transform = Transform3D(-0.531706, 0.758079, -0.377629, 0.151608, 0.523873, 0.838194, 0.833248, 0.388421, -0.393478, 0.188862, 0.453083, 0.708102)
+
+[node name="r_equip" parent="lil_skin/Armature/Skeleton3D" index="5"]
+transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.835804, -0.460547)
+
 [node name="collision" type="CollisionShape3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("CapsuleShape3D_rl5tp")
 
@@ -69,6 +87,7 @@ collide_with_areas = true
 [node name="Effects" type="Node" parent="."]
 
 [node name="smoke_cloak" parent="." instance=ExtResource("5_l6l35")]
+process_mode = 1
 transform = Transform3D(3.31957e-17, 2.72883e-09, 0.120108, 0.0173737, -2.72883e-09, 0, 7.59429e-10, 0.0624284, -5.25011e-09, -0.0664488, -0.817348, -0.0314902)
 lifetime = 0.3
 
@@ -76,7 +95,12 @@ lifetime = 0.3
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 spring_length = 4.0
 
+[node name="PauseMenu" parent="." instance=ExtResource("6_qlx4q")]
+visible = false
+
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
 
 [editable path="lil_skin"]
+[editable path="lil_skin/Armature/Skeleton3D/l_equip/claws"]
+[editable path="lil_skin/Armature/Skeleton3D/r_equip/claws"]
 [editable path="Camera"]

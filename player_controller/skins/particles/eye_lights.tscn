@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bstwxe1iv8icb"]
 
-[ext_resource type="Shader" path="res://globals/shaders/fire.gdshader" id="1_g5f7q"]
+[ext_resource type="Shader" path="res://globals/shaders/layered_fire.gdshader" id="1_g5f7q"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w5x03"]
 seed = 5
