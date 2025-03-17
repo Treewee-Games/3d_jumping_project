@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bstwxe1iv8icb"]
+[gd_scene load_steps=9 format=3 uid="uid://bstwxe1iv8icb"]
 
 [ext_resource type="Shader" path="res://globals/shaders/layered_fire.gdshader" id="1_g5f7q"]
 
@@ -52,10 +52,6 @@ hue_variation_max = 0.83
 
 [sub_resource type="SphereMesh" id="SphereMesh_oojs2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24il2"]
-radius = 2.27434
-height = 7.39531
-
 [node name="Eye_Lights" type="GPUParticles3D"]
 material_override = SubResource("ShaderMaterial_vwk22")
 amount = 5
@@ -72,12 +68,3 @@ light_energy = 20.0
 light_size = 0.383
 spot_range = 3.808
 spot_angle = 80.32
-
-[node name="Light_Area" type="Area3D" parent="." groups=["Light Area"]]
-transform = Transform3D(1.53833, 0, 0, 0, 1.55412, 0, 0, 0, 1, -1.09502, 0, 0)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Light_Area"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.28724, 0, 0)
-shape = SubResource("CapsuleShape3D_24il2")

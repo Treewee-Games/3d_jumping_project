@@ -5,9 +5,18 @@ extends CharacterBody3D
 @onready var state_machine = $StateMachine
 
 #region stats
+var max_health = GlobalStats.player_max_health:
+	set(value):
+		max_health = value
+		GlobalStats.player_max_health = max_health
+		hud.max_health(value)
 var health = GlobalStats.player_health:
 	set(value):
+		hud.update_health(value)
 		health = value
+		GlobalStats.player_health = health
+		if health > max_health:
+			health = max_health
 		if health <= 0:
 			get_tree().quit()
 var souls = GlobalStats.soul_count
@@ -47,8 +56,9 @@ var jump_buffer_counter := 0.0
 @export var light_area: Area3D
 var light_on := false
 #endregion
-#region Menus
-@onready var pause_menu: Control = $PauseMenu
+#region Menus/HUD
+#@onready var pause_menu: Control = $PauseMenu
+@onready var hud: Control = $Hud
 #endregion
 
 #region Additional Variables
@@ -69,13 +79,16 @@ var attack_check : float
 #endregion
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		pause_menu.toggle_pause_menu()
-	menu_action()
+func _ready() -> void:
+	hud.setup(max_health, health)
+
+#func _process(_delta: float) -> void:
+	#if Input.is_action_just_pressed("pause"):
+		#pause_menu.toggle_pause_menu()
+	#menu_action()
 
 func _physics_process(delta: float) -> void:
-	if not pause_menu.is_paused:
+	#if not pause_menu.is_paused:
 		gravity_stuff(delta)
 		state_machine._process(delta)
 		_jumping_logic(delta)
@@ -84,8 +97,10 @@ func _physics_process(delta: float) -> void:
 		can_stand_up()
 		attacked()
 	
-	if Input.is_action_just_pressed("test button"):
-		GlobalStats.unlock_powers("Claws")
+		if Input.is_action_just_pressed("test button"):
+			damaged()
+		if Input.is_action_just_pressed("test_heal"):
+			heal()
 
 #region jump functions
 func _jumping_logic(delta)-> void:
@@ -186,7 +201,7 @@ func gravity_stuff(delta)-> void:
 	if velocity.y < 0: falling = true
 #endregion
 
-#region Extra Control Functions
+#region Extra Control Functions DEBUGSSS
 func can_stand_up()-> void:
 	if world_checker.is_colliding():
 		var collider = world_checker.get_collider()
@@ -195,12 +210,18 @@ func can_stand_up()-> void:
 	else:
 		ceiling_check = false
 func damaged() -> void:
+	print("hmm")
 	if not $Timers/InvulTimer.time_left:
 		health -= max(0,1)
 		#var tween = create_tween()
 		#tween.tween_property(mesh, "scale", Vector3(.4,.4,.4),.1)
 		#tween.tween_property(mesh, "scale", Vector3(1,1,1), .1)
 		$Timers/InvulTimer.start()
+		
+func heal()-> void:
+	max_health += max(0,1)
+	await get_tree().create_timer(0.1).timeout
+	health = max_health
 #endregion
 
 #region climb functions
@@ -232,8 +253,8 @@ func toggle_light()->void:
 			light_on = !light_on
 			l_eye.visible = light_on #Turn the actual light on/off
 			r_eye.visible = light_on
-			light_area.set_collision_layer_value(7, light_on)
-			light_area.set_collision_mask_value(7, light_on)
+			$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_layer_value(7, light_on)
+			$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_mask_value(7, light_on)
 func _on_light_area_area_entered(area: Area3D) -> void:
 	if area.has_method("dissolve_darkness"):
 		area.dissolve_darkness()
@@ -252,7 +273,10 @@ func attacked()->void:
 #endregion
 
 #region Menu Actions
-func menu_action()->void:
-	if pause_menu.is_paused:
-		if Input.is_action_just_pressed("Use"):
-			pause_menu._on_shield_slot_pressed()
+#func menu_action()->void:
+	#if pause_menu.is_paused:
+		#hud.hide()
+	#else:
+		#hud.show()
+
+#endregion
