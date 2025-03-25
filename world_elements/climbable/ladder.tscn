@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://vfyag0ovipq7"]
 
-[ext_resource type="PackedScene" uid="uid://bfrmv0dewulfx" path="res://blends/enviorment/climbables/ladder.blend" id="1_cwxvg"]
+[ext_resource type="PackedScene" uid="uid://bfrmv0dewulfx" path="res://blends/enviorment/structures/climbables/ladder.blend" id="1_cwxvg"]
 [ext_resource type="Script" path="res://world_elements/climbable/ladder.gd" id="2_aj3i7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_deq6q"]

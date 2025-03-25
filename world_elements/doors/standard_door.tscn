@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://earksnkumevx"]
+[gd_scene load_steps=7 format=3 uid="uid://earksnkumevx"]
 
 [ext_resource type="Script" path="res://world_elements/doors/standard_door.gd" id="1_triet"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeqy8"]
-albedo_color = Color(0.754568, 0.25133, 0.167759, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ihqj4"]
-material = SubResource("StandardMaterial3D_oeqy8")
+[ext_resource type="PackedScene" uid="uid://wv7wjixio421" path="res://blends/enviorment/structures/doors/Standard Doors/Door.blend" id="2_eyv3j"]
+[ext_resource type="Material" uid="uid://v4dku2drvm2k" path="res://globals/shader_materials/n64_metal.tres" id="3_52ryk"]
+[ext_resource type="PackedScene" uid="uid://m5dubnfnvtcq" path="res://world_elements/doors/door_locks/door_creature/door_creature_round_2.tscn" id="4_raik8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_028xb"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
@@ -18,14 +15,20 @@ script = ExtResource("1_triet")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(3.67097, 0, 0, 0, 4.62596, 0, 0, 0, 1, 0, 2.3, 0)
-mesh = SubResource("BoxMesh_ihqj4")
-skeleton = NodePath("../..")
+[node name="Door_mesh" parent="StaticBody3D" instance=ExtResource("2_eyv3j")]
+
+[node name="Door" parent="StaticBody3D/Door_mesh" index="0"]
+surface_material_override/2 = ExtResource("3_52ryk")
+
+[node name="Door_Frame" parent="StaticBody3D/Door_mesh" index="1"]
+surface_material_override/0 = ExtResource("3_52ryk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(3.67097, 0, 0, 0, 4.62596, 0, 0, 0, 1, 0, 2.3, 0)
+transform = Transform3D(3.67097, 0, 0, 0, 4.62596, 0, 0, 0, 0.852364, 0, 2.3, 0.203449)
 shape = SubResource("ConvexPolygonShape3D_028xb")
+
+[node name="door_creature_round2" parent="StaticBody3D" instance=ExtResource("4_raik8")]
+transform = Transform3D(0.0696555, 0.0330924, -0.955193, -0.3631, 0.699388, -0.0155849, 0.600303, 0.419193, 0.101408, 0.102313, 0.893177, 0.752754)
 
 [node name="door_trigger" type="Area3D" parent="."]
 collision_layer = 0
@@ -37,3 +40,5 @@ shape = SubResource("SphereShape3D_nicjf")
 
 [connection signal="body_entered" from="door_trigger" to="." method="_on_door_trigger_body_entered"]
 [connection signal="body_exited" from="door_trigger" to="." method="_on_door_trigger_body_exited"]
+
+[editable path="StaticBody3D/Door_mesh"]

@@ -8,7 +8,7 @@ func _ready() -> void:
 	tween.tween_property(self, "custom_minimum_size", Vector2(100, 100), .1)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	animate_health()
 
 func add_health(value: bool)->void:

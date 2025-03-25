@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="2_0fer3"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_t0b63")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/metalness = 1.0
-shader_parameter/emission = null
+shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/lighting_power = 1.0
 shader_parameter/lighting_map = ExtResource("2_0fer3")
 shader_parameter/reflected_map_power = 0.4
 shader_parameter/reflected_map = ExtResource("2_0fer3")
 shader_parameter/use_refraction = false
-shader_parameter/refraction_amount = 0.05
-shader_parameter/refraction_brightness = 0.1
+shader_parameter/refraction_amount = 4.055
+shader_parameter/refraction_brightness = 2.885

@@ -4,6 +4,7 @@ extends Area3D
 @export var hide_time := 1.0
 @export var hidden_object : MeshInstance3D
 @export var static_body : StaticBody3D
+@onready var hidden_sprites: GPUParticles3D = $GPUParticles3D
 
 var light_count := 0
 
@@ -27,9 +28,14 @@ func reveal_object()->void:
 	var tween = create_tween()
 	tween.tween_property(material, "albedo_color", Color(material.albedo_color.r, material.albedo_color.g, material.albedo_color.b, 1), reveal_time)#Fade in
 	static_body.set_collision_layer_value(1, true)
+	hidden_sprites.hide()
 
 func hide_object():
 	var material = hidden_object.get_surface_override_material(0)
 	var tween = create_tween()
 	tween.tween_property(material, "albedo_color", Color(material.albedo_color.r, material.albedo_color.g, material.albedo_color.b, 0), hide_time)
-	static_body.set_collision_layer_value(1, false)
+	if static_body.get_collision_layer_value(1) == true:
+		await get_tree().create_timer(0.4).timeout
+		if light_count == 0:
+			static_body.set_collision_layer_value(1, false)
+			hidden_sprites.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://chs6jkadawrs1"]
+[gd_scene load_steps=48 format=3 uid="uid://chs6jkadawrs1"]
 
 [ext_resource type="PackedScene" uid="uid://dbrbfclk70br4" path="res://blends/player/Lil_D3.0.blend" id="1_puebm"]
 [ext_resource type="Script" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.gd" id="2_v0jwb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://globals/shaders/layered_fire.gdshader" id="3_4mxt0"]
 [ext_resource type="Shader" path="res://globals/shaders/toon_shading_part2.gdshader" id="3_m63mw"]
 [ext_resource type="PackedScene" uid="uid://c5a5mhfp81xcv" path="res://player_controller/skins/base_lil_d/weapons/claws.tscn" id="5_5q8l2"]
+[ext_resource type="Shader" path="res://globals/shaders/n64_metal.gdshader" id="7_mxqmt"]
+[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="8_715eu"]
 
 [sub_resource type="Gradient" id="Gradient_byfxc"]
 offsets = PackedFloat32Array(0.0491803, 0.401639)
@@ -72,6 +74,36 @@ shader_parameter/albedo_color = Color(0.244164, 0.25165, 0.23667, 1)
 shader_parameter/albedo_color2 = Color(0.306923, 0.306923, 0.306923, 1)
 shader_parameter/ramp = SubResource("GradientTexture1D_4k2xe")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jb5fp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_mxqmt")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/metalness = 1.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/lighting_power = 1.0
+shader_parameter/lighting_map = ExtResource("8_715eu")
+shader_parameter/reflected_map_power = 0.4
+shader_parameter/reflected_map = ExtResource("8_715eu")
+shader_parameter/use_refraction = false
+shader_parameter/refraction_amount = 4.055
+shader_parameter/refraction_brightness = 2.885
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2i5xv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_mxqmt")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/metalness = 1.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/lighting_power = 1.0
+shader_parameter/lighting_map = ExtResource("8_715eu")
+shader_parameter/reflected_map_power = 0.4
+shader_parameter/reflected_map = ExtResource("8_715eu")
+shader_parameter/use_refraction = false
+shader_parameter/refraction_amount = 4.055
+shader_parameter/refraction_brightness = 2.885
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_mtkif"]
 filter_enabled = true
 filters = [".", "Armature/Skeleton3D/l_equip/claws", "Armature/Skeleton3D/r_equip/claws", "Armature/Skeleton3D:Head", "Armature/Skeleton3D:body", "Armature/Skeleton3D:jaw", "Armature/Skeleton3D:l. arm", "Armature/Skeleton3D:l.shoulder", "Armature/Skeleton3D:leg", "Armature/Skeleton3D:r. arm", "Armature/Skeleton3D:r.shoulder", "Armature/Skeleton3D:tophead", "Timer/attacktimers"]
@@ -133,6 +165,11 @@ animation = &"crouch_crawl"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2n4va"]
 animation = &"Idle"
+use_custom_timeline = true
+timeline_length = 2.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 2
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2q6y"]
 animation = &"jump"
@@ -190,7 +227,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-439, -28)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kl35k"]
-graph_offset = Vector2(-1451.68, 214.603)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_mtkif")
 nodes/AttackOneShot/position = Vector2(-480, 280)
 nodes/AttackStateMachine/node = SubResource("AnimationNodeStateMachine_o7rre")
@@ -204,10 +240,10 @@ script = ExtResource("2_v0jwb")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/scale = Vector3(0.972151, 0.972151, 0.972151)
+bones/0/scale = Vector3(0.979923, 0.979923, 0.979923)
 bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.902568, 0.902568, 0.902568)
-bones/4/position = Vector3(0, -0.0325408, 0)
+bones/3/scale = Vector3(0.929761, 0.929761, 0.929761)
+bones/4/position = Vector3(0, -0.023459, 0)
 bones/5/position = Vector3(0, 0, 0)
 bones/5/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/6/rotation = Quaternion(-0.66633, -1.21483e-07, 1.08559e-07, 0.745657)
@@ -226,15 +262,17 @@ material_override = SubResource("ShaderMaterial_d5o6b")
 surface_material_override/0 = SubResource("ShaderMaterial_7ymc0")
 
 [node name="skullarea" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.972151, 0, -0.972151, 0, 7.33954e-08, 7.33954e-08, 0, 0.972151, -9.05386e-10, 0.972151, 0)
+transform = Transform3D(0, 0.979923, 0, -0.979923, 0, 7.39822e-08, 7.39822e-08, 0, 0.979923, -9.12625e-10, 0.979923, 0)
 bone_name = "tophead"
 bone_idx = 1
 
 [node name="l_eye" parent="Armature/Skeleton3D/skullarea" index="0" instance=ExtResource("3_2euri")]
 transform = Transform3D(0, -1.01138, 7.63567e-08, 1.01138, 0, 0, 0, 7.63567e-08, 1.01138, 0.392164, 0.339822, -0.170922)
+visible = false
 
 [node name="r_eye" parent="Armature/Skeleton3D/skullarea" index="1" instance=ExtResource("3_2euri")]
 transform = Transform3D(0, -1.02664, 7.75091e-08, 1.02664, 0, 0, 0, 7.75091e-08, 1.02664, 0.38299, 0.344951, 0.11909)
+visible = false
 
 [node name="skull" parent="Armature/Skeleton3D" index="3"]
 material_override = SubResource("ShaderMaterial_kccu8")
@@ -248,6 +286,18 @@ bone_idx = 7
 transform = Transform3D(-0.560242, 0.631549, -0.535981, -0.119414, 0.578725, 0.806733, 0.819676, 0.515969, -0.24881, -0.0114557, 0.816411, 0.453311)
 visible = false
 
+[node name="claw" parent="Armature/Skeleton3D/l_equip/claws" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
+
+[node name="claw_001" parent="Armature/Skeleton3D/l_equip/claws" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
+
+[node name="claw_002" parent="Armature/Skeleton3D/l_equip/claws" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
+
+[node name="claw_003" parent="Armature/Skeleton3D/l_equip/claws" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
+
 [node name="r_equip" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="5"]
 transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.81356, -0.460547)
 bone_name = "r. hand"
@@ -256,6 +306,18 @@ bone_idx = 10
 [node name="claws" parent="Armature/Skeleton3D/r_equip" index="0" instance=ExtResource("5_5q8l2")]
 transform = Transform3D(-0.989739, 0.0749627, 0.121642, 0.0713551, 0.99688, -0.0337474, -0.123793, -0.024721, -0.992, 0.274384, 0.767789, -0.679768)
 visible = false
+
+[node name="claw" parent="Armature/Skeleton3D/r_equip/claws" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2i5xv")
+
+[node name="claw_001" parent="Armature/Skeleton3D/r_equip/claws" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_2i5xv")
+
+[node name="claw_002" parent="Armature/Skeleton3D/r_equip/claws" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_2i5xv")
+
+[node name="claw_003" parent="Armature/Skeleton3D/r_equip/claws" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_2i5xv")
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"

@@ -12,6 +12,8 @@ albedo_color = Color(0.690586, 0.108173, 0.253847, 1)
 [node name="falling_platform" instance=ExtResource("1_yy76r")]
 script = ExtResource("2_d0gb5")
 falling_time = 3.5
+falling_distance = 0.0
+player_entered = false
 button_or_not = true
 
 [node name="falling_trigger" type="Area3D" parent="origin" index="0"]
@@ -26,4 +28,14 @@ shape = SubResource("SphereShape3D_2vts7")
 [node name="MeshInstance3D" parent="platform/CollisionShape3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_klc5n")
 
+[node name="falling_trigger2" type="Area3D" parent="platform" index="1"]
+transform = Transform3D(55.4883, 0, 0, 0, 0.2, 0, 0, 0, 51.7644, 0, -0.0269356, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform/falling_trigger2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743913, 0)
+shape = SubResource("SphereShape3D_2vts7")
+
 [connection signal="body_entered" from="origin/falling_trigger" to="." method="_on_falling_trigger_body_entered"]
+[connection signal="body_entered" from="platform/falling_trigger2" to="." method="_on_falling_trigger_body_entered"]

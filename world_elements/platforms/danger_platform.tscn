@@ -9,7 +9,6 @@
 script = ExtResource("2_h3cjd")
 
 [node name="damaged_area" type="Area3D" parent="platform" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 

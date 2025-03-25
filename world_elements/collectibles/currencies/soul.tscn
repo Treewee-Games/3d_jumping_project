@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccx8h2wrmr1vt"]
+
+[ext_resource type="PackedScene" uid="uid://cvfy3e7uxov2g" path="res://world_elements/collectibles/collectible.tscn" id="1_auq3w"]
+[ext_resource type="Script" path="res://world_elements/collectibles/currencies/soul.gd" id="2_7wskx"]
+[ext_resource type="PackedScene" uid="uid://ciqscevnp2cew" path="res://world_elements/collectibles/currencies/soul/soul_mesh.tscn" id="3_gje30"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ce1ts"]
+friction = 0.5
+bounce = 0.67
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oiw0u"]
+
+[node name="soul" instance=ExtResource("1_auq3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431484, 0)
+script = ExtResource("2_7wskx")
+
+[node name="RigidBody3D" parent="." index="0"]
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_ce1ts")
+gravity_scale = 0.1
+can_sleep = false
+freeze_mode = 1
+linear_velocity = Vector3(0, -1, 0)
+angular_velocity = Vector3(0, 1.5708, 0)
+angular_damp_mode = 1
+constant_force = Vector3(0, -0.1, 0)
+
+[node name="soul" parent="RigidBody3D" index="0" instance=ExtResource("3_gje30")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.147483, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="1"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("SphereShape3D_oiw0u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D/Area3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0667257, 0)
+shape = SubResource("SphereShape3D_oiw0u")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ey4by73m13kb"]
+[gd_scene load_steps=4 format=3 uid="uid://ey4by73m13kb"]
 
 [ext_resource type="Script" path="res://player_controller/menu/pause menu/pause_menu.gd" id="1_06vcc"]
+[ext_resource type="PackedScene" uid="uid://508s6cn15riw" path="res://player_controller/menu/pause menu/item_slot.tscn" id="2_puork"]
+[ext_resource type="PackedScene" uid="uid://8by30oawcbly" path="res://player_controller/menu/pause menu/inventory/Lil_D_Viewer.tscn" id="3_u6ws0"]
 
 [node name="PauseMenu" type="Control"]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,17 +51,44 @@ size_flags_stretch_ratio = 6.81
 tab_alignment = 1
 current_tab = 0
 tabs_rearrange_group = 0
+tab_focus_mode = 0
 
-[node name="Equipment" type="GridContainer" parent="VBoxContainer/MarginContainer/Tabs"]
+[node name="Powers" type="GridContainer" parent="VBoxContainer/MarginContainer/Tabs"]
+process_mode = 3
 layout_mode = 2
+focus_mode = 2
+columns = 5
 metadata/_tab_index = 0
 
-[node name="Inventory" type="GridContainer" parent="VBoxContainer/MarginContainer/Tabs"]
+[node name="item_slot" parent="VBoxContainer/MarginContainer/Tabs/Powers" instance=ExtResource("2_puork")]
+visible = false
+layout_mode = 2
+
+[node name="Inventory" type="HBoxContainer" parent="VBoxContainer/MarginContainer/Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="LilD" type="SubViewportContainer" parent="VBoxContainer/MarginContainer/Tabs/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+stretch = true
+
+[node name="LilDViewer" parent="VBoxContainer/MarginContainer/Tabs/Inventory/LilD" instance=ExtResource("3_u6ws0")]
+size = Vector2i(625, 951)
+render_target_update_mode = 0
+
+[node name="Items" type="GridContainer" parent="VBoxContainer/MarginContainer/Tabs/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 5
 
 [node name="Map" type="TextureRect" parent="VBoxContainer/MarginContainer/Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="menu_wait" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

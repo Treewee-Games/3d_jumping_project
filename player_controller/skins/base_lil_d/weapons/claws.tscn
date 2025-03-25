@@ -84,3 +84,9 @@ local_coords = true
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_ebk30")
 draw_pass_1 = SubResource("CapsuleMesh_p1cwe")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="5"]
+transform = Transform3D(33.3004, 0, 0, 0, -6.55671e-08, 12.6903, 0, -1.5, -5.5471e-07, 0.0813886, 0.0307629, -1.14796)
+collision_mask = 12
+hit_from_inside = true
+collide_with_areas = true

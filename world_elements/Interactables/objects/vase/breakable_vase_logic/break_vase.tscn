@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn8jrdmy8bqju"]
+
+[ext_resource type="PackedScene" uid="uid://dybs480u37eqr" path="res://blends/misc objects/breakables/vase/breakable_vase/break_vase.glb" id="1_prdrj"]
+[ext_resource type="Script" path="res://world_elements/Interactables/objects/hit_area.gd" id="2_18m6n"]
+[ext_resource type="Script" path="res://world_elements/Interactables/objects/vase/breakable_vase_logic/break_vase.gd" id="2_mdxk4"]
+[ext_resource type="PackedScene" uid="uid://8vymlcnxaceg" path="res://world_elements/Interactables/objects/vase/breakable_vase_logic/vase_animation_player.tscn" id="4_fivqx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwlql"]
+size = Vector3(1.12827, 0.947575, 1)
+
+[node name="break_vase" instance=ExtResource("1_prdrj")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("2_mdxk4")
+
+[node name="Vase_low_poly_cell" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.041249, 0.523573, -0.452056)
+
+[node name="Vase_low_poly_cell_001" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00419224, 2.92458, -0.0408374)
+
+[node name="Vase_low_poly_cell_002" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363425, 1.6281, 0.44955)
+
+[node name="Vase_low_poly_cell_003" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.202295, 1.58617, -0.331424)
+
+[node name="Vase_low_poly_cell_004" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.142329, 0.735811, 0.493689)
+
+[node name="Vase_low_poly_cell_005" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109428, 2.5455, 0.101822)
+
+[node name="Vase_low_poly_cell_006" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.465346, 1.65958, 0.185916)
+
+[node name="Area3D" type="Area3D" parent="." index="8" groups=["destructible"]]
+transform = Transform3D(1.54654, 0, 0, 0, 3.50992, 0, 0, 0, 1.73032, 0.0035162, 1.61364, 0.0497243)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_18m6n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000869751, 0.0117742, 0)
+shape = SubResource("BoxShape3D_vwlql")
+
+[node name="AnimationPlayer2" parent="." index="9" instance=ExtResource("4_fivqx")]

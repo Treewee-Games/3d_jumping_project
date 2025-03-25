@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://br6d4qwi651nt"]
+
+[ext_resource type="Shader" path="res://globals/shaders/layered_fire.gdshader" id="1_jllu2"]
+[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="2_8eybd"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_jllu2")
+shader_parameter/time_speed = 0.845
+shader_parameter/spin = 0.62
+shader_parameter/flame_brightness = 0.75
+shader_parameter/color_intensity = 0.51
+shader_parameter/horizontal_frequency = 1.85
+shader_parameter/vertical_frequency = 1.695
+shader_parameter/size = 0.045
+shader_parameter/core_size = 1.285
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/color3 = Color(0.693982, 0.0866681, 0.329247, 1)
+shader_parameter/color4 = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = ExtResource("2_8eybd")

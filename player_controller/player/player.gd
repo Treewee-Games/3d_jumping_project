@@ -42,7 +42,7 @@ var climbable_surface : Node3D = null #Reference to ladder or vine
 #endregion
 #region jumplogic variables
 @export_category("Jump Logic")
-@export var jump_velocity := 4.5
+@export var jump_velocity := 10
 @export var jump_time := 3.5
 const COYOTE_TIME := 10.0
 const JUMP_BUFFER_TIME := 6.0
@@ -57,7 +57,7 @@ var jump_buffer_counter := 0.0
 var light_on := false
 #endregion
 #region Menus/HUD
-#@onready var pause_menu: Control = $PauseMenu
+@onready var pause_menu: Control = $PauseMenu
 @onready var hud: Control = $Hud
 #endregion
 
@@ -81,26 +81,28 @@ var attack_check : float
 
 func _ready() -> void:
 	hud.setup(max_health, health)
+	GlobalStats.activate_power.connect(ability)
+	
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("pause"):
-		#pause_menu.toggle_pause_menu()
-	#menu_action()
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause_menu.toggle_pause()
+	menu_action()
 
 func _physics_process(delta: float) -> void:
-	#if not pause_menu.is_paused:
+	if not pause_menu.is_paused:
 		gravity_stuff(delta)
 		state_machine._process(delta)
 		_jumping_logic(delta)
 		_movement_logic(delta)
-		toggle_light()
+		activate_abilities()
 		can_stand_up()
 		attacked()
 	
-		if Input.is_action_just_pressed("test button"):
-			damaged()
-		if Input.is_action_just_pressed("test_heal"):
-			heal()
+	if Input.is_action_just_pressed("test button"):
+			GlobalStats.unlock_powers("Light Power")
+	if Input.is_action_just_pressed("test_heal"):
+			GlobalStats.unlock_equipables("Claws")
 
 #region jump functions
 func _jumping_logic(delta)-> void:
@@ -112,25 +114,17 @@ func jumping(delta: float)-> void:
 		jump_buffer_counter = JUMP_BUFFER_TIME
 		if jump_buffer_counter > 0:
 			jump_buffer_counter -= 1 * delta
-		if (is_on_floor() or coyote_time_counter > 0) and jump_buffer_counter > 0:
-			var jump_height:int = (jump_count)*2
+		if (is_on_floor() or coyote_time_counter > 0) and jump_buffer_counter > 0 and not $Timers/JumpHeightTimer.time_left:
 			var tween = create_tween()
 			tween.tween_property(skin, "scale", Vector3(.8,.8, .8), 0.1)
 			tween.tween_property(skin,"scale", Vector3(1,1,1), .1).set_ease(Tween.EASE_OUT)
-			velocity.y = move_toward(0, (jump_velocity + jump_height), (jump_time + jump_height))
+			velocity.y = move_toward(0, (jump_velocity), (jump_time))
 			was_in_air = true
 			coyote_time_counter = 0
 			jump_buffer_counter = 0
-			jump_count += 1
-			jump_heights(jump_count)
 			if not $Timers/JumpHeightTimer.time_left:
 				$Timers/JumpHeightTimer.start()
-#Varying jump height
-func jump_heights(value: int)->void:
-	if value > 2 and is_on_floor() and not $Timers/JumpHeightTimer.time_left:
-		jump_count = 0
-	if value > 3 and is_on_floor():
-		jump_count = 0
+				jump_velocity = 0
 #What happens when they land
 func _on_land():
 	was_in_air = false #reset airborne state
@@ -138,7 +132,7 @@ func _on_land():
 	tween.tween_property(skin, "scale", Vector3(1,.5,1),.1).set_ease(Tween.EASE_IN)
 	tween.tween_property(skin, "scale", Vector3(1,1,1),.1).set_ease(Tween.EASE_OUT)
 func _on_jump_height_timer_timeout() -> void:
-		jump_count = 0
+		jump_velocity = 10
 #endregion
 
 #region Movement and Gravity
@@ -153,6 +147,8 @@ func _movement_logic(delta: float) -> void:
 	else:
 		if state_machine.crouching:
 			max_speed = crouch_speed
+		elif $Timers/JumpHeightTimer.time_left:
+			max_speed = 9.0
 		else:
 			max_speed = 6.0
 		
@@ -246,15 +242,14 @@ func _on_ladder_not_climbing() -> void:
 	climbable_surface = null
 #endregion
 
-#region Light Ability
-func toggle_light()->void:
-	if GlobalStats.has_power("Light Power"):
-		if Input.is_action_just_pressed("ability_1"):
-			light_on = !light_on
-			l_eye.visible = light_on #Turn the actual light on/off
-			r_eye.visible = light_on
-			$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_layer_value(7, light_on)
-			$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_mask_value(7, light_on)
+#region Ability Scripts
+func ability(power: String)->void:
+	if power == "Light Power":
+		light_on = !light_on
+		l_eye.visible = light_on #Turn the actual light on/off
+		r_eye.visible = light_on
+		$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_layer_value(7, light_on)
+		$lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area.set_collision_mask_value(7, light_on)
 func _on_light_area_area_entered(area: Area3D) -> void:
 	if area.has_method("dissolve_darkness"):
 		area.dissolve_darkness()
@@ -273,10 +268,25 @@ func attacked()->void:
 #endregion
 
 #region Menu Actions
-#func menu_action()->void:
-	#if pause_menu.is_paused:
-		#hud.hide()
-	#else:
-		#hud.show()
+func menu_action()->void:
+	if pause_menu.is_paused:
+		get_tree().paused = true
+		pause_menu.show()
+	else:
+		get_tree().paused = false
+		pause_menu.hide()
+
+#endregion
+
+#region ability activations
+func activate_abilities()->void:
+	if Input.is_action_just_pressed("ability_1"):
+		hud.activate_power(0)
+	elif Input.is_action_just_pressed("ability_2"):
+		hud.activate_power(1)
+	elif Input.is_action_just_pressed("ability_3"):
+		hud.activate_power(2)
+	elif Input.is_action_just_pressed("ability_4"):
+		hud.activate_power(3)
 
 #endregion

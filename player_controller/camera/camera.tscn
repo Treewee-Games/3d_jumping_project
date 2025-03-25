@@ -1,17 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://cswh4jkbxedf"]
 
 [ext_resource type="Script" path="res://player_controller/camera/camera.gd" id="1_yi8tf"]
-[ext_resource type="Shader" path="res://globals/shaders/PostProcessingShader.gdshader" id="2_k8c60"]
+[ext_resource type="Shader" path="res://globals/shaders/camera_postprocessing.gdshader" id="2_mjx2i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_swbov"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_q50cq"]
-size = Vector2(5, 5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6y5y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqcyv"]
 render_priority = 0
-shader = ExtResource("2_k8c60")
-shader_parameter/depth_treshold = 0.05
+shader = ExtResource("2_mjx2i")
+shader_parameter/outlineColor = Color(0, 0, 0, 1)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 1.022
+shader_parameter/normal_smoothing = 1.0
+shader_parameter/max_thickness = 2.0
+shader_parameter/min_thickness = 1.0
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_a4o3n"]
+material = SubResource("ShaderMaterial_tqcyv")
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="Camera" type="SpringArm3D"]
 collision_mask = 3
@@ -28,8 +40,6 @@ current = true
 near = 0.001
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999481, -0.0322133, 0, 0.0322133, 0.999481, 0, 0.00396749, -1.34233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408, -0.673)
 extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_q50cq")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_x6y5y")
+mesh = SubResource("QuadMesh_a4o3n")

@@ -1,26 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://creuusrbcuth8"]
+[gd_scene load_steps=14 format=3 uid="uid://creuusrbcuth8"]
 
 [ext_resource type="Script" path="res://player_controller/player/player.gd" id="1_th52k"]
 [ext_resource type="PackedScene" uid="uid://cswh4jkbxedf" path="res://player_controller/camera/camera.tscn" id="2_chvh2"]
 [ext_resource type="PackedScene" uid="uid://me85m6wuhaq4" path="res://player_controller/statemachine/state_machine.tscn" id="2_pl103"]
 [ext_resource type="PackedScene" uid="uid://chs6jkadawrs1" path="res://player_controller/skins/base_lil_d/lil_d_base_skin.tscn" id="2_vilyh"]
+[ext_resource type="Shader" path="res://globals/shaders/n64_metal.gdshader" id="5_hf4os"]
 [ext_resource type="PackedScene" uid="uid://c84sebry3iv3k" path="res://player_controller/skins/particles/smoke.tscn" id="5_l6l35"]
-[ext_resource type="Shader" path="res://globals/shaders/PostProcessingShader.gdshader" id="6_n75yj"]
+[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="6_gyo67"]
+[ext_resource type="PackedScene" uid="uid://ey4by73m13kb" path="res://player_controller/menu/pause menu/PauseMenu.tscn" id="7_3fgv6"]
 [ext_resource type="PackedScene" uid="uid://ber3nh8gwqrog" path="res://player_controller/menu/HUD/HUD.tscn" id="7_7j6qo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2m260"]
-radius = 2.27434
+radius = 1.43951
 height = 7.39531
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yesgd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_hf4os")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/metalness = 1.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/lighting_power = 1.0
+shader_parameter/lighting_map = ExtResource("6_gyo67")
+shader_parameter/reflected_map_power = 0.4
+shader_parameter/reflected_map = ExtResource("6_gyo67")
+shader_parameter/use_refraction = false
+shader_parameter/refraction_amount = 4.055
+shader_parameter/refraction_brightness = 2.885
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dtxt"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_hf4os")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/metalness = 1.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/lighting_power = 1.0
+shader_parameter/lighting_map = ExtResource("6_gyo67")
+shader_parameter/reflected_map_power = 0.4
+shader_parameter/reflected_map = ExtResource("6_gyo67")
+shader_parameter/use_refraction = false
+shader_parameter/refraction_amount = 4.055
+shader_parameter/refraction_brightness = 2.885
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl5tp"]
 radius = 0.229416
 height = 1.55679
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3iimk"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("6_n75yj")
-shader_parameter/depth_treshold = 0.05
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["player"]]
 process_mode = 3
@@ -31,7 +57,6 @@ script = ExtResource("1_th52k")
 camera = NodePath("Camera/Camera3D")
 acceleration = 1.0
 air_acceleration = 3.0
-jump_velocity = 8.0
 jump_time = 4.5
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_pl103")]
@@ -46,22 +71,19 @@ bones/0/scale = Vector3(0.950271, 0.950271, 0.950271)
 bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
 bones/3/scale = Vector3(0.826021, 0.826021, 0.826021)
 bones/4/position = Vector3(0, -0.0581067, 0)
-bones/5/position = Vector3(0, -0.00594619, 0)
+bones/5/position = Vector3(0, -0.00639303, 0)
 bones/5/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/6/rotation = Quaternion(-0.66633, -1.21483e-07, 1.08559e-07, 0.745657)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(8.70045e-10, 0.831553, 3.99751e-09)
 bones/7/rotation = Quaternion(-0.357158, -2.969e-08, 1.2773e-07, 0.934044)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-4.82103e-12, -0.00594619, -8.80575e-10)
+bones/8/position = Vector3(-4.69558e-12, -0.00639303, -8.57658e-10)
 bones/8/rotation = Quaternion(-0.707096, 0.00387128, 0.00387128, 0.707096)
 bones/9/rotation = Quaternion(0.0210459, 0.775914, -0.630486, 0.00105141)
 
 [node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
 transform = Transform3D(0, 0.950271, 0, -0.950271, 0, 7.17435e-08, 7.17435e-08, 0, 0.950271, -8.85009e-10, 0.950271, 0)
-
-[node name="l_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="0"]
-visible = false
 
 [node name="Light_Area" type="Area3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye" index="1" groups=["Light Area"]]
 transform = Transform3D(2.56806, 0, 0, 0, 2.59442, -6.33655e-13, 0, 9.84775e-13, 1.66938, -2.17614, -0.296868, 0.165701)
@@ -69,11 +91,8 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.28724, 0, 0)
+transform = Transform3D(0.966807, 0, 0, 0, -4.22605e-08, 0.966807, 0, -0.966807, -4.22605e-08, 1.92308, -0.00389105, 6.55837e-05)
 shape = SubResource("CapsuleShape3D_2m260")
-
-[node name="r_eye" parent="lil_skin/Armature/Skeleton3D/skullarea" index="1"]
-visible = false
 
 [node name="smoke" parent="lil_skin/Armature/Skeleton3D/skullarea" index="2" instance=ExtResource("5_l6l35")]
 transform = Transform3D(-1.15178e-08, -0.261798, 0, 0.263496, -1.14436e-08, 0, 0, 0, 0.260002, 0.526034, 0.0978641, -0.00741941)
@@ -81,13 +100,37 @@ amount = 200
 lifetime = 1.5
 
 [node name="l_equip" parent="lil_skin/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-1, 7.24754e-13, 3.89415e-07, -2.25694e-07, -0.814922, -0.579571, 3.17342e-07, -0.579571, 0.814922, -1.80133e-09, -0.832266, 0.380525)
+transform = Transform3D(-1, 7.24754e-13, 3.89415e-07, -2.25694e-07, -0.814922, -0.579571, 3.17342e-07, -0.579571, 0.814922, -1.80133e-09, -0.832713, 0.380525)
 
 [node name="claws" parent="lil_skin/Armature/Skeleton3D/l_equip" index="0"]
 transform = Transform3D(-0.531706, 0.758079, -0.377629, 0.151608, 0.523873, 0.838194, 0.833248, 0.388421, -0.393478, 0.188862, 0.453083, 0.708102)
 
+[node name="claw" parent="lil_skin/Armature/Skeleton3D/l_equip/claws" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
+
+[node name="claw_001" parent="lil_skin/Armature/Skeleton3D/l_equip/claws" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
+
+[node name="claw_002" parent="lil_skin/Armature/Skeleton3D/l_equip/claws" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
+
+[node name="claw_003" parent="lil_skin/Armature/Skeleton3D/l_equip/claws" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
+
 [node name="r_equip" parent="lil_skin/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.819506, -0.460547)
+transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.819953, -0.460547)
+
+[node name="claw" parent="lil_skin/Armature/Skeleton3D/r_equip/claws" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0dtxt")
+
+[node name="claw_001" parent="lil_skin/Armature/Skeleton3D/r_equip/claws" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_0dtxt")
+
+[node name="claw_002" parent="lil_skin/Armature/Skeleton3D/r_equip/claws" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_0dtxt")
+
+[node name="claw_003" parent="lil_skin/Armature/Skeleton3D/r_equip/claws" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_0dtxt")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 process_mode = 1
@@ -97,7 +140,7 @@ shape = SubResource("CapsuleShape3D_rl5tp")
 [node name="Timers" type="Node" parent="."]
 
 [node name="JumpHeightTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="InvulTimer" type="Timer" parent="Timers"]
@@ -113,11 +156,15 @@ collide_with_areas = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 spring_length = 4.0
 
-[node name="MeshInstance3D" parent="Camera" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.963031, 0.269391, 0, -0.269391, 0.963031, -3.86499e-08, -0.487982, -1.19582)
-surface_material_override/0 = SubResource("ShaderMaterial_3iimk")
-
 [node name="Hud" parent="." instance=ExtResource("7_7j6qo")]
+z_index = 1
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("7_3fgv6")]
+visible = false
+hud = NodePath("../Hud")
+
+[node name="LilDViewer" parent="PauseMenu/VBoxContainer/MarginContainer/Tabs/Inventory/LilD" index="0"]
+size = Vector2i(2, 2)
 
 [connection signal="area_entered" from="lil_skin/Armature/Skeleton3D/skullarea/l_eye/Light_Area" to="." method="_on_light_area_area_entered"]
 [connection signal="timeout" from="Timers/JumpHeightTimer" to="." method="_on_jump_height_timer_timeout"]
@@ -127,3 +174,4 @@ surface_material_override/0 = SubResource("ShaderMaterial_3iimk")
 [editable path="lil_skin/Armature/Skeleton3D/r_equip/claws"]
 [editable path="Camera"]
 [editable path="Hud"]
+[editable path="PauseMenu"]

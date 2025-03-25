@@ -1,15 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://de8oi1sfspwb2"]
+[gd_scene load_steps=11 format=3 uid="uid://de8oi1sfspwb2"]
 
 [ext_resource type="Script" path="res://world_elements/Interactables/revealed_light_object.gd" id="1_afwkd"]
+[ext_resource type="Texture2D" uid="uid://d32agxea8wogu" path="res://globals/stock_textures/lights.png" id="2_h56ug"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nlsw4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6d06"]
+resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.155, 0.155, 0.155, 0)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxh6h"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="Curve" id="Curve_jena4"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(0.253623, -360), 0.0, 0.0, 0, 0, Vector2(0.521739, 360), 0.0, 0.0, 0, 0, Vector2(0.731884, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_dcqwl"]
+curve = SubResource("Curve_jena4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ewg0j"]
+lifetime_randomness = 1.0
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -265.8
+angle_max = 324.9
+angle_curve = SubResource("CurveTexture_dcqwl")
+inherit_velocity_ratio = 0.265
+velocity_pivot = Vector3(2, 5, 0)
+direction = Vector3(0, 5, 0)
+spread = 118.735
+flatness = 0.386
+initial_velocity_max = 2.0
+angular_velocity_min = -398.77
+angular_velocity_max = 2.49998
+orbit_velocity_min = -1.231
+orbit_velocity_max = 0.235
+radial_velocity_min = -0.500022
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 10, 0)
+radial_accel_min = -5.0
+radial_accel_max = 5.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6sg6t"]
+transparency = 2
+alpha_scissor_threshold = 0.205
+alpha_antialiasing_mode = 0
+cull_mode = 2
+depth_draw_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("2_h56ug")
+albedo_texture_msdf = true
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0.328241, 0.295393, 0.0864753, 1)
+emission_energy_multiplier = 16.0
+clearcoat_enabled = true
+clearcoat = 0.0
+clearcoat_roughness = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vcmo"]
+material = SubResource("StandardMaterial3D_6sg6t")
 
 [node name="RevealedLightObject" type="Area3D" node_paths=PackedStringArray("hidden_object", "static_body")]
 collision_layer = 64
@@ -31,6 +89,16 @@ collision_mask = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="RevealObject"]
 shape = SubResource("ConvexPolygonShape3D_uxh6h")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.00389488, 0.128535, 0, -0.13587, -0.0036846, 0, 0, 0, 0.136236, 0, 0, 0)
+speed_scale = 0.1
+randomness = 1.0
+fixed_fps = 60
+interpolate = false
+draw_order = 1
+process_material = SubResource("ParticleProcessMaterial_ewg0j")
+draw_pass_1 = SubResource("SphereMesh_5vcmo")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

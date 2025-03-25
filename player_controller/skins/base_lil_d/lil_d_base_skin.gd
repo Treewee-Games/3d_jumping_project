@@ -16,7 +16,7 @@ func set_move_state(state_name: String)-> void:
 	
 func attack()->void:
 	if not attacking:
-		if GlobalStats.has_power("Claws"):
+		if GlobalStats.melee_item == {"Claws": true}:
 			attack_state_machine.travel("attack2" if attacktimers.time_left else "attack")
 			$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	

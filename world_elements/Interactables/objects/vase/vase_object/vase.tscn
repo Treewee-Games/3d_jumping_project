@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://i62uoejdt1iw"]
+
+[ext_resource type="Script" path="res://world_elements/Interactables/objects/vase/vase_object/vase.gd" id="1_2jbkj"]
+[ext_resource type="PackedScene" uid="uid://dn8jrdmy8bqju" path="res://world_elements/Interactables/objects/vase/breakable_vase_logic/break_vase.tscn" id="1_dc21r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4dotd"]
+friction = 0.55
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ulbo5"]
+size = Vector3(0.332092, 0.659302, 0.353943)
+
+[node name="vase" type="RigidBody3D"]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_4dotd")
+can_sleep = false
+freeze_mode = 1
+constant_force = Vector3(0, 5, 0)
+script = ExtResource("1_2jbkj")
+
+[node name="break_vase" parent="." instance=ExtResource("1_dc21r")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106812, 0.330064, 0.0104065)
+shape = SubResource("BoxShape3D_ulbo5")
