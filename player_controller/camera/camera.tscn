@@ -1,45 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://cswh4jkbxedf"]
+[gd_scene load_steps=5 format=3 uid="uid://cswh4jkbxedf"]
 
 [ext_resource type="Script" path="res://player_controller/camera/camera.gd" id="1_yi8tf"]
-[ext_resource type="Shader" path="res://globals/shaders/camera_postprocessing.gdshader" id="2_mjx2i"]
+[ext_resource type="Material" uid="uid://32chj8n0ks8p" path="res://globals/shader_materials/postprocessing.tres" id="2_shbt0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_swbov"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqcyv"]
-render_priority = 0
-shader = ExtResource("2_mjx2i")
-shader_parameter/outlineColor = Color(0, 0, 0, 1)
-shader_parameter/depth_threshold = 0.025
-shader_parameter/normal_threshold = 1.022
-shader_parameter/normal_smoothing = 1.0
-shader_parameter/max_thickness = 2.0
-shader_parameter/min_thickness = 1.0
-shader_parameter/max_distance = 75.0
-shader_parameter/min_distance = 2.0
-shader_parameter/grazing_fresnel_power = 5.0
-shader_parameter/grazing_angle_mask_power = 1.0
-shader_parameter/grazing_angle_modulation_factor = 50.0
-
 [sub_resource type="QuadMesh" id="QuadMesh_a4o3n"]
-material = SubResource("ShaderMaterial_tqcyv")
+material = ExtResource("2_shbt0")
 flip_faces = true
 size = Vector2(2, 2)
 
 [node name="Camera" type="SpringArm3D"]
-collision_mask = 3
 shape = SubResource("SphereShape3D_swbov")
-spring_length = 2.0
+spring_length = 4.0
 script = ExtResource("1_yi8tf")
-min_limit_x = -0.5
-max_limit_x = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.953853, 0.300273, 0, -0.300273, 0.953853, 0, 0, 0)
-v_offset = 0.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 current = true
-near = 0.001
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408, -0.673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.79473)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_a4o3n")

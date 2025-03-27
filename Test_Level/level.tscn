@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dq8pyg0f83g7x"]
+[gd_scene load_steps=46 format=3 uid="uid://dq8pyg0f83g7x"]
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player/player.tscn" id="1_jxnkr"]
@@ -16,7 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://buqmxxjjp5000" path="res://world_elements/buttons/simple_button.tscn" id="9_sgdh5"]
 [ext_resource type="PackedScene" uid="uid://c5u6hi0fxgwig" path="res://world_elements/platforms/path_platform.tscn" id="10_qi4hq"]
 [ext_resource type="PackedScene" uid="uid://bti3esp4en82m" path="res://Test_Level/test_blocks/flooring_wall.tscn" id="10_uqycr"]
-[ext_resource type="PackedScene" uid="uid://i62uoejdt1iw" path="res://world_elements/Interactables/objects/vase/vase_object/vase.tscn" id="16_g8hdr"]
+[ext_resource type="PackedScene" uid="uid://vfyag0ovipq7" path="res://world_elements/climbable/ladder.tscn" id="16_5ulcn"]
+[ext_resource type="PackedScene" uid="uid://b2uirf6vetcu6" path="res://world_elements/npcs/npc.tscn" id="18_b7vkp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +29,7 @@ sky_material = SubResource("ProceduralSkyMaterial_mk158")
 [sub_resource type="Environment" id="Environment_2fufs"]
 background_mode = 2
 sky = SubResource("Sky_433yw")
+reflected_light_source = 1
 tonemap_mode = 1
 ssr_fade_in = 0.848527
 glow_normalized = true
@@ -1440,21 +1442,6 @@ mesh = SubResource("BoxMesh_6vq4k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/13"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
-[node name="flooring25" parent="Enviroment/Blocking/Duck Room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-5.38679e-07, 0, 22.5817, 0, 0.694044, 0, -12.3235, 0, -9.87081e-07, 62.9772, 23.0677, -140.554)
-
-[node name="flooring26" parent="Enviroment/Blocking/Duck Room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(3.10763e-14, 3.03376e-08, 32.7196, 16.2645, -3.03376e-08, 0, 7.10943e-07, 0.694044, -1.43022e-06, 68.1651, 29.2184, -141.974)
-
-[node name="flooring27" parent="Enviroment/Blocking/Duck Room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(2.35464e-14, 3.03376e-08, 33.1576, 12.3235, -3.03376e-08, 0, 5.38678e-07, 0.694044, -1.44936e-06, 68.3054, 29.2184, -137.786)
-
-[node name="flooring28" parent="Enviroment/Blocking/Duck Room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-8.99222e-08, -0.694044, 0, 2.05718, -3.03376e-08, 0, 0, 0, 12.6057, 72.8731, 22.0039, -137.721)
-
-[node name="flooring29" parent="Enviroment/Blocking/Duck Room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(3.93062e-15, 2.98702e-08, 12.6057, 2.05718, -2.98702e-08, 0, 8.99221e-08, 0.683352, -5.51013e-07, 81.3669, 22.0367, -137.791)
-
 [node name="Doors" type="Node" parent="Enviroment/Blocking/Duck Room"]
 
 [node name="Door" parent="Enviroment/Blocking/Duck Room/Doors" instance=ExtResource("1_a17sf")]
@@ -1908,50 +1895,113 @@ timing = 5.0
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
 
+[node name="flooring25" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-5.38679e-07, 0, 22.5817, 0, 0.694044, 0, -12.3235, 0, -9.87081e-07, 62.9772, 23.0677, -140.554)
+
+[node name="flooring26" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(3.10763e-14, 3.03376e-08, 32.7196, 16.2645, -3.03376e-08, 0, 7.10943e-07, 0.694044, -1.43022e-06, 68.1651, 29.2184, -141.974)
+
+[node name="flooring27" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(2.35464e-14, 3.03376e-08, 33.1576, 12.3235, -3.03376e-08, 0, 5.38678e-07, 0.694044, -1.44936e-06, 68.3054, 29.2184, -137.786)
+
+[node name="flooring28" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-8.99222e-08, -0.694044, 0, 2.05718, -3.03376e-08, 0, 0, 0, 12.6057, 72.8731, 22.0039, -137.721)
+
+[node name="flooring29" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(1.96884e-14, 2.98702e-08, 12.6057, 10.3044, -2.98702e-08, 0, 4.50418e-07, 0.683351, -5.51013e-07, 81.3669, 25.3551, -137.791)
+
+[node name="flooring33" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(1.61533e-15, 2.98702e-08, 2.93666, 0.845418, -2.98702e-08, 0, 3.69544e-08, 0.683351, -1.28365e-07, 87.9622, 19.8222, -137.718)
+
+[node name="flooring34" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-5.387e-07, -0.886424, 0, 12.324, -3.87468e-08, 0, 0, 0, 2.93666, 89.4121, 24.313, -136.589)
+
+[node name="flooring37" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-3.51503e-07, -0.886424, 0, 8.04146, -3.87468e-08, 0, 0, 0, 2.93666, 87.2076, 26.4015, -136.589)
+
+[node name="flooring38" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(1.53647e-14, 3.87468e-08, 2.93666, 8.04146, -3.87468e-08, 0, 3.51503e-07, 0.886424, -1.28365e-07, 88.4641, 26.4015, -135.498)
+
+[node name="flooring39" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(8.30859e-15, 2.92947e-08, 12.9339, 4.34849, -2.92947e-08, 0, 1.90078e-07, 0.670185, -5.65361e-07, 91.0761, 33.2094, -137.791)
+
+[node name="flooring40" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(8.30859e-15, 2.92947e-08, 9.15536, 4.34849, -2.92947e-08, 0, 1.90078e-07, 0.670185, -4.00194e-07, 89.0155, 33.2094, -146.418)
+
+[node name="flooring47" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-1.90079e-07, -0.670185, 0, 4.34849, -2.92947e-08, 0, 0, 0, 5.29744, 93.2653, 33.2094, -148.812)
+
+[node name="flooring48" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-1.90079e-07, -0.670185, 0, 4.34849, -2.92947e-08, 0, 0, 0, 5.29744, 84.2449, 33.2094, -144.371)
+
+[node name="flooring41" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(8.30859e-15, 2.92947e-08, 13.4312, 4.34849, -2.92947e-08, 0, 1.90078e-07, 0.670185, -5.87098e-07, 90.934, 28.1125, -150)
+
+[node name="flooring46" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(8.30859e-15, 2.92947e-08, 7.26079, 4.34849, -2.92947e-08, 0, 1.90078e-07, 0.670185, -3.17379e-07, 93.3895, 28.1179, -137.772)
+
+[node name="flooring44" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(1.17191e-14, 2.92947e-08, 13.4312, 6.13344, -2.92947e-08, 0, 2.68101e-07, 0.670185, -5.87098e-07, 90.934, 32.3462, -150)
+
+[node name="flooring42" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-2.13378e-07, -0.670185, 0, 4.88151, -2.92947e-08, 0, 0, 0, 12.7592, 97.1987, 28.1125, -143.967)
+
+[node name="flooring45" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-2.13378e-07, -0.670185, 0, 4.88151, -2.92947e-08, 0, 0, 0, 8.3763, 84.2111, 28.1125, -146.205)
+
+[node name="flooring43" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-2.13378e-07, -0.670185, 0, 4.88151, -2.92947e-08, 0, 0, 0, 12.7592, 97.1987, 32.9942, -143.967)
+
+[node name="flooring35" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(13.1995, 0, 0, 0, 0.683351, 0, 0, 0, 12.3586, 90.9692, 25.6346, -144.175)
+
+[node name="flooring36" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(13.1995, 0, 0, 0, 0.683351, 0, 0, 0, 9.25637, 90.9692, 30.7331, -142.113)
+
+[node name="flooring31" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(5.6791e-15, 2.98702e-08, 16.5563, 2.97229, -2.98702e-08, 0, 1.29923e-07, 0.683352, -7.237e-07, 81.3669, 21.4057, -135.831)
+
+[node name="flooring32" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-4.23597e-08, -0.823447, 0, 0.969078, -3.5994e-08, 0, 0, 0, 2.09849, 75.3295, 20.4669, -136.814)
+
+[node name="flooring30" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-8.99221e-08, 0, 12.6057, 0, 0.683352, 0, -2.05718, 0, -5.51013e-07, 81.3669, 22.5449, -136.434)
+
 [node name="interactables" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
 
 [node name="RevealedLightObject" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(7.07264, 0, 0, 0, 1, 0, 0, 0, 3.79363, 77.5477, 22.8824, -139.872)
 
+[node name="RevealedLightObject4" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_85wfg")]
+transform = Transform3D(14.4753, 0, 0, 0, 1, 0, 0, 0, 3.79363, 77.1125, 30.557, -139.872)
+
 [node name="RevealedLightObject2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(-3.09155e-07, -1, 0, 7.07264, -4.37114e-08, 0, 0, 0, 3.79363, 81.6126, 25.9492, -139.872)
 
-[node name="Darkness" parent="Enviroment/Blocking/Above_duck_as_below_room" instance=ExtResource("3_m8l2y")]
+[node name="Darkness" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_m8l2y")]
 transform = Transform3D(10.0445, 0, 0, 0, 0.442122, 0, 0, 0, 10.8443, 74.1893, 21.0594, -139.772)
+
+[node name="Darkness2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_m8l2y")]
+transform = Transform3D(-1.55755e-07, -1.95089, 0, 3.56327, -8.52762e-08, 0, 0, 0, 2.58032, 77.4228, 21.0779, -136.666)
+
+[node name="RevealedLightObject3" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_85wfg")]
+transform = Transform3D(13.2201, 0, 0, 0, 0.186527, 0, 0, 0, 1.37867, 82.383, 20.1471, -136.791)
+
+[node name="ladder" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("16_5ulcn")]
+transform = Transform3D(0.790268, 0, 0, 0, 0.396726, 0, 0, 0, 0.272869, 88.318, 20.2219, -138.024)
+
+[node name="ladder2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("16_5ulcn")]
+transform = Transform3D(-0.790268, 0, -2.13729e-08, 0, 0.352495, 0, 6.90875e-08, 0, -0.244477, 96.0702, 25.9007, -146.779)
 
 [node name="collectibles" type="Node3D" parent="Enviroment"]
 
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.8194, 24.4209, -140.589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2917, 2.18952, -76.8503)
 
-[node name="vase" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -79)
-
-[node name="vase2" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -79)
-
-[node name="vase3" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4499, 0.0215602, -79.0111)
-
-[node name="vase4" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2236, 0.659715, -79.0258)
-
-[node name="vase5" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.155, 1.35193, -79.0258)
-
-[node name="vase6" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8107, 1.35193, -79.0258)
-
-[node name="vase7" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8107, 1.35193, -77.998)
-
-[node name="vase8" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8107, 0.615819, -77.998)
-
-[node name="vase9" parent="." instance=ExtResource("16_g8hdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8107, -0.106965, -77.998)
+[node name="NPC" parent="." instance=ExtResource("18_b7vkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.096, 1.69775, -74.9468)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path" method="_on_button_trigger_effect"]
@@ -1959,6 +2009,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8107, -0.106965, -77.998)
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path3" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path4" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Power_room/interactables/Button" to="Enviroment/Blocking/Power_room/platforms/platform" method="_on_button_trigger_effect"]
+[connection signal="climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder" to="entities/player" method="_on_ladder_climbing"]
+[connection signal="not_climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder" to="entities/player" method="_on_ladder_not_climbing"]
+[connection signal="climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder2" to="entities/player" method="_on_ladder_climbing"]
+[connection signal="not_climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder2" to="entities/player" method="_on_ladder_not_climbing"]
 
 [editable path="Enviroment/Blocking/Main_Room/Doors/Door2"]
 [editable path="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D/Door_mesh"]

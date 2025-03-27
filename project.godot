@@ -19,10 +19,27 @@ config/icon="res://icon.svg"
 
 GlobalStats="*res://globals/stats/global_stats.gd"
 
+[debug]
+
+shapes/navigation/geometry_face_color=Color(0, 0.513726, 0.513726, 1)
+shapes/navigation/geometry_face_disabled_color=Color(0.281187, 0.281187, 0.281187, 1)
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://globals/": "blue",
+"res://player_controller/": "red",
+"res://world_elements/": "yellow"
+}
 
 [global_group]
 
@@ -140,6 +157,11 @@ menu_left={
 ability_4={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":11,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+snap={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":9,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
 

@@ -110,27 +110,30 @@ func state_crouching():
 func crouch_player():
 	if crouching:
 		return
+		
+	crouching = true
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(player.spring_arm, "spring_length", 1, .5).set_ease(Tween.EASE_IN)
-	tween.tween_property(player.spring_arm, "position", Vector3(0, -.5, 0), .5)
-	tween.tween_property(player.collision_mesh, "scale", Vector3(1, .5, 1), .3).set_ease(Tween.EASE_IN)
-	tween.tween_property(player.collision_mesh, "position", Vector3(0,-.6, 0), .3).set_ease(Tween.EASE_IN)
-	
+		## Only reduce spring length slightly
+	#tween.tween_property(player.spring_arm, "position:y", -0.4, 0.3).set_ease(Tween.EASE_IN)
+	#tween.tween_property(player.spring_arm, "spring_length", 1.5, 0.3).set_ease(Tween.EASE_IN)
+	## Adjust only the collision mesh
+	tween.tween_property(player.collision_mesh, "scale", Vector3(1, 0.5, 1), 0.3).set_ease(Tween.EASE_IN)
+	tween.tween_property(player.collision_mesh, "position", Vector3(0, -0.5, 0), 0.3).set_ease(Tween.EASE_IN)
 	
 	await tween.finished
 	skin.set_move_state("crouch")
 
 	
-	crouching = true
+
 func stand_up_player():
 	if not player.ceiling_check:
 		var tween = create_tween()
 		tween.set_parallel(true)
-		tween.tween_property(player.spring_arm, "spring_length", 4, .5).set_ease(Tween.EASE_OUT)
-		tween.tween_property(player.spring_arm, "position", Vector3(0, 0, 0), .5)
-		tween.tween_property(player.collision_mesh, "position", Vector3(0,-.2, 0), .01)
-		tween.tween_property(player.collision_mesh, "scale", Vector3(1, 1, 1), .01)
+		#tween.tween_property(player.spring_arm, "position:y", 0.0, 0.3).set_ease(Tween.EASE_OUT)
+		#tween.tween_property(player.spring_arm, "spring_length", 4, 0.3).set_ease(Tween.EASE_OUT)
+		tween.tween_property(player.collision_mesh, "scale", Vector3(1, 1, 1), 0.2)
+		tween.tween_property(player.collision_mesh, "position", Vector3(0, -0.2, 0), 0.2)
 		
 		
 		await tween.finished

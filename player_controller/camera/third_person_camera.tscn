@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://byuxnd2jif0gt"]
+
+[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="1_k5svm"]
+
+[node name="ThirdPersonCamera" instance=ExtResource("1_k5svm")]
+
+[node name="RotationPivot" parent="." index="0"]
+transform = Transform3D(0.999983, 0, 0, 0, 0.939762, 0.341814, 0, -0.341823, 0.939736, 0, 0, 0)
+
+[node name="OffsetPivot" parent="RotationPivot" index="0"]
+transform = Transform3D(0.999986, 1.43437e-07, 2.92392e-07, -7.83533e-07, 1.00003, 5.96344e-05, -5.18058e-06, -6.60419e-05, 1.00005, 0, 0, 0)
+
+[node name="CameraMarker" parent="RotationPivot/OffsetPivot/CameraSpringArm" index="0"]
+transform = Transform3D(0.999982, -2.36471e-06, -7.01286e-06, 1.45125e-06, 1.00045, 0.000261843, 3.92136e-06, 5.21541e-06, 1.0015, -2.92402e-06, 0.00082922, 9.99979)
+
+[node name="Camera" parent="." index="2"]
+transform = Transform3D(1, -3.77826e-16, 1.03807e-15, 0, 0.939693, 0.34202, -1.10469e-15, -0.34202, 0.939693, 1.03807e-14, 3.4202, 9.39692)

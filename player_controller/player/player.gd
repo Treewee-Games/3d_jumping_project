@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-@onready var spring_arm := $Camera as SpringArm3D
-@export var camera:= Camera3D
 @onready var state_machine = $StateMachine
+@onready var camera: Camera3D = $ThirdPersonCamera/Camera
+
 
 #region stats
 var max_health = GlobalStats.player_max_health:
@@ -64,7 +64,11 @@ var light_on := false
 #region Additional Variables
 @onready var skin: Node3D = $lil_skin
 @onready var collision_mesh := $collision
-@onready var world_checker: RayCast3D = $world_checker
+@onready var world_checker: RayCast3D = $lil_skin/raycast_holders/world_checker
+@onready var wall_check: RayCast3D = $"lil_skin/raycast_holders/wall check"
+@onready var ledge_check: RayCast3D = $lil_skin/raycast_holders/ledge_check
+@onready var stick_point_holder: Marker3D = $lil_skin/raycast_holders/stick_points/stick_point_holder
+@onready var sticking_point: Marker3D = $lil_skin/raycast_holders/stick_points/stick_point_holder/sticking_point
 @onready var l_eye: GPUParticles3D = $lil_skin/Armature/Skeleton3D/skullarea/l_eye
 @onready var r_eye: GPUParticles3D = $lil_skin/Armature/Skeleton3D/skullarea/r_eye
 @onready var l_claws: Node3D = $lil_skin/Armature/Skeleton3D/l_equip/claws
@@ -78,7 +82,7 @@ var attack_check : float
 #please look over all of these as they are not exports
 #endregion
 
-
+#region setup
 func _ready() -> void:
 	hud.setup(max_health, health)
 	GlobalStats.activate_power.connect(ability)
@@ -103,7 +107,7 @@ func _physics_process(delta: float) -> void:
 			GlobalStats.unlock_powers("Light Power")
 	if Input.is_action_just_pressed("test_heal"):
 			GlobalStats.unlock_equipables("Claws")
-
+#endregion
 #region jump functions
 func _jumping_logic(delta)-> void:
 	if Input.is_action_just_pressed("ui_accept") and not state_machine.crouching:
@@ -224,18 +228,25 @@ func heal()-> void:
 func climb_logic(delta: float)-> void:
 	velocity = Vector3.ZERO #Reset Velocity
 	var climb_direction = Input.get_axis("ui_down","ui_up") # Get only vertical input
-	
+	var rot = -(atan2(wall_check.get_collision_normal().z, wall_check.get_collision_normal().x) - PI/2)
 	if climb_direction != 0:
-		velocity.y = climb_direction * climb_speed
+		velocity = Vector3(0, climb_direction, 0). rotated(Vector3.UP, rot).normalized()
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		is_climbing = false
 		jumping(delta)
 
 func _on_ladder_climbing(area) -> void:
-	is_climbing = true
-	climbable_surface = area.get_parent()
-	velocity = Vector3.ZERO
+	if wall_check.is_colliding():
+		if ledge_check.is_colliding():
+			is_climbing = true
+			stick_point_holder.global_transform.origin = wall_check.get_collision_point()
+			self.global_transform.origin.x = sticking_point.global_transform.origin.x
+			self.global_transform.origin.z = sticking_point.global_transform.origin.z
+			climbable_surface = area.get_parent()
+			velocity = Vector3.ZERO
+	else:
+		is_climbing = false
 
 func _on_ladder_not_climbing() -> void:
 	is_climbing = false

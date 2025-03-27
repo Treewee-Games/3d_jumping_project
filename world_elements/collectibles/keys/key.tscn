@@ -1,13 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwskdbteqiwyr"]
+[gd_scene load_steps=6 format=3 uid="uid://dwskdbteqiwyr"]
 
 [ext_resource type="PackedScene" uid="uid://cvfy3e7uxov2g" path="res://world_elements/collectibles/collectible.tscn" id="1_2dr3i"]
 [ext_resource type="Script" path="res://world_elements/collectibles/keys/key.gd" id="2_5l5uf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp8dp"]
-albedo_color = Color(0.159719, 0.116798, 0.851815, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_q0xjt"]
-material = SubResource("StandardMaterial3D_jp8dp")
+[ext_resource type="PackedScene" uid="uid://b0su4jwgejkvg" path="res://world_elements/collectibles/keys/heart.glb" id="3_l8gvv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qs4m"]
 
@@ -17,10 +12,8 @@ material = SubResource("StandardMaterial3D_jp8dp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990714, 0)
 script = ExtResource("2_5l5uf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" index="0"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_q0xjt")
-skeleton = NodePath("../CollisionShape3D2")
+[node name="heart" parent="RigidBody3D" index="0" instance=ExtResource("3_l8gvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.461168, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D" index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
