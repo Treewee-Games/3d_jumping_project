@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://globals/shaders/camera_postprocessing.gdshader" id="1_fdw82"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_fdw82")
 shader_parameter/outlineColor = Color(0, 0, 0, 1)
 shader_parameter/depth_threshold = 0.025

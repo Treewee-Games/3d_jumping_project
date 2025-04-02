@@ -3,6 +3,7 @@ extends Node3D
 var hitting : bool = false
 var collision : bool = false
 
+
 func _ready() -> void:
 	hit_cast.set_collision_mask_value(3, collision)
 	hit_cast.set_collision_mask_value(4, collision)
@@ -21,6 +22,10 @@ func hitting_cast()->void:
 	var hit = hit_cast.get_collider()
 	if hit and hit.is_in_group("destructible"):
 		hit.call("on_hit", self)
+	if hit and hit.is_in_group("Enemies"):
+		hit.call("on_hit", self)
+
+		
 		
 
 func set_collision(value: bool)->void:

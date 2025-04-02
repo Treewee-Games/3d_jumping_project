@@ -1,9 +1,11 @@
 extends CharacterBody3D
+@onready var main_cam: Node3D = $FPScam
 
 @onready var state_machine = $StateMachine
-@onready var camera: Camera3D = $ThirdPersonCamera/Camera
+@onready var tp_scam: Camera3D = $FPScam/playerpivot/SpringArm3D/TPScam
 
 
+#region Variables
 #region stats
 var max_health = GlobalStats.player_max_health:
 	set(value):
@@ -24,7 +26,6 @@ var keys = GlobalStats.key_count
 var boss_key = GlobalStats.boss_key_count
 
 #endregion
-
 #region movment/climblogic variables
 @export_category("Move Logic")
 var speed := 0.0
@@ -42,7 +43,7 @@ var climbable_surface : Node3D = null #Reference to ladder or vine
 #endregion
 #region jumplogic variables
 @export_category("Jump Logic")
-@export var jump_velocity := 10
+@export var jump_velocity := 10.0
 @export var jump_time := 3.5
 const COYOTE_TIME := 10.0
 const JUMP_BUFFER_TIME := 6.0
@@ -60,7 +61,6 @@ var light_on := false
 @onready var pause_menu: Control = $PauseMenu
 @onready var hud: Control = $Hud
 #endregion
-
 #region Additional Variables
 @onready var skin: Node3D = $lil_skin
 @onready var collision_mesh := $collision
@@ -82,6 +82,21 @@ var attack_check : float
 #please look over all of these as they are not exports
 #endregion
 
+#region lock-on mechanic
+var target_entered : bool = false
+var targeting : bool = false
+var targeted : Node3D = null
+var orbit_angle: float = 0.0
+var radial_distance : float = 0.0
+var horizontal_acceleration: float = 2.0
+var vertical_acceleration: float = 2.0
+var targets: Array = []
+@export var camera_lag: float =0.1
+@export var position_lag: float = 0.1
+@export var input_dead_zone: float = 0.05
+@export var lock_on_distance: float = 10
+#endregion
+#endregion
 #region setup
 func _ready() -> void:
 	hud.setup(max_health, health)
@@ -102,6 +117,12 @@ func _physics_process(delta: float) -> void:
 		activate_abilities()
 		can_stand_up()
 		attacked()
+		if targeting:
+			stop_targeting_thing()
+			target_switching()
+		else:
+			target_thing()
+		
 	
 	if Input.is_action_just_pressed("test button"):
 			GlobalStats.unlock_powers("Light Power")
@@ -142,8 +163,17 @@ func _on_jump_height_timer_timeout() -> void:
 #region Movement and Gravity
 func _movement_logic(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration. 
-	movement_input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").rotated(-camera.global_rotation.y)
+	var second_input = Input.get_axis("ui_up", "ui_down")
+	var third_input = Input.get_axis("ui_left","ui_right")
+	var free_input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var vel_2d: Vector2 = Vector2(velocity.x, velocity.z)
+	if not targeting:
+		movement_input = free_input.rotated(-tp_scam.global_rotation.y)
+		
+	else:
+		movement_input = free_input
+		
+	
 	
 	if is_climbing:
 		climb_logic(delta)
@@ -155,15 +185,45 @@ func _movement_logic(delta: float) -> void:
 			max_speed = 9.0
 		else:
 			max_speed = 6.0
-		
+			
 		#controls movement and direction with camera
 		if not movement_input.is_zero_approx():
-		# Rotate input direction & apply movement
-			var target_angle = -movement_input.angle() + TAU
-			skin.rotation.y = rotate_toward($lil_skin.rotation.y, target_angle,6.0 * delta)
-			var current_acceleration = air_acceleration if is_airborne else acceleration
-			speed = lerp(speed, max_speed, delta * current_acceleration)
-			vel_2d = movement_input.normalized() * speed
+			
+			if not targeting:
+				var target_angle = movement_input.angle() + PI/2
+				skin.rotation.y = rotate_toward($lil_skin.rotation.y, -target_angle,6.0 * delta)
+				var current_acceleration = air_acceleration if is_airborne else acceleration
+				speed = lerp(speed, max_speed, delta * current_acceleration)
+				vel_2d = movement_input.normalized() * speed
+			else:
+				if third_input == 1 or -1:
+					orbit_angle += third_input * horizontal_acceleration * delta
+				if second_input == 1 or -1:
+					radial_distance += second_input * vertical_acceleration * delta
+					radial_distance = clamp(radial_distance, 1.0, 20.0)
+				
+				var target_pos: Vector3 = targeted.get_child(0).global_transform.origin
+				var player_pos: Vector3 = skin.global_transform.origin
+				var to_target: Vector3 = target_pos - player_pos
+				var right_vector: Vector3 = Vector3.UP.cross(to_target).normalized()
+				
+				
+				var move_direction: Vector3 = (right_vector * -movement_input.x) + (to_target * -movement_input.y)
+				
+				var current_pos: Vector3 = skin.global_transform.origin
+				if move_direction != Vector3.ZERO:
+					move_direction = move_direction.normalized()
+					
+				var current_acceleration = air_acceleration if is_airborne else acceleration
+				speed = lerp(speed, max_speed, delta * current_acceleration)
+				vel_2d = Vector2(move_direction.x, move_direction.z) * speed
+				
+				var face_dir: Vector3 = target_pos - current_pos
+				face_dir.y = 0
+				if face_dir.length() > 0:
+					face_dir = face_dir.normalized()
+				var desired_yaw = atan2(face_dir.x, -face_dir.z)
+				skin.rotation.y = lerp_angle(skin.rotation.y, -desired_yaw, camera_lag)
 
 	# Smooth deceleration when no input
 		else:
@@ -300,4 +360,84 @@ func activate_abilities()->void:
 	elif Input.is_action_just_pressed("ability_4"):
 		hud.activate_power(3)
 
+#endregion
+
+
+#region camera lock-on
+
+
+func _on_targeting_radius_area_entered(area: Area3D) -> void:
+	var target = area.get_parent()
+	if target.has_method("target_me"):
+		targeted = target
+		targets.append(targeted)
+		
+		
+		
+
+func target_thing()->void:
+	if Input.is_action_just_pressed("snap"):
+		if targeted == null:
+			return
+		var distance = skin.global_transform.origin.distance_to(targeted.get_child(0).global_transform.origin)
+		if distance < lock_on_distance:
+			main_cam.set_lock_on_target(targeted)
+			targeted.target_me()
+			targeting = true
+		
+		
+
+func stop_targeting_thing()->void:
+	if Input.is_action_just_pressed("snap"):
+		targeted.not_targeted()
+		main_cam.release_lock_on()
+		targeting = false
+		var to_target = targeted.get_child(0).global_transform.origin - skin.global_transform.origin
+		to_target.y = 0
+		radial_distance = to_target.length()
+	# Compute the angle from the target to the player.
+	# (This gives a baseline from which horizontal input will adjust the orbit.)
+		orbit_angle = atan2(skin.global_transform.origin.x - targeted.get_child(0).global_transform.origin.x,
+		skin.global_transform.origin.z - targeted.get_child(0).global_transform.origin.z)
+	#
+#
+#
+func _on_targeting_radius_area_exited(area: Area3D) -> void:
+	var target = area.get_parent()
+	if target == targeted:
+		targeting = false
+		targeted.not_targeted()
+		main_cam.release_lock_on()
+		if target in targets:
+			targets.erase(target)
+		if targeting == false:
+			await get_tree().create_timer(.4).timeout
+			targets = []
+			
+			
+func switch_targets(direction: int)->void:
+	if targets.size() <= 1:
+		return
+	var current_index = targets.find(targeted)
+	var new_index = (current_index + direction + targets.size()) % targets.size()
+	
+	if targeted:
+		targeted.not_targeted()
+	
+	targeted = targets[new_index]
+	
+	targeted.target_me()
+	main_cam.set_lock_on_target(targeted)
+	
+	
+func target_switching()->void:
+	if Input.is_action_just_pressed("pan_left"):
+		switch_targets(-1)
+	if Input.is_action_just_pressed("pan_right"):
+		switch_targets(1)
+	var distance = skin.global_transform.origin.distance_to(targeted.get_child(0).global_transform.origin)
+	if distance > lock_on_distance:
+		targeted.not_targeted()
+		main_cam.release_lock_on()
+		targeting = false
 #endregion

@@ -14,7 +14,7 @@ func _on_climbable_area_body_entered(body: Node3D) -> void:
 		player_inside = true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 		if Input.is_action_just_pressed("Use") and player_inside:
 			print("Did this happen")
 			emit_signal("climbing", climbable_area)

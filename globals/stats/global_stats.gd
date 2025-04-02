@@ -57,7 +57,12 @@ var melee_item
 #endregion
 #region enemy things
 #enemythings
-var enemy_health : float
+var enemies: Dictionary = {"Slime": {"health": 5, "damage": 1, "speed": 3}}
+
+func get_enemy_data(enemy_name: String)-> Dictionary:
+	if enemies.has(enemy_name):
+		return enemies[enemy_name].duplicate()
+	return {}
 #endregion
 #items in the world probably
 
@@ -97,4 +102,14 @@ func has_equipment(equipment_name: String)-> bool:
 
 func is_equipped(equipped_item: Dictionary)-> void:
 	melee_item = equipped_item
+#endregion
+
+
+
+
+#region Enigine things
+func hit_stop(duration: float = 0.1, scale: float = 0.1)->void:
+	Engine.time_scale = scale
+	await get_tree().create_timer(duration).timeout
+	Engine.time_scale = 1.0
 #endregion

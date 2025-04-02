@@ -113,7 +113,7 @@ fadeout_time = 0.2
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p4nub"]
 animation = &"attack"
 use_custom_timeline = true
-timeline_length = 0.7
+timeline_length = 0.5
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
@@ -121,7 +121,7 @@ loop_mode = 0
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ql01n"]
 animation = &"attack2"
 use_custom_timeline = true
-timeline_length = 0.7
+timeline_length = 0.5
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
@@ -227,28 +227,30 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-439, -28)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kl35k"]
+graph_offset = Vector2(-1223.55, 50.5067)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_mtkif")
-nodes/AttackOneShot/position = Vector2(-480, 280)
+nodes/AttackOneShot/position = Vector2(-700, 260)
 nodes/AttackStateMachine/node = SubResource("AnimationNodeStateMachine_o7rre")
-nodes/AttackStateMachine/position = Vector2(-860, 500)
+nodes/AttackStateMachine/position = Vector2(-1120, 520)
 nodes/move_state_machine/node = SubResource("AnimationNodeStateMachine_c7i0t")
-nodes/move_state_machine/position = Vector2(-870.223, 163.713)
+nodes/move_state_machine/position = Vector2(-1060, 220)
 node_connections = [&"AttackOneShot", 0, &"move_state_machine", &"AttackOneShot", 1, &"AttackStateMachine", &"output", 0, &"AttackOneShot"]
 
 [node name="lil_skin" instance=ExtResource("1_puebm")]
+rotation_order = 1
 script = ExtResource("2_v0jwb")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/0/scale = Vector3(0.979923, 0.979923, 0.979923)
+bones/0/scale = Vector3(0.951721, 0.951721, 0.951721)
 bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.929761, 0.929761, 0.929761)
-bones/4/position = Vector3(0, -0.023459, 0)
-bones/5/position = Vector3(0, 0, 0)
+bones/3/scale = Vector3(0.831095, 0.831095, 0.831095)
+bones/4/position = Vector3(0, -0.0564119, 0)
+bones/5/position = Vector3(0, -0.00272897, 0)
 bones/5/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/6/rotation = Quaternion(-0.66633, -1.21483e-07, 1.08559e-07, 0.745657)
 bones/6/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(0, 0, 0)
+bones/8/position = Vector3(-5.72442e-12, -0.00272897, -1.04557e-09)
 bones/8/rotation = Quaternion(-0.707096, 0.00387128, 0.00387128, 0.707096)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.0210459, 0.775914, -0.630486, 0.00105141)
@@ -262,7 +264,7 @@ material_override = SubResource("ShaderMaterial_d5o6b")
 surface_material_override/0 = SubResource("ShaderMaterial_7ymc0")
 
 [node name="skullarea" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.979923, 0, -0.979923, 0, 7.39822e-08, 7.39822e-08, 0, 0.979923, -9.12625e-10, 0.979923, 0)
+transform = Transform3D(0, 0.951721, 0, -0.951721, 0, 7.1853e-08, 7.1853e-08, 0, 0.951721, -8.8636e-10, 0.951721, 0)
 bone_name = "tophead"
 bone_idx = 1
 
@@ -278,7 +280,7 @@ visible = false
 material_override = SubResource("ShaderMaterial_kccu8")
 
 [node name="l_equip" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-1, 7.10543e-14, 3.89414e-07, -2.25693e-07, -0.814921, -0.579572, 3.17342e-07, -0.579572, 0.814921, -1.80133e-09, -0.82632, 0.380525)
+transform = Transform3D(-1, 7.10543e-14, 3.89414e-07, -2.25693e-07, -0.814921, -0.579572, 3.17342e-07, -0.579572, 0.814921, -1.80133e-09, -0.829049, 0.380525)
 bone_name = "l.hand"
 bone_idx = 7
 
@@ -299,7 +301,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
 surface_material_override/0 = SubResource("ShaderMaterial_jb5fp")
 
 [node name="r_equip" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.81356, -0.460547)
+transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.816289, -0.460547)
 bone_name = "r. hand"
 bone_idx = 10
 

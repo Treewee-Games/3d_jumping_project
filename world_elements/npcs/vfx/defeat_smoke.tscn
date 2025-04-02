@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=3 uid="uid://buebf8q58xeuc"]
+
+[ext_resource type="Shader" path="res://globals/shaders/smoke_cell_shaded.gdshader" id="1_ok1xd"]
+[ext_resource type="Texture2D" uid="uid://bsjlfkkidph07" path="res://world_elements/elements_water_fire_etc/textures/fire_textures/WispyNoise.png" id="2_ygxbv"]
+[ext_resource type="ArrayMesh" uid="uid://kvoxqwtxv13n" path="res://blends/enviorment/nature/smoke/static_mesh_cloud.obj" id="3_6poti"]
+
+[sub_resource type="Gradient" id="Gradient_fbrqj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0409836, 0.852459, 0.942623)
+colors = PackedColorArray(0.467917, 0.238809, 0.686935, 1, 0.628443, 0.402902, 0.868359, 1, 0.467917, 0.238809, 0.686935, 1, 0.310006, 0.140868, 0.46774, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7xjyc"]
+gradient = SubResource("Gradient_fbrqj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u842p"]
+render_priority = 0
+shader = ExtResource("1_ok1xd")
+shader_parameter/Texture_Scale = Vector2(1, 1)
+shader_parameter/Light_attenuation = 2.355
+shader_parameter/Shadow_roundness = 0.005
+shader_parameter/Disolver_texture = ExtResource("2_ygxbv")
+shader_parameter/Color_1D_Gradient = SubResource("GradientTexture1D_7xjyc")
+
+[sub_resource type="Curve" id="Curve_300ha"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 1.11931, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xn21p"]
+curve = SubResource("Curve_300ha")
+
+[sub_resource type="Gradient" id="Gradient_3o163"]
+offsets = PackedFloat32Array(0.0181818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_umrr0"]
+gradient = SubResource("Gradient_3o163")
+
+[sub_resource type="Curve" id="Curve_hfyvd"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -200), 0.0, 0.0, 0, 0, Vector2(0.99999, 200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dlr3y"]
+curve = SubResource("Curve_hfyvd")
+
+[sub_resource type="Curve" id="Curve_7b1at"]
+_data = [Vector2(0, 0.318681), 0.0, 0.0, 0, 0, Vector2(1, 0.879121), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iy2y0"]
+curve = SubResource("Curve_7b1at")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_np5q8"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0.2, 0)
+spread = 6.506
+flatness = 0.819
+initial_velocity_min = 0.1
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -0.100002
+radial_accel_max = 0.199998
+radial_accel_curve = SubResource("CurveTexture_dlr3y")
+damping_max = 29.23
+scale_max = 1.8
+scale_curve = SubResource("CurveTexture_iy2y0")
+color_ramp = SubResource("GradientTexture1D_umrr0")
+alpha_curve = SubResource("CurveTexture_xn21p")
+turbulence_noise_scale = 5.292
+
+[node name="DefeatSmoke" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_u842p")
+emitting = false
+amount = 20
+lifetime = 0.33
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.48
+fixed_fps = 60
+draw_order = 2
+process_material = SubResource("ParticleProcessMaterial_np5q8")
+draw_pass_1 = ExtResource("3_6poti")

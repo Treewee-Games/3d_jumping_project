@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://yl3son5m2g6"]
+
+[ext_resource type="Script" path="res://player_controller/camera/personal_cam.gd" id="1_2xk4j"]
+[ext_resource type="Material" uid="uid://32chj8n0ks8p" path="res://globals/shader_materials/postprocessing.tres" id="2_qcrec"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kq02p"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_rb5b3"]
+material = ExtResource("2_qcrec")
+flip_faces = true
+size = Vector2(2, 2)
+
+[node name="FPScam" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_2xk4j")
+auto_rotate_delay = 0.5
+test_rotation = 31.5
+
+[node name="playerpivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="playerpivot"]
+collision_mask = 7
+shape = SubResource("SphereShape3D_kq02p")
+spring_length = 5.0
+
+[node name="TPScam" type="Camera3D" parent="playerpivot/SpringArm3D"]
+current = true
+
+[node name="wall_checks" type="RayCast3D" parent="playerpivot/SpringArm3D/TPScam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="wall_checks2" type="RayCast3D" parent="playerpivot/SpringArm3D/TPScam"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="wall_checks3" type="RayCast3D" parent="playerpivot/SpringArm3D/TPScam"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+rotation_order = 1
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="wall_checks4" type="RayCast3D" parent="playerpivot/SpringArm3D/TPScam"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+rotation_order = 1
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="playerpivot/SpringArm3D/TPScam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95569e-08, 0, -0.904957)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_rb5b3")

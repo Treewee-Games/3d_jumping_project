@@ -1,0 +1,235 @@
+[gd_scene load_steps=40 format=3 uid="uid://dtj68dq5uxp15"]
+
+[ext_resource type="PackedScene" uid="uid://e6gq1fn6lk3q" path="res://world_elements/npcs/enemies/mooks/slimes_animation/Enemy.gltf" id="1_bjabm"]
+[ext_resource type="Shader" path="res://globals/shaders/toon.gdshader" id="2_7xbub"]
+[ext_resource type="Script" path="res://world_elements/npcs/enemies/mooks/slimes_animation/slime.gd" id="2_epsg6"]
+[ext_resource type="ArrayMesh" uid="uid://k4w73hcsq4gw" path="res://blends/enemies/vfx/gobs_mesh.res" id="4_8y8ft"]
+[ext_resource type="PackedScene" uid="uid://buebf8q58xeuc" path="res://world_elements/npcs/vfx/defeat_smoke.tscn" id="5_ifjmb"]
+
+[sub_resource type="Gradient" id="Gradient_o3rc5"]
+resource_local_to_scene = true
+interpolation_mode = 1
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.336066, 0.647541, 0.877049)
+colors = PackedColorArray(0, 5.41471e-08, 0.170815, 1, 0.0118997, 0.1957, 0.33243, 1, 0.0205088, 0.259081, 0.430351, 1, 0.0551737, 0.404971, 0.65457, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fyecp"]
+gradient = SubResource("Gradient_o3rc5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd4pd"]
+render_priority = 0
+shader = ExtResource("2_7xbub")
+shader_parameter/color = Color(0.310617, 0.310617, 0.310617, 1)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_fyecp")
+
+[sub_resource type="Gradient" id="Gradient_fe05j"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.360656)
+colors = PackedColorArray(0.380275, 0.418329, 0.257109, 1, 0.848243, 0.972525, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ixj4f"]
+gradient = SubResource("Gradient_fe05j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ba8s"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_7xbub")
+shader_parameter/color = Color(0.242986, 0.307818, 1.92523e-07, 1)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_ixj4f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhg3y"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_kjgtp"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.42623, 0.909836)
+colors = PackedColorArray(0, 0, 0, 1, 0.359069, 0.359069, 0.359069, 1, 0.234659, 0.234644, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qnx4"]
+gradient = SubResource("Gradient_kjgtp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwvat"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_7xbub")
+shader_parameter/color = null
+shader_parameter/color_ramp = SubResource("GradientTexture1D_3qnx4")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4lxd3"]
+animation = &"Death"
+use_custom_timeline = true
+timeline_length = 1.5
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c252e"]
+animation = &"HitRecieve"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1lodd"]
+filter_enabled = true
+filters = [".", "MonsterArmature/Skeleton3D:Body", "MonsterArmature/Skeleton3D:Eyebrow.L", "MonsterArmature/Skeleton3D:Eyebrow.R", "MonsterArmature/Skeleton3D:Head", "MonsterArmature/Skeleton3D:Head2", "MonsterArmature/Skeleton3D:Head3", "MonsterArmature/Skeleton3D:Mouth"]
+fadein_time = 0.2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_o000n"]
+filter_enabled = true
+filters = ["", ".", "MonsterArmature/Skeleton3D:Body", "MonsterArmature/Skeleton3D:Eyebrow.L", "MonsterArmature/Skeleton3D:Eyebrow.R", "MonsterArmature/Skeleton3D:Head", "MonsterArmature/Skeleton3D:Head2", "MonsterArmature/Skeleton3D:Head3", "MonsterArmature/Skeleton3D:Mouth"]
+fadein_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qkpcc"]
+animation = &"Dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yq5e6"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_shrtm"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_448ap"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dmf7b"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_djc4k"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q06r3"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ghr4a"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o55xu"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icu7c"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x88ud"]
+states/Dance/node = SubResource("AnimationNodeAnimation_qkpcc")
+states/Dance/position = Vector2(552, 231)
+states/Idle/node = SubResource("AnimationNodeAnimation_yq5e6")
+states/Idle/position = Vector2(335, 92)
+states/Start/position = Vector2(220, 92)
+states/Walk/node = SubResource("AnimationNodeAnimation_shrtm")
+states/Walk/position = Vector2(552, 92)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_448ap"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_dmf7b"), "Walk", "Dance", SubResource("AnimationNodeStateMachineTransition_djc4k"), "Dance", "Walk", SubResource("AnimationNodeStateMachineTransition_q06r3"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ghr4a"), "Dance", "Idle", SubResource("AnimationNodeStateMachineTransition_o55xu"), "Idle", "Dance", SubResource("AnimationNodeStateMachineTransition_icu7c")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jce38"]
+graph_offset = Vector2(-1689.98, 48.576)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_c252e")
+nodes/Animation/position = Vector2(-1340, 280)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_4lxd3")
+"nodes/Animation 2/position" = Vector2(-340, 240)
+nodes/Death/node = SubResource("AnimationNodeOneShot_1lodd")
+nodes/Death/position = Vector2(-80, 100)
+nodes/Got_hit/node = SubResource("AnimationNodeOneShot_o000n")
+nodes/Got_hit/position = Vector2(-940, 120)
+nodes/move_state_machine/node = SubResource("AnimationNodeStateMachine_x88ud")
+nodes/move_state_machine/position = Vector2(-1300, 80)
+nodes/output/position = Vector2(280, 100)
+node_connections = [&"Death", 0, &"Got_hit", &"Death", 1, &"Animation 2", &"Got_hit", 0, &"move_state_machine", &"Got_hit", 1, &"Animation", &"output", 0, &"Death"]
+
+[sub_resource type="Gradient" id="Gradient_gkood"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0655738, 0.47541, 0.819672)
+colors = PackedColorArray(0, 4.81307e-07, 0.773396, 1, 0.450421, 0.660524, 0.85019, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xwlpf"]
+gradient = SubResource("Gradient_gkood")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kt7l"]
+render_priority = 0
+shader = ExtResource("2_7xbub")
+shader_parameter/color = Color(0.541176, 0.745098, 0.854902, 1)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_xwlpf")
+
+[sub_resource type="Curve" id="Curve_6akl7"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -170.11), 0.0, 0.0, 0, 0, Vector2(1, 193.846), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jwpwi"]
+curve = SubResource("Curve_6akl7")
+
+[sub_resource type="Curve" id="Curve_xfey4"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.949275, 0.802198), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bcyp0"]
+curve = SubResource("Curve_xfey4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ixwwm"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 44.2
+angle_max = 46.3
+angle_curve = SubResource("CurveTexture_jwpwi")
+inherit_velocity_ratio = 0.09
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 3.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 0.999984
+gravity = Vector3(0, -4, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_bcyp0")
+
+[node name="Slime" instance=ExtResource("1_bjabm")]
+script = ExtResource("2_epsg6")
+
+[node name="Skeleton3D" parent="MonsterArmature" index="0"]
+bones/1/position = Vector3(-7.80307e-18, 0.0929504, 0.500829)
+bones/2/position = Vector3(0, 0.494915, 0)
+bones/4/rotation = Quaternion(0, -1.24654e-09, 0.0101907, 0.999948)
+bones/5/position = Vector3(-0.430698, 0.482862, 0.506212)
+bones/5/rotation = Quaternion(-0.0106731, 0.00227016, 0.0110069, 0.99988)
+bones/6/position = Vector3(0.430698, 0.482862, 0.506212)
+bones/6/rotation = Quaternion(-0.0106731, -0.00227016, -0.0110069, 0.99988)
+
+[node name="Enemy_Body" parent="MonsterArmature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dd4pd")
+surface_material_override/1 = SubResource("ShaderMaterial_dd4pd")
+
+[node name="Enemy_Eyes" parent="MonsterArmature/Skeleton3D" index="1"]
+material_override = SubResource("ShaderMaterial_2ba8s")
+surface_material_override/0 = SubResource("StandardMaterial3D_uhg3y")
+
+[node name="Enemy_Face" parent="MonsterArmature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_dd4pd")
+surface_material_override/1 = SubResource("ShaderMaterial_bwvat")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_jce38")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Death/active = false
+parameters/Death/internal_active = false
+parameters/Death/request = 0
+parameters/Got_hit/active = false
+parameters/Got_hit/internal_active = false
+parameters/Got_hit/request = 0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.961116, 0)
+material_override = SubResource("ShaderMaterial_8kt7l")
+transparency = 0.35
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.59
+fixed_fps = 60
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_ixwwm")
+draw_pass_1 = ExtResource("4_8y8ft")
+
+[node name="DefeatSmoke" parent="." index="4" instance=ExtResource("5_ifjmb")]
+one_shot = false

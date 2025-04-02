@@ -17,23 +17,49 @@
 [ext_resource type="PackedScene" uid="uid://c5u6hi0fxgwig" path="res://world_elements/platforms/path_platform.tscn" id="10_qi4hq"]
 [ext_resource type="PackedScene" uid="uid://bti3esp4en82m" path="res://Test_Level/test_blocks/flooring_wall.tscn" id="10_uqycr"]
 [ext_resource type="PackedScene" uid="uid://vfyag0ovipq7" path="res://world_elements/climbable/ladder.tscn" id="16_5ulcn"]
-[ext_resource type="PackedScene" uid="uid://b2uirf6vetcu6" path="res://world_elements/npcs/npc.tscn" id="18_b7vkp"]
+[ext_resource type="PackedScene" uid="uid://dl32lf4rpiwb7" path="res://world_elements/npcs/enemies/enemy_base.tscn" id="18_gosfi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.0932364, 0.372103, 1, 1)
+sky_horizon_color = Color(0, 0.764136, 0.625586, 1)
+sky_energy_multiplier = 10.25
+sky_cover_modulate = Color(0.549956, 0.551491, 0.647147, 1)
+ground_bottom_color = Color(0.0715352, 0.157185, 0.366752, 1)
+ground_horizon_color = Color(0.38786, 0.679245, 0.945696, 1)
+sun_angle_max = 73.35
+sun_curve = 1.37844
 
 [sub_resource type="Sky" id="Sky_433yw"]
 sky_material = SubResource("ProceduralSkyMaterial_mk158")
 
 [sub_resource type="Environment" id="Environment_2fufs"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.546409, 3.85046e-07, 2.40654e-07, 0.364706)
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_433yw")
+sky_custom_fov = 17.8
+ambient_light_source = 1
+ambient_light_sky_contribution = 0.0
 reflected_light_source = 1
 tonemap_mode = 1
+tonemap_exposure = 2.63
+tonemap_white = 8.85
 ssr_fade_in = 0.848527
 glow_normalized = true
 glow_intensity = 5.85
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.200351, 0.208608, 0.192966, 1)
+fog_light_energy = 0.0
+fog_density = 0.0
+fog_depth_begin = 0.0
+fog_depth_end = 767.9
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.382019, 0.423481, 0.36649, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_gi_inject = 0.38
+volumetric_fog_detail_spread = 3.95853
+volumetric_fog_ambient_inject = 0.66
 adjustment_brightness = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bmn6j"]
@@ -143,7 +169,21 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.796216, 0.821159, 0.848391, 1)
+light_energy = 0.543
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 6.495
+light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 5.81
+shadow_reverse_cull_face = true
+shadow_opacity = 0.82
+shadow_blur = 7.857
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.281
+directional_shadow_fade_start = 0.485
+directional_shadow_max_distance = 77.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
 environment = SubResource("Environment_2fufs")
@@ -1998,10 +2038,10 @@ transform = Transform3D(-0.790268, 0, -2.13729e-08, 0, 0.352495, 0, 6.90875e-08,
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2917, 2.18952, -76.8503)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.2917, 2.18952, -76.8503)
 
-[node name="NPC" parent="." instance=ExtResource("18_b7vkp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.096, 1.69775, -74.9468)
+[node name="Enemy_Base" parent="entities" instance=ExtResource("18_gosfi")]
+transform = Transform3D(-0.994881, 0, -0.101056, 0, 1, 0, 0.101056, 0, -0.994881, 30.0011, 0.02085, -66.7252)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path" method="_on_button_trigger_effect"]

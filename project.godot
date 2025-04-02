@@ -31,7 +31,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -46,6 +46,7 @@ folder_colors={
 climbable=""
 "Light Area"=""
 destructible=""
+Enemies=""
 
 [input]
 
