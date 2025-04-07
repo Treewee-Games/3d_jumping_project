@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvjqnhcmnp7mt"
+path="res://.godot/imported/maybe_a_bite.obj-cbe9e2a1e7614a66c335eaa71f03c8d6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/maybe_a_bite.obj-cbe9e2a1e7614a66c335eaa71f03c8d6.mesh"]
+
+source_file="res://blends/misc objects/vfx/maybe_a_bite.obj"
+dest_files=["res://.godot/imported/maybe_a_bite.obj-cbe9e2a1e7614a66c335eaa71f03c8d6.mesh", "res://.godot/imported/maybe_a_bite.obj-cbe9e2a1e7614a66c335eaa71f03c8d6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

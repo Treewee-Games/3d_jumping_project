@@ -1,0 +1,67 @@
+[gd_scene load_steps=14 format=3 uid="uid://cj4vijse7l4gc"]
+
+[ext_resource type="Shader" path="res://globals/shaders/idk_maybe_a_slash.gdshader" id="1_6ocxy"]
+[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="2_4fulw"]
+[ext_resource type="ArrayMesh" uid="uid://bvjqnhcmnp7mt" path="res://blends/misc objects/vfx/maybe_a_bite.obj" id="3_mwtlx"]
+
+[sub_resource type="Gradient" id="Gradient_6qq7j"]
+colors = PackedColorArray(0.808192, 0.317293, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_elo5v"]
+gradient = SubResource("Gradient_6qq7j")
+
+[sub_resource type="Gradient" id="Gradient_ionp8"]
+offsets = PackedFloat32Array(0.122951, 0.647541, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.712951, 0.723781, 0.717615, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ydgbx"]
+gradient = SubResource("Gradient_ionp8")
+
+[sub_resource type="Gradient" id="Gradient_1fqis"]
+offsets = PackedFloat32Array(0, 0.254098, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.774194, 0.774194, 0.774194, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sfa42"]
+gradient = SubResource("Gradient_1fqis")
+
+[sub_resource type="Gradient" id="Gradient_adnjd"]
+offsets = PackedFloat32Array(0, 0.237705)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ue2jo"]
+gradient = SubResource("Gradient_adnjd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dt5hy"]
+render_priority = 0
+shader = ExtResource("1_6ocxy")
+shader_parameter/progress = 0.51
+shader_parameter/derive_progress = 0.0
+shader_parameter/ease_progress = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/anim_rot_amt = 0.0
+shader_parameter/zoom = 1.03
+shader_parameter/rotate_all = 360.0
+shader_parameter/base_noise = ExtResource("2_4fulw")
+shader_parameter/width_gradient_mask = SubResource("GradientTexture1D_ue2jo")
+shader_parameter/length_gradient_mask = SubResource("GradientTexture1D_sfa42")
+shader_parameter/highlight = SubResource("GradientTexture1D_ydgbx")
+shader_parameter/emission_strength = 0.4
+shader_parameter/mix_strength = 1.18
+shader_parameter/color_lookup = SubResource("GradientTexture1D_elo5v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8o2ja"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+gravity = Vector3(0, -0.5, 0)
+
+[node name="Slash" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_dt5hy")
+emitting = false
+amount = 10
+one_shot = true
+speed_scale = 10.0
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_8o2ja")
+draw_pass_1 = ExtResource("3_mwtlx")

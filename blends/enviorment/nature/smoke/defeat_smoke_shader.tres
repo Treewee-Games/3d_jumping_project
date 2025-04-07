@@ -119,7 +119,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2(-418.407, -119.66)
 modes/cull = 2
 modes/diffuse = 3
 modes/specular = 1

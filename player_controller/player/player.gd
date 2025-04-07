@@ -81,7 +81,9 @@ var falling := false
 var attack_check : float
 #please look over all of these as they are not exports
 #endregion
-
+#region Attacking
+var attacking: bool = false
+#endregion
 #region lock-on mechanic
 var target_entered : bool = false
 var targeting : bool = false
@@ -173,8 +175,6 @@ func _movement_logic(delta: float) -> void:
 	else:
 		movement_input = free_input
 		
-	
-	
 	if is_climbing:
 		climb_logic(delta)
 	
@@ -196,6 +196,7 @@ func _movement_logic(delta: float) -> void:
 				speed = lerp(speed, max_speed, delta * current_acceleration)
 				vel_2d = movement_input.normalized() * speed
 			else:
+				max_speed = 3.0
 				if third_input == 1 or -1:
 					orbit_angle += third_input * horizontal_acceleration * delta
 				if second_input == 1 or -1:
@@ -331,9 +332,12 @@ func attacked()->void:
 	if Input.is_action_just_pressed("attack"):
 		skin.attack()
 		if skin.attacking:
+			max_speed += -1
+			attacking = true
 			attack_check += 1
 		if attack_check > 1:
 			skin.is_attacking(false)
+			attacking = false
 			attack_check = 0
 
 #endregion

@@ -2038,10 +2038,10 @@ transform = Transform3D(-0.790268, 0, -2.13729e-08, 0, 0.352495, 0, 6.90875e-08,
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.2917, 2.18952, -76.8503)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.2917, 0.897246, -76.8503)
 
 [node name="Enemy_Base" parent="entities" instance=ExtResource("18_gosfi")]
-transform = Transform3D(-0.994881, 0, -0.101056, 0, 1, 0, 0.101056, 0, -0.994881, 30.0011, 0.02085, -66.7252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0011, 0.02085, -66.7252)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path" method="_on_button_trigger_effect"]

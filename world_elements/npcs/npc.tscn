@@ -4,7 +4,7 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_ktfbo"]
 
-[node name="NPC" type="Node3D"]
+[node name="NPC" type="CharacterBody3D"]
 script = ExtResource("1_46fm7")
 
 [node name="target" type="Marker3D" parent="."]

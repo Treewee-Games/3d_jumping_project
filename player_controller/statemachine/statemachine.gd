@@ -16,6 +16,7 @@ var state_names = {
 	States.CLIMBING: "CLIMBING",
 }
 
+
 func _process(_delta: float) -> void:
 	#print("Current State:", state_names[current_state])
 	match current_state:
@@ -60,7 +61,7 @@ func exit_state(state):
 func state_idle():
 	if player.is_climbing:
 		change_state(States.CLIMBING)
-	if player.falling:
+	elif player.falling:
 		change_state(States.FALLING)
 	elif player.is_airborne:
 		change_state(States.JUMPING)

@@ -8,11 +8,12 @@ var state_timer: float = 0.0
 @export var creature_name: String = "Slime"
 @onready var state: String = creature_skin.current_state
 var is_dead: bool = false
+var targeting: bool = false
 var enemy_stats: Dictionary = {}
 var health: float = 0
 var damage: float = 0
 var speed: float = 0
-var velocity: Vector3 = Vector3.ZERO
+@export var lock_on_distance: float = 7.0
 
 
 
@@ -30,9 +31,13 @@ func reaction()->void:
 		hit = true
 		creature_skin.got_hit()
 		tweening(creature_skin, 0.2)
+		speed = -2
+		apply_knockback(25)
 		health -= 1
 		await get_tree().create_timer(.4).timeout
+		speed = enemy_stats["speed"]
 		hit = false
+		targeting = false
 
 func setup_enemy(_enemy_name:String)->void:
 	#Getting the base data from GlobalStats
@@ -41,14 +46,18 @@ func setup_enemy(_enemy_name:String)->void:
 	damage = enemy_stats["damage"]
 	speed = enemy_stats["speed"]
 	
-
 func _process(delta: float) -> void:
 	if not is_dead:
+		var distance = global_transform.origin.distance_to(player.global_transform.origin)
 		state_timer += delta
 		health_processing()
-		trans_states()
-		move_towards_player(delta)
-
+		trans_states(delta)
+		move_and_slide()
+		creature_skin.attack()
+		if distance > lock_on_distance:
+			targeting = false
+		else:
+			targeting = true
 
 func health_processing()->void:
 	clamp(health, 0, enemy_stats["health"])
@@ -58,28 +67,36 @@ func health_processing()->void:
 		await get_tree().create_timer(1.4).timeout
 		self.queue_free()
 
-
-func trans_states()->void:
+func trans_states(_delta)->void:
 	if state == creature_skin.all_states["State"][0]:
-		if state_timer >= 2.0:
+		if state_timer >= 2.0 and not targeting:
 			creature_skin.state_rules(1)
 			state = creature_skin.current_state
+		if targeting:
+			creature_skin.state_rules(2)
+			state = creature_skin.current_state
 	elif state == creature_skin.all_states["State"][1]:
-		if state_timer >= 7.0:
+		if state_timer >= 7.0 and not targeting:
+			creature_skin.state_rules(2)
+			state = creature_skin.current_state 
+			state_timer = 0.0
+		if targeting:
+			creature_skin.state_rules(2)
+			state = creature_skin.current_state
+	elif state == creature_skin.all_states["State"][2]:
+		if state_timer >= 10.0 and not targeting:
 			creature_skin.state_rules(0)
 			state = creature_skin.current_state 
 			state_timer = 0.0
+			velocity = Vector3.ZERO
 
-func move_towards_player(delta: float)-> void:
-	if player == null:
-		return
-	var enemy_pos: Vector3 = global_transform.origin
-	var player_pos: Vector3 = player.global_transform.origin
-	var to_player: Vector3 = player_pos - enemy_pos
-	to_player.y = 0
+func apply_knockback(knockback_strength: float = 2.0) -> void:
+	# Calculate the vector from the player to the enemy.
+	var knockback_direction: Vector3 = (global_transform.origin - player.global_transform.origin).normalized()
 	
-	if to_player.length() >0:
-		to_player = to_player.normalized()
-		look_at(-player_pos, Vector3.UP)
-		velocity += to_player * speed
-		print(to_player)
+	# Optionally add a vertical component if you want a slight upward knockback.
+	knockback_direction.y = 0.2  # Adjust this value as needed.
+	knockback_direction = knockback_direction.normalized()
+	
+	# Apply the knockback force to the enemy's velocity.
+	velocity += knockback_direction * knockback_strength

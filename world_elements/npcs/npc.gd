@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 @onready var target: Marker3D = $target
 
 
