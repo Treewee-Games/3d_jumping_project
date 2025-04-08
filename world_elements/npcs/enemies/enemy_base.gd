@@ -32,7 +32,7 @@ func reaction()->void:
 		creature_skin.got_hit()
 		tweening(creature_skin, 0.2)
 		speed = -2
-		apply_knockback(25)
+		GlobalStats.apply_knockback(self,player, 7)
 		health -= 1
 		await get_tree().create_timer(.4).timeout
 		speed = enemy_stats["speed"]
@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 	if not is_dead:
 		var distance = global_transform.origin.distance_to(player.global_transform.origin)
 		state_timer += delta
+		velocity += get_gravity()
 		health_processing()
 		trans_states(delta)
 		move_and_slide()
@@ -89,14 +90,3 @@ func trans_states(_delta)->void:
 			state = creature_skin.current_state 
 			state_timer = 0.0
 			velocity = Vector3.ZERO
-
-func apply_knockback(knockback_strength: float = 2.0) -> void:
-	# Calculate the vector from the player to the enemy.
-	var knockback_direction: Vector3 = (global_transform.origin - player.global_transform.origin).normalized()
-	
-	# Optionally add a vertical component if you want a slight upward knockback.
-	knockback_direction.y = 0.2  # Adjust this value as needed.
-	knockback_direction = knockback_direction.normalized()
-	
-	# Apply the knockback force to the enemy's velocity.
-	velocity += knockback_direction * knockback_strength

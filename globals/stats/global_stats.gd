@@ -107,9 +107,20 @@ func is_equipped(equipped_item: Dictionary)-> void:
 
 
 
-#region Enigine things
+#region Engine things
 func hit_stop(duration: float = 0.1, scale: float = 0.1)->void:
 	Engine.time_scale = scale
 	await get_tree().create_timer(duration).timeout
 	Engine.time_scale = 1.0
+	
+func apply_knockback(myself: CharacterBody3D, the_attacker: CharacterBody3D, knockback_strength: float = 2.0) -> void:
+	# Calculate the vector from the player to the enemy.
+	var knockback_direction: Vector3 = (myself.global_transform.origin - the_attacker.global_transform.origin).normalized()
+	
+	# Optionally add a vertical component if you want a slight upward knockback.
+	knockback_direction.y = 0  # Adjust this value as needed.
+	knockback_direction = knockback_direction.normalized()
+	
+	# Apply the knockback force to the enemy's velocity.
+	myself.velocity += knockback_direction * knockback_strength
 #endregion

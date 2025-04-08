@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx5v3u4o8h057"]
+
+[ext_resource type="Script" path="res://world_elements/level_mechanics/checkpoints/checkpoint.gd" id="1_knv25"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46wgc"]
+size = Vector3(3.27972, 3.61389, 1)
+
+[node name="Checkpoint" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_knv25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115662, 1.30695, 0)
+shape = SubResource("BoxShape3D_46wgc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

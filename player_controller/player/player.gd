@@ -20,7 +20,7 @@ var health = GlobalStats.player_health:
 		if health > max_health:
 			health = max_health
 		if health <= 0:
-			get_tree().quit()
+			death()
 var souls = GlobalStats.soul_count
 var keys = GlobalStats.key_count
 var boss_key = GlobalStats.boss_key_count
@@ -79,10 +79,13 @@ var gravity := Vector3.ZERO
 var is_airborne := false
 var falling := false
 var attack_check : float
+var is_dead :bool = false
+var blocking: bool = false
 #please look over all of these as they are not exports
 #endregion
-#region Attacking
+#region Combat
 var attacking: bool = false
+var is_dodging: bool = false
 #endregion
 #region lock-on mechanic
 var target_entered : bool = false
@@ -111,19 +114,22 @@ func _process(_delta: float) -> void:
 	menu_action()
 
 func _physics_process(delta: float) -> void:
-	if not pause_menu.is_paused:
-		gravity_stuff(delta)
-		state_machine._process(delta)
-		_jumping_logic(delta)
-		_movement_logic(delta)
-		activate_abilities()
-		can_stand_up()
-		attacked()
-		if targeting:
-			stop_targeting_thing()
-			target_switching()
-		else:
-			target_thing()
+	if not is_dead:
+		if not pause_menu.is_paused:
+			gravity_stuff(delta)
+			state_machine._process(delta)
+			_jumping_logic(delta)
+			_movement_logic(delta)
+			activate_abilities()
+			can_stand_up()
+			attacked()
+			block_check()
+			move_and_slide()
+			if targeting:
+				stop_targeting_thing()
+				target_switching()
+			else:
+				target_thing()
 		
 	
 	if Input.is_action_just_pressed("test button"):
@@ -133,8 +139,49 @@ func _physics_process(delta: float) -> void:
 #endregion
 #region jump functions
 func _jumping_logic(delta)-> void:
-	if Input.is_action_just_pressed("ui_accept") and not state_machine.crouching:
+	if Input.is_action_just_pressed("ui_accept") and not state_machine.crouching and not targeting:
 		jumping(delta)
+	elif Input.is_action_just_pressed("ui_accept") and targeting:
+		target_jump_dodge()
+		
+		
+func target_jump_dodge()->void:
+	is_dodging = true
+		# Get the target position (assuming the enemy's reference is in its first child).
+	var target_pos: Vector3 = targeted.get_child(0).global_transform.origin
+	# Get the player's position from the skin node (or whichever node represents your character visually).
+	var player_pos: Vector3 = skin.global_transform.origin
+	# Compute the horizontal vector from the player to the target.
+	var to_target: Vector3 = target_pos - player_pos
+	to_target.y = 0
+	if to_target.length() > 0:
+		to_target = to_target.normalized()
+	# Compute a right vector (perpendicular to to_target).
+	var right_vector: Vector3 = Vector3.UP.cross(to_target).normalized()
+	
+	# Determine dodge direction.
+	# If the player is also providing left/right input, use that to choose the dodge side.
+	# Otherwise, default to, say, dodging to the right.
+	var horizontal_input: float = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
+	print(horizontal_input)
+	var dodge_direction: Vector3 = right_vector
+	if abs(horizontal_input) > 0.1:
+		dodge_direction = right_vector * horizontal_input
+		dodge_direction = dodge_direction.normalized()
+	
+	# Define the dodge magnitudes.
+	var dodge_magnitude: float = 10.0  # horizontal speed of the dodge (tweak as needed)
+	var vertical_impulse: float = jump_velocity/3  # you can use jump_velocity or another value for the hop
+	
+	# Apply the dodge: set horizontal velocity and add a vertical impulse.
+	print(dodge_direction)
+	velocity.x = dodge_direction.x * dodge_magnitude
+	velocity.z = dodge_direction.z * dodge_magnitude
+	velocity.y = vertical_impulse
+	
+	await get_tree().create_timer(0.3).timeout
+	is_dodging = false
+
 #The actual jump physics are in this, the above is just so that other functions can use the jump physics without messing with anything else
 func jumping(delta: float)-> void:
 	# Handle jump.
@@ -178,6 +225,9 @@ func _movement_logic(delta: float) -> void:
 	if is_climbing:
 		climb_logic(delta)
 	
+	if is_dodging:
+		return
+	
 	else:
 		if state_machine.crouching:
 			max_speed = crouch_speed
@@ -188,6 +238,9 @@ func _movement_logic(delta: float) -> void:
 			
 		#controls movement and direction with camera
 		if not movement_input.is_zero_approx():
+			if blocking:
+				max_speed = 2
+			
 			
 			if not targeting:
 				var target_angle = movement_input.angle() + PI/2
@@ -240,7 +293,6 @@ func _movement_logic(delta: float) -> void:
 # Store last movement input safely
 	if not movement_input.is_zero_approx():
 			last_movement_input = movement_input  # No need to multiply by 2
-	move_and_slide()
 func gravity_stuff(delta)-> void:
 	if not is_on_floor():
 		gravity = get_gravity() * delta # Add the gravity.
@@ -270,14 +322,7 @@ func can_stand_up()-> void:
 			ceiling_check = true
 	else:
 		ceiling_check = false
-func damaged() -> void:
-	print("hmm")
-	if not $Timers/InvulTimer.time_left:
-		health -= max(0,1)
-		#var tween = create_tween()
-		#tween.tween_property(mesh, "scale", Vector3(.4,.4,.4),.1)
-		#tween.tween_property(mesh, "scale", Vector3(1,1,1), .1)
-		$Timers/InvulTimer.start()
+
 		
 func heal()-> void:
 	max_health += max(0,1)
@@ -327,7 +372,7 @@ func _on_light_area_area_entered(area: Area3D) -> void:
 		area.dissolve_darkness()
 #endregion
 
-#region Attacking
+#region Combat
 func attacked()->void:
 	if Input.is_action_just_pressed("attack"):
 		skin.attack()
@@ -339,7 +384,15 @@ func attacked()->void:
 			skin.is_attacking(false)
 			attacking = false
 			attack_check = 0
-
+func damaged(attacker: CharacterBody3D) -> void:
+	if not $Timers/InvulTimer.time_left:
+		health -= max(0,1)
+		var tween = create_tween()
+		tween.tween_property(skin, "scale", Vector3(.4,.8,.4),.2)
+		tween.tween_property(skin, "scale", Vector3(1,1,1), .2)
+		GlobalStats.hit_stop(.015)
+		GlobalStats.apply_knockback(self, attacker, 10)
+		$Timers/InvulTimer.start()
 #endregion
 
 #region Menu Actions
@@ -365,7 +418,6 @@ func activate_abilities()->void:
 		hud.activate_power(3)
 
 #endregion
-
 
 #region camera lock-on
 
@@ -444,4 +496,30 @@ func target_switching()->void:
 		targeted.not_targeted()
 		main_cam.release_lock_on()
 		targeting = false
+#endregion
+
+#region respawning/death/saving
+func respawn()->void:
+	if is_dead:
+		health = max_health
+		is_dead = false
+	global_transform.origin = Checkpoints.get_checkpoint()
+	velocity = Vector3.ZERO
+	
+func death()->void:
+	is_dead = true
+	await  get_tree().create_timer(1).timeout
+	respawn()
+#endregion
+
+#region Moving Blocks
+func block_check()->void:
+	var block_checking = wall_check.get_collider()
+	if block_checking and block_checking.is_in_group("moving_blocks"):
+		if Input.is_action_pressed("Use"):
+			blocking = true
+			block_checking.call("start_push", skin)
+		if Input.is_action_just_released("Use"):
+			blocking = false
+			block_checking.call("stop_push")
 #endregion

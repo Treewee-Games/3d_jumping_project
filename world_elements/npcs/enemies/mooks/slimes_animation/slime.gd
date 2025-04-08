@@ -27,7 +27,6 @@ func got_hit()->void:
 	$AnimationTree.set("parameters/Got_hit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	GlobalStats.hit_stop(0.015)
 	blood.emitting = true
-	apply_knockback()
 	await $AnimationTree.animation_finished
 	is_hit = false
 	
@@ -93,24 +92,17 @@ func move_rand(delta: float)->void:
 
 func movement(delta)->void:
 	if base.targeting:
-		move_towards_player(delta)
+		if not attacked:
+			if not is_hit:
+				move_towards_player(delta)
 	else:
-		move_rand(delta)
+		if not attacked:
+			if not is_hit:
+				move_rand(delta)
 
 func _physics_process(delta: float) -> void:
 	if current_state == "Walk":
 		movement(delta)
-
-func apply_knockback(knockback_strength: float = 2.0) -> void:
-	# Calculate the vector from the player to the enemy.
-	var knockback_direction: Vector3 = (global_transform.origin - player.global_transform.origin).normalized()
-	
-	# Optionally add a vertical component if you want a slight upward knockback.
-	knockback_direction.y = 0.2  # Adjust this value as needed.
-	knockback_direction = knockback_direction.normalized()
-	
-	# Apply the knockback force to the enemy's velocity.
-	base.velocity += knockback_direction * knockback_strength
 
 func attack()->void:
 	var collider = player_finder.get_collider()
@@ -123,11 +115,13 @@ func attack()->void:
 func _on_attack_area_body_entered(body: Node3D) -> void:
 	if body == player:
 		if player.has_method("damaged"):
-			player.damaged()
+			player.damaged(base)
 
 func play_attack()->void:
 	if not is_hit:
 		attacked = true
+		base.velocity = Vector3.ZERO
 		$AnimationTree.set("parameters/AttackShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		await $AnimationTree.animation_finished
+		await get_tree().create_timer(1).timeout
 		attacked = false

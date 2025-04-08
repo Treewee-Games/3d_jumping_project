@@ -196,18 +196,19 @@ scale_min = 0.5
 scale_curve = SubResource("CurveTexture_bcyp0")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q66a2"]
+radius = 0.852194
 
 [node name="Slime" instance=ExtResource("1_bjabm")]
 script = ExtResource("2_epsg6")
 
 [node name="Skeleton3D" parent="MonsterArmature" index="0"]
-bones/1/position = Vector3(-7.80307e-18, 0.109502, 0.500829)
-bones/2/position = Vector3(0, 0.521723, 0)
-bones/4/rotation = Quaternion(-1.73472e-18, 2.81285e-09, -0.0177681, 0.999842)
-bones/5/position = Vector3(-0.430698, 0.499299, 0.506212)
-bones/5/rotation = Quaternion(-0.0350793, 0.00746137, 0.0361766, 0.998702)
-bones/6/position = Vector3(0.430698, 0.499299, 0.506212)
-bones/6/rotation = Quaternion(-0.0350793, -0.00746137, -0.0361766, 0.998702)
+bones/1/position = Vector3(-7.80307e-18, 0.0949212, 0.500829)
+bones/2/position = Vector3(0, 0.500358, 0)
+bones/4/rotation = Quaternion(4.87891e-19, 5.7117e-10, -0.0200591, 0.999799)
+bones/5/position = Vector3(-0.430698, 0.486234, 0.506212)
+bones/5/rotation = Quaternion(-0.0156303, 0.00332456, 0.0161192, 0.999742)
+bones/6/position = Vector3(0.430698, 0.486234, 0.506212)
+bones/6/rotation = Quaternion(-0.0156303, -0.00332456, -0.0161192, 0.999742)
 
 [node name="Enemy_Body" parent="MonsterArmature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_dd4pd")
@@ -255,9 +256,11 @@ one_shot = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651574, 0.86516)
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack_Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126713, 0)
 shape = SubResource("SphereShape3D_q66a2")
 
 [node name="Player_finder" type="RayCast3D" parent="." index="6"]

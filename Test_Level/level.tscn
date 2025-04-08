@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dq8pyg0f83g7x"]
+[gd_scene load_steps=49 format=3 uid="uid://dq8pyg0f83g7x"]
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player/player.tscn" id="1_jxnkr"]
@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c5u6hi0fxgwig" path="res://world_elements/platforms/path_platform.tscn" id="10_qi4hq"]
 [ext_resource type="PackedScene" uid="uid://bti3esp4en82m" path="res://Test_Level/test_blocks/flooring_wall.tscn" id="10_uqycr"]
 [ext_resource type="PackedScene" uid="uid://vfyag0ovipq7" path="res://world_elements/climbable/ladder.tscn" id="16_5ulcn"]
-[ext_resource type="PackedScene" uid="uid://dl32lf4rpiwb7" path="res://world_elements/npcs/enemies/enemy_base.tscn" id="18_gosfi"]
+[ext_resource type="PackedScene" uid="uid://dx5v3u4o8h057" path="res://world_elements/level_mechanics/checkpoints/checkpoint.tscn" id="19_dd1t0"]
+[ext_resource type="PackedScene" uid="uid://cvvvwwte55fq8" path="res://world_elements/level_mechanics/hurt_zone/hurt_zone.tscn" id="20_7odq0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
 sky_top_color = Color(0.0932364, 0.372103, 1, 1)
@@ -163,6 +164,12 @@ transparency = 1
 blend_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_no0x7"]
+size = Vector3(47.0475, 17.3685, 64.567)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpc0g"]
+size = Vector3(61.2348, 1, 160.819)
+
 [node name="Dungeon" type="Node3D"]
 
 [node name="Enviroment" type="Node3D" parent="."]
@@ -245,6 +252,9 @@ shape = SubResource("ConvexPolygonShape3D_u25b3")
 
 [node name="RevealedLightObject" parent="Enviroment/Blocking/Main_Room/Interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.38226, 13.3391)
+
+[node name="RevealedLightObject2" parent="Enviroment/Blocking/Main_Room/Interactables" instance=ExtResource("3_85wfg")]
+transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.14727, -3.84248)
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Main_Room"]
 
@@ -349,6 +359,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k2vib")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Main_Room/blocking/Main_room_wall8"]
 transform = Transform3D(-2.15166e-07, -1, 0, 4.92241, -4.37114e-08, 0, 0, 0, 11.2318, 4.9441, 4.5344, 0.374818)
 shape = SubResource("ConvexPolygonShape3D_0fxp7")
+
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Main_Room"]
 
 [node name="L-way" type="Node" parent="Enviroment/Blocking"]
 
@@ -692,6 +704,36 @@ transform = Transform3D(2.19686, 0, 0, 0, 1.88438, 0, 0, 0, 2.1558, 15.5356, -7.
 
 [node name="RevealedLightObject" parent="Enviroment/Blocking/L-way/Interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(5.82361, 0, 0, 0, 1, 0, 0, 0, 3.84658, 36.6201, 8.42272, 6.91838)
+
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/L-way"]
+
+[node name="Checkpoint" parent="Enviroment/Blocking/L-way/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.55712, 0.487178, 13.6647)
+
+[node name="Checkpoint3" parent="Enviroment/Blocking/L-way/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.65238, 10.3913, 13.6647)
+
+[node name="Checkpoint2" parent="Enviroment/Blocking/L-way/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2221, 0.487178, -22.4612)
+
+[node name="Checkpoint4" parent="Enviroment/Blocking/L-way/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3435, 13.8952, -23.6842)
+
+[node name="Side Room" type="Node" parent="Enviroment/Blocking"]
+
+[node name="blocks" type="Node" parent="Enviroment/Blocking/Side Room"]
+
+[node name="flooring" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-5.84563e-07, 0, 11.5576, 0, 0.694044, 0, -13.3732, 0, -5.05199e-07, 42.368, 8.57313, 6.85279)
+
+[node name="flooring2" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
+transform = Transform3D(11.1649, 0, -3.7177e-07, -4.88035e-07, 1.40333e-15, -8.5051, 0, 0.734462, 1.62506e-14, 42.4745, 12.3625, 13.2585)
+
+[node name="flooring3" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
+transform = Transform3D(11.1649, 0, -3.7177e-07, -4.88035e-07, 1.40333e-15, -8.5051, 0, 0.734462, 1.62506e-14, 42.4745, 12.3625, 0.29345)
+
+[node name="flooring4" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
+transform = Transform3D(-5.87501e-07, -0.734462, 0, -5.87501e-07, 1.40333e-15, -8.5051, 13.4405, -3.21044e-08, -3.7177e-07, 48.2384, 12.3605, 6.72251)
 
 [node name="Mobile Room" type="Node" parent="Enviroment/Blocking"]
 
@@ -1361,6 +1403,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57356, 0.00961001, -60.3495
 [node name="Darkness" parent="Enviroment/Blocking/Mobile Room/Interactables" instance=ExtResource("3_m8l2y")]
 transform = Transform3D(4.04988, 0, 0, 0, 1.61388, 0, 0, 0, 3.29631, 8.39299, 0.299197, -60.3159)
 
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Mobile Room"]
+
+[node name="Checkpoint" parent="Enviroment/Blocking/Mobile Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1, 0, 0, 0, 1.32427, 0, 0, 0, 1, 29.4256, 0.678959, -24.6669)
+
+[node name="Checkpoint2" parent="Enviroment/Blocking/Mobile Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(3.10034, 0, 0, 0, 1.42471, 0, 0, 0, 1, 27.4298, 0.771272, -94.1875)
+
+[node name="Checkpoint3" parent="Enviroment/Blocking/Mobile Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(3.10034, 0, 0, 0, 1.42471, 0, 0, 0, 1, 26.9291, 11.6039, -94.9348)
+
 [node name="Duck Room" type="Node" parent="Enviroment/Blocking"]
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Duck Room"]
@@ -1612,6 +1665,29 @@ transform = Transform3D(6.76993, 0, 0, 0, 1, 0, 0, 0, 4.58164, 51.5158, 22.9156,
 transform = Transform3D(2.90042, 0, 0, 0, 1, 0, 0, 0, 3.24446, 43.3068, 23.2262, -139.993)
 fade_time = 0.5
 
+[node name="hurtboxes" type="Node" parent="Enviroment/Blocking/Duck Room"]
+
+[node name="HurtZone" parent="Enviroment/Blocking/Duck Room/hurtboxes" instance=ExtResource("20_7odq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0858, -9.90307, -131.829)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/hurtboxes/HurtZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7038, -5.20762, 3.38658)
+shape = SubResource("BoxShape3D_no0x7")
+
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Duck Room"]
+
+[node name="Checkpoint4" parent="Enviroment/Blocking/Duck Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(3.10034, 0, 0, 0, 1.42471, 0, 0, 0, 1, 27.2222, 0.771272, -97.0802)
+
+[node name="Checkpoint5" parent="Enviroment/Blocking/Duck Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(3.10034, 0, 0, 0, 1.42471, 0, 0, 0, 1, 27.0962, 11.6932, -97.1328)
+
+[node name="Checkpoint6" parent="Enviroment/Blocking/Duck Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1.40543, 0, 0, 0, 1.42471, 0, 0, 0, 1, 29.1685, 23.4787, -159.897)
+
+[node name="Checkpoint7" parent="Enviroment/Blocking/Duck Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1.40543, 0, 0, 0, 1.42471, 0, 0, 0, 1, 29.1685, 0.624777, -160.257)
+
 [node name="Elevator Room" type="Node" parent="Enviroment/Blocking"]
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Elevator Room"]
@@ -1705,6 +1781,17 @@ timing = 8.0
 
 [node name="key" parent="Enviroment/Blocking/Elevator Room/interactables" instance=ExtResource("5_qpbge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7327, 23.2689, -183.383)
+
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Elevator Room"]
+
+[node name="Checkpoint8" parent="Enviroment/Blocking/Elevator Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1.40543, 0, 0, 0, 1.42471, 0, 0, 0, 1, 29.3337, 23.4787, -162.091)
+
+[node name="Checkpoint10" parent="Enviroment/Blocking/Elevator Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(1.40543, 0, 0, 0, 1.42471, 0, 0, 0, 1, 29.3337, 0.636213, -162.465)
+
+[node name="Checkpoint9" parent="Enviroment/Blocking/Elevator Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-6.14332e-08, 0, 1, 0, 1.42471, 0, -1.40543, 0, -4.37114e-08, 8.16479, 23.4787, -163.811)
 
 [node name="Travel Room" type="Node" parent="Enviroment/Blocking"]
 
@@ -1846,6 +1933,23 @@ move_distance_y = 0.0
 move_distance_x = 25.0
 timing = 0.0
 
+[node name="hurtboxes" type="Node" parent="Enviroment/Blocking/Travel Room"]
+
+[node name="HurtZone" parent="Enviroment/Blocking/Travel Room/hurtboxes" instance=ExtResource("20_7odq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4913, 2.07846, -107.355)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/hurtboxes/HurtZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56938, -4.27019, 16.3384)
+shape = SubResource("BoxShape3D_gpc0g")
+
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Travel Room"]
+
+[node name="Checkpoint" parent="Enviroment/Blocking/Travel Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.29526, 0, -1, 0, -4.37114e-08, 5.91418, 23.4198, -163.757)
+
+[node name="Checkpoint2" parent="Enviroment/Blocking/Travel Room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1.29526, 0, -1, 0, -4.37114e-08, 5.79094, 10.1939, -4.12181)
+
 [node name="Power_room" type="Node" parent="Enviroment/Blocking"]
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Power_room"]
@@ -1931,6 +2035,8 @@ move_distance_y = 10.0
 move_time = 8.0
 timing = 5.0
 
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Power_room"]
+
 [node name="Above_duck_as_below_room" type="Node" parent="Enviroment/Blocking"]
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
@@ -1999,10 +2105,10 @@ transform = Transform3D(13.1995, 0, 0, 0, 0.683351, 0, 0, 0, 12.3586, 90.9692, 2
 transform = Transform3D(13.1995, 0, 0, 0, 0.683351, 0, 0, 0, 9.25637, 90.9692, 30.7331, -142.113)
 
 [node name="flooring31" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(5.6791e-15, 2.98702e-08, 16.5563, 2.97229, -2.98702e-08, 0, 1.29923e-07, 0.683352, -7.237e-07, 81.3669, 21.4057, -135.831)
+transform = Transform3D(5.6791e-15, 2.98702e-08, 16.5563, 2.97229, -2.98702e-08, 0, 1.29923e-07, 0.683352, -7.237e-07, 81.3669, 21.4057, -135.531)
 
 [node name="flooring32" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-4.23597e-08, -0.823447, 0, 0.969078, -3.5994e-08, 0, 0, 0, 2.09849, 75.3295, 20.4669, -136.814)
+transform = Transform3D(-6.30053e-08, -4.12234, 0, 1.4414, -1.80193e-07, 0, 0, 0, 2.09849, 74.9621, 20.4669, -136.814)
 
 [node name="flooring30" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
 transform = Transform3D(-8.99221e-08, 0, 12.6057, 0, 0.683352, 0, -2.05718, 0, -5.51013e-07, 81.3669, 22.5449, -136.434)
@@ -2022,10 +2128,10 @@ transform = Transform3D(-3.09155e-07, -1, 0, 7.07264, -4.37114e-08, 0, 0, 0, 3.7
 transform = Transform3D(10.0445, 0, 0, 0, 0.442122, 0, 0, 0, 10.8443, 74.1893, 21.0594, -139.772)
 
 [node name="Darkness2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_m8l2y")]
-transform = Transform3D(-1.55755e-07, -1.95089, 0, 3.56327, -8.52762e-08, 0, 0, 0, 2.58032, 77.4228, 21.0779, -136.666)
+transform = Transform3D(-1.55755e-07, -1.95089, 0, 3.56327, -8.52762e-08, 0, 0, 0, 2.58032, 76.7877, 21.0779, -136.666)
 
 [node name="RevealedLightObject3" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("3_85wfg")]
-transform = Transform3D(13.2201, 0, 0, 0, 0.186527, 0, 0, 0, 1.37867, 82.383, 20.1471, -136.791)
+transform = Transform3D(13.2201, 0, 0, 0, 0.186527, 0, 0, 0, 2.53452, 82.383, 20.1471, -136.294)
 
 [node name="ladder" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("16_5ulcn")]
 transform = Transform3D(0.790268, 0, 0, 0, 0.396726, 0, 0, 0, 0.272869, 88.318, 20.2219, -138.024)
@@ -2033,15 +2139,17 @@ transform = Transform3D(0.790268, 0, 0, 0, 0.396726, 0, 0, 0, 0.272869, 88.318, 
 [node name="ladder2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("16_5ulcn")]
 transform = Transform3D(-0.790268, 0, -2.13729e-08, 0, 0.352495, 0, 6.90875e-08, 0, -0.244477, 96.0702, 25.9007, -146.779)
 
+[node name="checkpoints" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
+
+[node name="Checkpoint" parent="Enviroment/Blocking/Above_duck_as_below_room/checkpoints" instance=ExtResource("19_dd1t0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.0874, 23.844, -139.877)
+
 [node name="collectibles" type="Node3D" parent="Enviroment"]
 
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.2917, 0.897246, -76.8503)
-
-[node name="Enemy_Base" parent="entities" instance=ExtResource("18_gosfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0011, 0.02085, -66.7252)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.7008, 10.5218, -3.34111)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="trigger_effect" from="Enviroment/Blocking/Mobile Room/Interactables/Button" to="Enviroment/Blocking/Mobile Room/mobile/Path3D/mobile_path" method="_on_button_trigger_effect"]
