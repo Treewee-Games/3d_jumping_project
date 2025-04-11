@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b4h4gruh3u78b"]
+
+[ext_resource type="FontFile" uid="uid://cu1l251dbm47p" path="res://globals/fonts/TooMuchInk.ttf" id="1_26ukf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnudt"]
+content_margin_left = 179.0
+content_margin_top = 94.0
+bg_color = Color(0.46922, 0.353154, 1, 1)
+border_width_left = 50
+border_width_top = 70
+border_width_right = 145
+border_width_bottom = 65
+border_color = Color(0, 0.137255, 0.176471, 0)
+border_blend = true
+corner_radius_top_left = 250
+corner_radius_top_right = 190
+corner_radius_bottom_right = 910
+expand_margin_bottom = 15.0
+shadow_color = Color(0, 0, 0, 0)
+
+[resource]
+default_font = ExtResource("1_26ukf")
+RichTextLabel/colors/default_color = Color(0.0057607, 0.00920362, 0.00789314, 1)
+RichTextLabel/colors/font_outline_color = Color(0.29941, 0.311668, 0.293337, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.377919, 0.377919, 0.377919, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/shadow_offset_x = -1
+RichTextLabel/constants/shadow_offset_y = 8
+RichTextLabel/constants/shadow_outline_size = 7
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = ExtResource("1_26ukf")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_pnudt")

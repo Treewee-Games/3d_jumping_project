@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfn635kds3tau"]
+
+[ext_resource type="PackedScene" uid="uid://dl32lf4rpiwb7" path="res://world_elements/npcs/enemies/enemy_base.tscn" id="1_s7w30"]
+[ext_resource type="PackedScene" uid="uid://dtj68dq5uxp15" path="res://world_elements/npcs/enemies/mooks/slimes_animation/slime.tscn" id="2_5k8qd"]
+
+[node name="Slime_Enemy" instance=ExtResource("1_s7w30")]
+input_ray_pickable = false
+creature_name = "Slime"
+
+[node name="Slime" parent="." index="2" node_paths=PackedStringArray("base") instance=ExtResource("2_5k8qd")]
+base = NodePath("..")

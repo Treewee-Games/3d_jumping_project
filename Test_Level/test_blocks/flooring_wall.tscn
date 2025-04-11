@@ -1,6 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://bti3esp4en82m"]
+[gd_scene load_steps=9 format=3 uid="uid://bti3esp4en82m"]
+
+[ext_resource type="Texture2D" uid="uid://dean7gshpdssu" path="res://globals/stock_textures/Vol_75_2_Base_Color.png" id="1_5ht5t"]
+[ext_resource type="Texture2D" uid="uid://crjqsh2fxy5ap" path="res://globals/stock_textures/Vol_75_2_Ambient_Occlusion.png" id="2_olsxu"]
+[ext_resource type="Texture2D" uid="uid://b8jmjx7fxwp0e" path="res://globals/stock_textures/Vol_75_2_Normal.png" id="3_x2qdh"]
+[ext_resource type="Texture2D" uid="uid://cnk4fg348073k" path="res://globals/stock_textures/Vol_75_2_Height.png" id="4_n7fgp"]
+[ext_resource type="Texture2D" uid="uid://bxuq78gh4xdso" path="res://globals/stock_textures/Vol_75_2_Roughness.png" id="5_e6d5d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkdwe"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_5ht5t")
+roughness_texture = ExtResource("5_e6d5d")
+normal_enabled = true
+normal_texture = ExtResource("3_x2qdh")
+ao_enabled = true
+ao_texture = ExtResource("2_olsxu")
+heightmap_texture = ExtResource("4_n7fgp")
+refraction_texture = ExtResource("3_x2qdh")
+detail_albedo = ExtResource("1_5ht5t")
+detail_normal = ExtResource("3_x2qdh")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
 
 [sub_resource type="BoxMesh" id="BoxMesh_6vq4k"]
+material = SubResource("StandardMaterial3D_rkdwe")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lem0c"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)

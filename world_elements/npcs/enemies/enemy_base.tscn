@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl32lf4rpiwb7"]
+[gd_scene load_steps=6 format=3 uid="uid://dl32lf4rpiwb7"]
 
 [ext_resource type="PackedScene" uid="uid://b2uirf6vetcu6" path="res://world_elements/npcs/npc.tscn" id="1_52bd1"]
 [ext_resource type="Script" path="res://world_elements/npcs/enemies/enemy_base.gd" id="2_oelt8"]
 [ext_resource type="Script" path="res://world_elements/Interactables/objects/hit_area.gd" id="3_g5vjy"]
-[ext_resource type="PackedScene" uid="uid://dtj68dq5uxp15" path="res://world_elements/npcs/enemies/mooks/slimes_animation/slime.tscn" id="4_fhn6w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4lwh"]
 radius = 0.777914
@@ -15,7 +14,7 @@ height = 1.59242
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("2_oelt8")
-creature_name = "Slime"
+creature_name = ""
 lock_on_distance = 7.0
 
 [node name="target" parent="." index="0"]
@@ -32,10 +31,7 @@ script = ExtResource("3_g5vjy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.720783, 0)
 shape = SubResource("CapsuleShape3D_g4lwh")
 
-[node name="Slime" parent="." index="2" node_paths=PackedStringArray("base") instance=ExtResource("4_fhn6w")]
-base = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520603, 0)
 shape = SubResource("SphereShape3D_metu4")
 

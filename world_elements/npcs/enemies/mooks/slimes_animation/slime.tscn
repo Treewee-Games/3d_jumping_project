@@ -202,13 +202,13 @@ radius = 0.852194
 script = ExtResource("2_epsg6")
 
 [node name="Skeleton3D" parent="MonsterArmature" index="0"]
-bones/1/position = Vector3(-7.80307e-18, 0.0949212, 0.500829)
-bones/2/position = Vector3(0, 0.500358, 0)
-bones/4/rotation = Quaternion(4.87891e-19, 5.7117e-10, -0.0200591, 0.999799)
-bones/5/position = Vector3(-0.430698, 0.486234, 0.506212)
-bones/5/rotation = Quaternion(-0.0156303, 0.00332456, 0.0161192, 0.999742)
-bones/6/position = Vector3(0.430698, 0.486234, 0.506212)
-bones/6/rotation = Quaternion(-0.0156303, -0.00332456, -0.0161192, 0.999742)
+bones/1/position = Vector3(-7.80307e-18, 0.100007, 0.500829)
+bones/2/position = Vector3(0, 0.510413, 0)
+bones/4/rotation = Quaternion(-4.33681e-19, 2.23445e-09, 0.010538, 0.999945)
+bones/5/position = Vector3(-0.430698, 0.49238, 0.506212)
+bones/5/rotation = Quaternion(-0.0247866, 0.00527212, 0.025562, 0.999352)
+bones/6/position = Vector3(0.430698, 0.49238, 0.506212)
+bones/6/rotation = Quaternion(-0.0247866, -0.00527212, -0.025562, 0.999352)
 
 [node name="Enemy_Body" parent="MonsterArmature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_dd4pd")
@@ -273,5 +273,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.88592, 1.21344)
 
 [node name="Slash2" parent="." index="8" instance=ExtResource("6_wsoxp")]
 transform = Transform3D(-0.568268, -3.10972e-08, 0, 4.96795e-08, -0.355711, 0, 0, 0, 0.413833, 0, 0.990116, 1.01216)
+
+[node name="Wall_Checks" type="Node3D" parent="." index="9"]
+
+[node name="l_ray" type="RayCast3D" parent="Wall_Checks" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.157, 1, 0)
+collide_with_areas = true
+
+[node name="r_ray" type="RayCast3D" parent="Wall_Checks" index="1"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.1, 1, 0)
+collide_with_areas = true
+
+[node name="b_ray" type="RayCast3D" parent="Wall_Checks" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0535746, 1.07747, -0.778849)
+collide_with_areas = true
+
+[node name="f_ray" type="RayCast3D" parent="Wall_Checks" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0163814, 1.01067, 0.738023)
+collide_with_areas = true
+
+[node name="floor_check" type="RayCast3D" parent="Wall_Checks" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137571, 1.1793)
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="body_entered" from="Attack_Area" to="." method="_on_attack_area_body_entered"]

@@ -10,8 +10,10 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nicjf"]
 
-[node name="Door" type="Node3D"]
+[node name="Door" type="Node3D" node_paths=PackedStringArray("door", "door_creature_round_2")]
 script = ExtResource("1_triet")
+door = NodePath("StaticBody3D")
+door_creature_round_2 = NodePath("StaticBody3D/door_creature_round2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

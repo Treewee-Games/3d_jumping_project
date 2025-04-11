@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://6j8sws3vc58v"]
+
+[ext_resource type="Script" path="res://world_elements/Interactables/power_objects/hidden_decals.gd" id="1_rinqa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bw8gh"]
+
+[node name="Hidden_Decals" type="Area3D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_rinqa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bw8gh")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0, 0, 0)
+modulate = Color(0, 0, 0, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

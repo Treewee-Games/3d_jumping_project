@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhemkys40o5e5"]
+
+[ext_resource type="Script" path="res://world_elements/Interactables/objects/signs/sign.gd" id="1_qevoe"]
+[ext_resource type="PackedScene" uid="uid://dlbrs2h1sjbvu" path="res://blends/misc objects/signs/sign.glb" id="1_w0keq"]
+[ext_resource type="PackedScene" uid="uid://6ckgx7csdiaa" path="res://world_elements/world_scripts/dialogue.tscn" id="3_dvp4p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q607x"]
+radius = 0.473678
+
+[node name="Sign" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_qevoe")
+text_messages = "This is now the editor of editors you fool"
+
+[node name="sign" parent="." instance=ExtResource("1_w0keq")]
+
+[node name="reading_area" type="Area3D" parent="sign"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sign/reading_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502905, 0.399387, 0)
+shape = SubResource("SphereShape3D_q607x")
+
+[node name="Dialogue" parent="." instance=ExtResource("3_dvp4p")]
+process_mode = 3
+visible = false
+
+[node name="Reading_Cam" type="Camera3D" parent="."]
+transform = Transform3D(0.680785, 0, 0.732483, 0, 1, 0, -0.732483, 0, 0.680785, 1.60176, 0.984075, 1.07203)
+
+[connection signal="body_entered" from="sign/reading_area" to="." method="_on_reading_area_body_entered"]
+[connection signal="body_exited" from="sign/reading_area" to="." method="_on_reading_area_body_exited"]

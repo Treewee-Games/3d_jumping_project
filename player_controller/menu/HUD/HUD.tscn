@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ber3nh8gwqrog"]
+[gd_scene load_steps=8 format=3 uid="uid://ber3nh8gwqrog"]
 
 [ext_resource type="Script" path="res://player_controller/menu/HUD/hud.gd" id="1_66ibx"]
 [ext_resource type="Texture2D" uid="uid://boswcybf1rgnc" path="res://player_controller/menu/HUD/Final HUD elements/Action_Button.png" id="2_6v2hm"]
 [ext_resource type="Texture2D" uid="uid://bkbc1ugrwdthk" path="res://player_controller/menu/HUD/Final HUD elements/Use_Button.png" id="3_8nhc7"]
 [ext_resource type="Texture2D" uid="uid://dqxfk4qqkok6m" path="res://player_controller/menu/HUD/Final HUD elements/D-Pad.png" id="4_khmly"]
+[ext_resource type="PackedScene" uid="uid://buywgwmbvmomc" path="res://player_controller/menu/HUD/soul_view.tscn" id="5_wlrct"]
+[ext_resource type="PackedScene" uid="uid://fjae1lhspu40" path="res://player_controller/menu/HUD/keys_view.tscn" id="6_6uidi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p6cq"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -18,13 +20,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_66ibx")
+metadata/_edit_use_anchors_ = true
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-grow_horizontal = 0
-metadata/_edit_use_anchors_ = true
+offset_bottom = 175.0
+grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer"]
 custom_minimum_size = Vector2(0, 175)
@@ -145,12 +148,101 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Souls" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Filler" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="Keys" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Filler2" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Filler3" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Filler4" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom_Layer" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/Bottom_Layer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer/SubViewportContainer" instance=ExtResource("5_wlrct")]
+handle_input_locally = false
+size = Vector2i(100, 80)
+
+[node name="Label" type="Label" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "0
+"
+horizontal_alignment = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VSplitContainer/Bottom_Layer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer2/SubViewportContainer" instance=ExtResource("6_6uidi")]
+handle_input_locally = false
+size = Vector2i(100, 80)
+
+[node name="Label" type="Label" parent="VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="Filler" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler2" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler3" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler4" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler5" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler6" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler7" type="VBoxContainer" parent="VSplitContainer/Bottom_Layer"]
+layout_mode = 2
+size_flags_horizontal = 3

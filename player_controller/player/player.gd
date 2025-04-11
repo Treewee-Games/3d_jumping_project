@@ -60,6 +60,7 @@ var light_on := false
 #region Menus/HUD
 @onready var pause_menu: Control = $PauseMenu
 @onready var hud: Control = $Hud
+var is_paused: bool = false
 #endregion
 #region Additional Variables
 @onready var skin: Node3D = $lil_skin
@@ -86,6 +87,7 @@ var blocking: bool = false
 #region Combat
 var attacking: bool = false
 var is_dodging: bool = false
+var is_hit: bool = false
 #endregion
 #region lock-on mechanic
 var target_entered : bool = false
@@ -101,35 +103,47 @@ var targets: Array = []
 @export var input_dead_zone: float = 0.05
 @export var lock_on_distance: float = 10
 #endregion
+#region Signals
+@warning_ignore("unused_signal")
+signal pausing(value:bool)
+
+
 #endregion
 #region setup
 func _ready() -> void:
 	hud.setup(max_health, health)
 	GlobalStats.activate_power.connect(ability)
+	Checkpoints.set_checkpoint(self.global_transform.origin)
+	self.connect("pausing", Callable(self, "dialogue_menu"))
 	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.toggle_pause()
 	menu_action()
+	dialogue_menu(is_paused)
 
 func _physics_process(delta: float) -> void:
 	if not is_dead:
 		if not pause_menu.is_paused:
-			gravity_stuff(delta)
-			state_machine._process(delta)
-			_jumping_logic(delta)
-			_movement_logic(delta)
-			activate_abilities()
-			can_stand_up()
-			attacked()
-			block_check()
-			move_and_slide()
-			if targeting:
-				stop_targeting_thing()
-				target_switching()
-			else:
-				target_thing()
+			if not is_paused:
+				gravity_stuff(delta)
+				state_machine._process(delta)
+				_jumping_logic(delta)
+				activate_abilities()
+				can_stand_up()
+				attacked()
+				block_check()
+				move_and_slide()
+				if is_hit:
+					pass
+				else:
+					_movement_logic(delta)
+				if targeting:
+					stop_targeting_thing()
+					target_switching()
+				else:
+					target_thing()
 		
 	
 	if Input.is_action_just_pressed("test button"):
@@ -386,6 +400,7 @@ func attacked()->void:
 			attack_check = 0
 func damaged(attacker: CharacterBody3D) -> void:
 	if not $Timers/InvulTimer.time_left:
+		is_hit = true
 		health -= max(0,1)
 		var tween = create_tween()
 		tween.tween_property(skin, "scale", Vector3(.4,.8,.4),.2)
@@ -393,6 +408,8 @@ func damaged(attacker: CharacterBody3D) -> void:
 		GlobalStats.hit_stop(.015)
 		GlobalStats.apply_knockback(self, attacker, 10)
 		$Timers/InvulTimer.start()
+		await get_tree().create_timer(.2).timeout
+		is_hit = false
 #endregion
 
 #region Menu Actions
@@ -403,8 +420,16 @@ func menu_action()->void:
 	else:
 		get_tree().paused = false
 		pause_menu.hide()
-
+		
+func dialogue_menu(value:bool)->void:
+	is_paused = value
+	if is_paused:
+		get_tree().paused = is_paused
+	else:
+		get_tree().paused = is_paused
 #endregion
+
+
 
 #region ability activations
 func activate_abilities()->void:

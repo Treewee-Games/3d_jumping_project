@@ -15,6 +15,15 @@ var random_timer: float = 0
 @onready var player_finder: RayCast3D = $Player_finder
 var is_hit: bool = false
 var attacked: bool = false
+#region wall_checks
+@onready var l_ray: RayCast3D = $Wall_Checks/l_ray
+@onready var r_ray: RayCast3D = $Wall_Checks/r_ray
+@onready var b_ray: RayCast3D = $Wall_Checks/b_ray
+@onready var f_ray: RayCast3D = $Wall_Checks/f_ray
+@onready var floor_check: RayCast3D = $Wall_Checks/floor_check
+
+var wall_checked: bool = false
+#endregion
 
 
 func _ready() -> void:
@@ -76,7 +85,11 @@ func move_rand(delta: float)->void:
 	if random_timer <= 0:
 		random_direction = generate_random_direction()
 		random_timer = random_change_interval
-		
+	if wall_checked:
+		var avoid_dir: Vector3 = get_wall_avoidance_direction()
+		random_direction = random_direction.lerp(avoid_dir, 0.8).normalized()
+	
+	
 		
 	base.velocity = random_direction * base.speed
 	
@@ -92,9 +105,9 @@ func move_rand(delta: float)->void:
 
 func movement(delta)->void:
 	if base.targeting:
-		if not attacked:
-			if not is_hit:
-				move_towards_player(delta)
+			if not attacked:
+				if not is_hit:
+					move_towards_player(delta)
 	else:
 		if not attacked:
 			if not is_hit:
@@ -103,6 +116,9 @@ func movement(delta)->void:
 func _physics_process(delta: float) -> void:
 	if current_state == "Walk":
 		movement(delta)
+		move_away()
+		avoid_ledge(delta)
+
 
 func attack()->void:
 	var collider = player_finder.get_collider()
@@ -125,3 +141,31 @@ func play_attack()->void:
 		await $AnimationTree.animation_finished
 		await get_tree().create_timer(1).timeout
 		attacked = false
+
+func move_away()->void:
+	wall_checked = false
+	var ray_array: Array = [l_ray, r_ray, b_ray, f_ray]
+	for ray in ray_array:
+		if ray.is_colliding:
+			wall_checked = true
+			break
+		else:
+			break
+			
+func get_wall_avoidance_direction()->Vector3:
+	var avoidance: Vector3 = Vector3.ZERO
+	var count: int = 0
+	var ray_array: Array = [l_ray, r_ray, b_ray, f_ray]
+	for ray in ray_array:
+		if ray.is_colliding:
+			avoidance += ray.get_collision_normal()
+			count += 1
+	if count > 0:
+		avoidance /= count
+		avoidance = avoidance.normalized()
+	return avoidance
+
+func avoid_ledge(delta: float)->void:
+	if not floor_check.is_colliding:
+		var target_yaw: float = rotation.y + deg_to_rad(90)
+		base.rotation.y = lerp_angle(rotation.y, target_yaw, 3.0 * delta)
