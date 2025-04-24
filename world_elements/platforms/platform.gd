@@ -4,6 +4,8 @@ extends Node3D
 @onready var origin: Marker3D = $origin
 @onready var player = get_tree().get_first_node_in_group("player") as CharacterBody3D
 @export var button_or_not := false
+@export var one_shot_button:= false
+var allow_pass:= false
 var platform_up := false
 @export var move_distance_y := 1.0
 @export var move_distance_x := 0.0
@@ -13,6 +15,8 @@ var platform_up := false
 
 func _physics_process(_delta: float) -> void:
 	platform_movement_up()
+	if allow_pass:
+		_on_button_trigger_effect()
 
 func _on_button_trigger_effect() -> void:
 	if button_or_not and not platform_up:
@@ -25,6 +29,10 @@ func _on_button_trigger_effect() -> void:
 		await tween.finished
 		platform.constant_linear_velocity = Vector3.ZERO
 		await get_tree().create_timer(timing).timeout
+		if one_shot_button:
+			allow_pass = true
+		else:
+			pass
 		platform_movement_down()
 		
 

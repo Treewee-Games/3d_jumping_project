@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://buywgwmbvmomc"]
+[gd_scene load_steps=3 format=3 uid="uid://buywgwmbvmomc"]
 
 [ext_resource type="PackedScene" uid="uid://ccx8h2wrmr1vt" path="res://world_elements/collectibles/currencies/soul.tscn" id="1_50jrn"]
 
-[node name="SubViewport" type="SubViewport"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0tflw"]
+
+[node name="Souls_Count" type="SubViewport"]
 own_world_3d = true
 transparent_bg = true
-render_target_update_mode = 4
+render_target_clear_mode = 1
+render_target_update_mode = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -15,3 +18,9 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181631, 0.68114, 0.776227)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.279225, 0)
+shape = SubResource("WorldBoundaryShape3D_0tflw")

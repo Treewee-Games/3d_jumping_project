@@ -64,13 +64,12 @@ draw_pass_1 = SubResource("SphereMesh_oojs2")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.123792, 0, 0)
-light_energy = 12.636
-light_volumetric_fog_energy = 16.0
-light_bake_mode = 1
+light_energy = 16.0
+light_volumetric_fog_energy = 6.995
 shadow_bias = 7.0
 shadow_transmittance_bias = 8.777
 shadow_blur = 3.929
 distance_fade_enabled = true
 distance_fade_begin = 5.0
-spot_range = 3.808
-spot_angle = 80.32
+spot_range = 4.74168
+spot_angle = 73.7288

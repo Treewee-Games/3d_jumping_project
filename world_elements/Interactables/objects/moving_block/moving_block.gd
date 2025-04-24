@@ -13,14 +13,16 @@ var attached_player: Node3D = null
 func start_push(player_node: Node3D) -> void:
 	attached = true
 	attached_player = player_node
+	print(attached_player)
 
 # Call this to detach the block from the player.
-func stop_push() -> void:
+func stop_push(player_node: Node3D) -> void:
 	attached = false
-	attached_player = null
+	if attached_player == player_node:
+		attached_player = null
 	# Re-enable physics if desired.
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if attached and attached_player:
 		# Get the player's forward direction.
 		# (Assuming that the player's "forward" is negative Z, which is common in Godot.)

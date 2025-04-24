@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://globals/shaders/camera_postprocessing.gdshader" id="1_fdw82"]
 
 [resource]
-render_priority = 1
+render_priority = 3
 shader = ExtResource("1_fdw82")
 shader_parameter/outlineColor = Color(0, 0, 0, 1)
 shader_parameter/depth_threshold = 0.025
@@ -15,4 +15,4 @@ shader_parameter/max_distance = 75.0
 shader_parameter/min_distance = 2.0
 shader_parameter/grazing_fresnel_power = 5.0
 shader_parameter/grazing_angle_mask_power = 1.0
-shader_parameter/grazing_angle_modulation_factor = 50.0
+shader_parameter/grazing_angle_modulation_factor = 50.82

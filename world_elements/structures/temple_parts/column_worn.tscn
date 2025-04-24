@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://x6dflg3ef4wo"]
+
+[ext_resource type="PackedScene" uid="uid://c7n8ma4mmqu7g" path="res://blends/enviorment/structures/ruins/column_4_1.fbx" id="1_bspq8"]
+[ext_resource type="Texture2D" uid="uid://0s6sq5ubep3c" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Base_Color.png" id="2_leqyw"]
+[ext_resource type="Texture2D" uid="uid://63qhatj6r6ei" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Ambient_Occlusion.png" id="3_mup22"]
+[ext_resource type="Texture2D" uid="uid://lmy8jgmskltd" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Normal.png" id="4_7prhm"]
+[ext_resource type="Material" uid="uid://onveecl84hku" path="res://globals/shader_materials/toon_shading.tres" id="4_j27g2"]
+[ext_resource type="Texture2D" uid="uid://dkmaxsgi804v" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Roughness.png" id="5_5s7ly"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7vni"]
+render_priority = -1
+next_pass = ExtResource("4_j27g2")
+transparency = 1
+blend_mode = 3
+cull_mode = 2
+depth_draw_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.513947, 0.687865, 0.612296, 1)
+albedo_texture = ExtResource("2_leqyw")
+roughness_texture = ExtResource("5_5s7ly")
+normal_enabled = true
+normal_scale = 5.8
+normal_texture = ExtResource("4_7prhm")
+ao_enabled = true
+ao_texture = ExtResource("3_mup22")
+uv1_scale = Vector3(-0.015, -0.015, -0.015)
+uv1_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pcnvx"]
+points = PackedVector3Array(0.695728, -8.68113e-08, 1.14985, -1.00006, 3.99979, 0.99993, -1.00006, -8.68113e-08, 0.99993, 1.14985, -8.68113e-08, 0.695694, 0.985041, 4.2517, 0.984982, 0.985041, 4.77147, 0.984982, 0.705646, 5.16682, 0.984982, -0.985284, 5.16682, 0.984982, -1.00006, 3.99979, -0.634458, -1.00596, 0.454475, -0.93122, -0.985284, 5.25217, 0.899911, -0.987394, 0.0467841, -0.917591, -0.824273, 0.0467841, -1.08246, 0.999812, -8.68113e-08, -1.00002, 1.01543, 4.39771, -1.01102, 0.985041, 5.17813, 0.578529, 0.911183, 5.25217, 0.609304, 0.705646, 5.25217, 0.899911, -1.00006, 3.73297, -1.00002, -1.00554, 0.657549, -1.09367, -0.985284, 5.25217, -0.936495, -0.842843, 0.454475, -1.09587, -0.985284, 5.20332, -0.985296, 0.985041, 4.90977, -0.985296, 0.985041, 5.19973, -0.774705, 0.911183, 5.25217, -0.725025, 0.639174, 5.25217, -0.798226)
+
+[node name="column_worn" instance=ExtResource("1_bspq8")]
+
+[node name="column_4_1" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_p7vni")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_pcnvx")

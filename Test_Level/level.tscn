@@ -1,24 +1,34 @@
-[gd_scene load_steps=54 format=3 uid="uid://dq8pyg0f83g7x"]
+[gd_scene load_steps=183 format=3 uid="uid://dq8pyg0f83g7x"]
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player/player.tscn" id="1_jxnkr"]
 [ext_resource type="ArrayMesh" uid="uid://jvjbb77wklf1" path="res://blends/enviorment/structures/floors/floor.res" id="1_s85jt"]
-[ext_resource type="Shader" path="res://globals/shaders/n64_metal.gdshader" id="2_we4lx"]
 [ext_resource type="PackedScene" uid="uid://de8oi1sfspwb2" path="res://world_elements/Interactables/power_objects/revealed_light_object.tscn" id="3_85wfg"]
-[ext_resource type="Texture2D" uid="uid://bevrxpcij80sh" path="res://globals/stock_noise/quick_stock_noise.tres" id="3_m5yje"]
 [ext_resource type="PackedScene" uid="uid://qjhb0kcsqc5w" path="res://world_elements/Interactables/power_objects/Darkness.tscn" id="3_m8l2y"]
 [ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="4_ue48o"]
 [ext_resource type="PackedScene" uid="uid://dwskdbteqiwyr" path="res://world_elements/collectibles/keys/key.tscn" id="5_qpbge"]
 [ext_resource type="PackedScene" uid="uid://k8ym120xhwi8" path="res://world_elements/platforms/falling_platform.tscn" id="6_1krqe"]
+[ext_resource type="Texture2D" uid="uid://cmfjy8xohvxur" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Base_Color.png" id="7_1q4rt"]
 [ext_resource type="PackedScene" uid="uid://8ah6bqbkhrfh" path="res://world_elements/Interactables/unlockers/power_unlocker.tscn" id="7_as8mn"]
+[ext_resource type="Texture2D" uid="uid://bmoah30iucbuo" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Ambient_Occlusion.png" id="8_lgbgg"]
 [ext_resource type="PackedScene" uid="uid://bstwxe1iv8icb" path="res://player_controller/skins/particles/eye_lights.tscn" id="8_yie4v"]
 [ext_resource type="Script" path="res://world_elements/path scripts/path_script.gd" id="9_2o5u5"]
+[ext_resource type="Texture2D" uid="uid://b2i1vl6s633tg" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Normal.png" id="9_hchb4"]
 [ext_resource type="PackedScene" uid="uid://buqmxxjjp5000" path="res://world_elements/buttons/simple_button.tscn" id="9_sgdh5"]
+[ext_resource type="PackedScene" uid="uid://onibuyfipqnh" path="res://world_elements/structures/temple_parts/full_arch.tscn" id="10_18yxk"]
 [ext_resource type="PackedScene" uid="uid://c5u6hi0fxgwig" path="res://world_elements/platforms/path_platform.tscn" id="10_qi4hq"]
 [ext_resource type="PackedScene" uid="uid://bti3esp4en82m" path="res://Test_Level/test_blocks/flooring_wall.tscn" id="10_uqycr"]
+[ext_resource type="Texture2D" uid="uid://cj0hb1h6i1mv7" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Roughness.png" id="10_vousm"]
+[ext_resource type="PackedScene" uid="uid://cvff0xgqtrxps" path="res://world_elements/structures/temple_parts/plate_1.tscn" id="11_8lniv"]
+[ext_resource type="PackedScene" uid="uid://8dd6obgkt4up" path="res://world_elements/structures/temple_parts/column_small_1.tscn" id="12_8323h"]
+[ext_resource type="Texture2D" uid="uid://dean7gshpdssu" path="res://globals/stock_textures/Roots/Vol_75_2_Base_Color.png" id="12_go8ex"]
 [ext_resource type="PackedScene" uid="uid://dant8aj5au4yb" path="res://world_elements/doors/jail_door.tscn" id="12_m13l2"]
+[ext_resource type="Texture2D" uid="uid://crjqsh2fxy5ap" path="res://globals/stock_textures/Roots/Vol_75_2_Ambient_Occlusion.png" id="13_4i7d2"]
 [ext_resource type="Script" path="res://world_elements/world_scripts/jail_door_code.gd" id="13_qm4es"]
-[ext_resource type="PackedScene" uid="uid://bqk4v4w1om7vi" path="res://Test_Level/Test_Block.tscn" id="15_yrns8"]
+[ext_resource type="Texture2D" uid="uid://b8jmjx7fxwp0e" path="res://globals/stock_textures/Roots/Vol_75_2_Normal.png" id="14_lcs3a"]
+[ext_resource type="Texture2D" uid="uid://cnk4fg348073k" path="res://globals/stock_textures/Roots/Vol_75_2_Height.png" id="15_63pn4"]
+[ext_resource type="PackedScene" uid="uid://bqk4v4w1om7vi" path="res://Test_Level/test_blocks/Test_Block.tscn" id="15_yrns8"]
+[ext_resource type="Texture2D" uid="uid://bxuq78gh4xdso" path="res://globals/stock_textures/Roots/Vol_75_2_Roughness.png" id="16_3im5q"]
 [ext_resource type="PackedScene" uid="uid://vfyag0ovipq7" path="res://world_elements/climbable/ladder.tscn" id="16_5ulcn"]
 [ext_resource type="Texture2D" uid="uid://cel8qdgaa2qxm" path="res://globals/decal/Roman_numerals_4.png" id="18_4fgeo"]
 [ext_resource type="Texture2D" uid="uid://br44dorhpc0yr" path="res://globals/decal/Roman_numerals_2.png" id="18_b43c3"]
@@ -31,6 +41,12 @@
 [ext_resource type="Texture2D" uid="uid://bx0th6vxqxgd1" path="res://globals/decal/Roman_numerals_6.png" id="22_feub0"]
 [ext_resource type="Texture2D" uid="uid://bmmmy8d0072wr" path="res://globals/decal/Roman_numeral_1.png" id="24_vatdl"]
 [ext_resource type="PackedScene" uid="uid://6j8sws3vc58v" path="res://world_elements/Interactables/power_objects/hidden_decals.tscn" id="25_f8oo7"]
+[ext_resource type="PackedScene" uid="uid://dkosseamoiel1" path="res://Test_Level/test_blocks/dirt.tscn" id="28_osvb2"]
+[ext_resource type="PackedScene" uid="uid://x6dflg3ef4wo" path="res://world_elements/structures/temple_parts/column_worn.tscn" id="42_lhjae"]
+[ext_resource type="PackedScene" uid="uid://cj6xhsk1wv4mj" path="res://world_elements/structures/temple_parts/plate_worn.tscn" id="44_5xmt5"]
+[ext_resource type="PackedScene" uid="uid://dpf2lprm5kqpy" path="res://world_elements/Interactables/objects/moving_block/Moving_block.tscn" id="44_ovkqi"]
+[ext_resource type="PackedScene" uid="uid://vuqdjyhe4h5y" path="res://world_elements/elements_water_fire_etc/fog/fog_area.tscn" id="46_0yre4"]
+[ext_resource type="PackedScene" uid="uid://dvbg81td2s25k" path="res://world_elements/collectibles/keys/boss_key.tscn" id="46_lptwy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
 sky_top_color = Color(0.0932364, 0.372103, 1, 1)
@@ -47,73 +63,99 @@ sky_material = SubResource("ProceduralSkyMaterial_mk158")
 
 [sub_resource type="Environment" id="Environment_2fufs"]
 background_mode = 1
-background_color = Color(0.546409, 3.85046e-07, 2.40654e-07, 0.364706)
-background_energy_multiplier = 0.05
+background_color = Color(1, 0.835824, 0.890026, 1)
 sky = SubResource("Sky_433yw")
 sky_custom_fov = 17.8
-ambient_light_source = 1
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 1
-tonemap_mode = 1
-tonemap_exposure = 2.63
-tonemap_white = 8.85
+tonemap_exposure = 0.15
 ssr_fade_in = 0.848527
 glow_normalized = true
 glow_intensity = 5.85
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.200351, 0.208608, 0.192966, 1)
-fog_light_energy = 0.0
-fog_density = 0.0
-fog_depth_begin = 0.0
-fog_depth_end = 767.9
+fog_light_color = Color(0.842764, 0.850995, 0.835529, 1)
+fog_density = 1.0
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.382019, 0.423481, 0.36649, 1)
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_gi_inject = 0.38
-volumetric_fog_detail_spread = 3.95853
-volumetric_fog_ambient_inject = 0.66
+volumetric_fog_albedo = Color(0.660231, 0.848876, 0.689749, 1)
+volumetric_fog_emission = Color(0.471221, 0.497418, 0.326974, 1)
 adjustment_brightness = 0.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmn6j"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_we4lx")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/metalness = 1.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/lighting_power = 1.0
-shader_parameter/lighting_map = ExtResource("3_m5yje")
-shader_parameter/reflected_map_power = 0.4
-shader_parameter/reflected_map = ExtResource("3_m5yje")
-shader_parameter/use_refraction = false
-shader_parameter/refraction_amount = 4.055
-shader_parameter/refraction_brightness = 2.885
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f05ij"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u25b3"]
-resource_local_to_scene = true
-points = PackedVector3Array(0.457871, 0.198079, 0.0157824, -0.48874, -0.0916874, -0.0451868, -0.471509, -0.137027, -0.0907015, 0.0763591, -0.333275, 0.364179, 0.136569, -0.332425, -0.346906, -0.151617, 0.471982, -0.0602459, -0.105347, 0.211936, 0.43966, -0.0450169, 0.198098, -0.456416, 0.409077, -0.151168, 0.242516, -0.271376, -0.377761, 0.181871, 0.41148, -0.075981, -0.27324, 0.198197, -0.456161, -0.044931, -0.240641, -0.331674, -0.285768, 0.227137, 0.25672, 0.363041, 0.227522, 0.423604, -0.135488, -0.37899, 0.0607022, 0.319462, -0.406747, 0.181049, -0.225691, -0.0146313, -0.0917695, 0.490229, -0.377855, 0.302793, 0.121712, 0.0462323, 0.456011, 0.198185, -0.227464, -0.0607863, -0.440348, 0.228455, 0.0607228, -0.439887, -0.0911376, -0.489246, -0.045174, 0.441865, -0.228216, -0.0449581, 0.317179, 0.241214, -0.300812, -0.0448487, 0.394737, -0.302955, -0.316348, -0.196222, 0.332551, 0.198442, -0.0304293, 0.457237, 0.0614714, -0.152246, -0.471307, 0.363089, 0.256708, 0.227079, 0.152134, -0.439489, 0.182379, -0.210725, 0.362276, 0.27223)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48u8k"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4qvm6"]
 data = PackedVector3Array(1, -0.0074, 1, 0.1044, -0.0074, 0.1563, 0.1329, -0.0074, 0.1329, 1, -0.0074, 1, 0.0719, -0.0074, 0.1736, 0.1044, -0.0074, 0.1563, -0.1563, -0.0074, -0.1044, -1, -0.0074, -1, -0.1329, -0.0074, -0.1329, -0.1737, -0.0074, -0.0719, -1, -0.0074, -1, -0.1563, -0.0074, -0.1044, -1, -0.0074, 1, 0.0719, -0.0074, 0.1736, 1, -0.0074, 1, -1, -0.0074, 1, 0.0367, -0.0074, 0.1843, 0.0719, -0.0074, 0.1736, -0.1737, -0.0074, -0.0719, -1, -0.0074, 1, -1, -0.0074, -1, -0.1844, -0.0074, -0.0367, -1, -0.0074, 1, -0.1737, -0.0074, -0.0719, -1, -0.0074, 1, 0, -0.0074, 0.1879, 0.0367, -0.0074, 0.1843, -1, -0.0074, 1, -0.0367, -0.0074, 0.1843, 0, -0.0074, 0.1879, -0.188, -0.0074, 0, -1, -0.0074, 1, -0.1844, -0.0074, -0.0367, -0.1844, -0.0074, 0.0367, -1, -0.0074, 1, -0.188, -0.0074, 0, -1, -0.0074, 1, -0.0719, -0.0074, 0.1736, -0.0367, -0.0074, 0.1843, -1, -0.0074, 1, -0.1044, -0.0074, 0.1563, -0.0719, -0.0074, 0.1736, -0.1737, -0.0074, 0.0719, -1, -0.0074, 1, -0.1844, -0.0074, 0.0367, -0.1563, -0.0074, 0.1044, -1, -0.0074, 1, -0.1737, -0.0074, 0.0719, -1, -0.0074, 1, -0.1329, -0.0074, 0.1329, -0.1044, -0.0074, 0.1563, -1, -0.0074, 1, -0.1563, -0.0074, 0.1044, -0.1329, -0.0074, 0.1329, -1, -0.0074, -1, -0.1044, -0.0074, -0.1563, -0.1329, -0.0074, -0.1329, -1, -0.0074, -1, -0.0719, -0.0074, -0.1737, -0.1044, -0.0074, -0.1563, 0.1563, -0.0074, 0.1044, 1, -0.0074, 1, 0.1329, -0.0074, 0.1329, 0.1736, -0.0074, 0.0719, 1, -0.0074, 1, 0.1563, -0.0074, 0.1044, 1, -0.0074, -1, -0.0719, -0.0074, -0.1737, -1, -0.0074, -1, 1, -0.0074, -1, -0.0367, -0.0074, -0.1844, -0.0719, -0.0074, -0.1737, 0.1736, -0.0074, 0.0719, 1, -0.0074, -1, 1, -0.0074, 1, 0.1843, -0.0074, 0.0367, 1, -0.0074, -1, 0.1736, -0.0074, 0.0719, 1, -0.0074, -1, 0, -0.0074, -0.188, -0.0367, -0.0074, -0.1844, 1, -0.0074, -1, 0.0367, -0.0074, -0.1844, 0, -0.0074, -0.188, 0.1879, -0.0074, 0, 1, -0.0074, -1, 0.1843, -0.0074, 0.0367, 0.1843, -0.0074, -0.0367, 1, -0.0074, -1, 0.1879, -0.0074, 0, 1, -0.0074, -1, 0.0719, -0.0074, -0.1737, 0.0367, -0.0074, -0.1844, 1, -0.0074, -1, 0.1044, -0.0074, -0.1563, 0.0719, -0.0074, -0.1737, 0.1736, -0.0074, -0.0719, 1, -0.0074, -1, 0.1843, -0.0074, -0.0367, 0.1563, -0.0074, -0.1044, 1, -0.0074, -1, 0.1736, -0.0074, -0.0719, 1, -0.0074, -1, 0.1329, -0.0074, -0.1329, 0.1044, -0.0074, -0.1563, 1, -0.0074, -1, 0.1563, -0.0074, -0.1044, 0.1329, -0.0074, -0.1329, 1, -0.108, 1, -1, -0.0074, 1, 1, -0.0074, 1, 1, -0.108, 1, -1, -0.108, 1, -1, -0.0074, 1, -1, -0.108, 1, -1, -0.0074, -1, -1, -0.0074, 1, -1, -0.108, 1, -1, -0.108, -1, -1, -0.0074, -1, 1, -0.108, -1, 0.1044, -0.108, -0.1563, 0.1329, -0.108, -0.1329, 1, -0.108, -1, 0.0719, -0.108, -0.1737, 0.1044, -0.108, -0.1563, -0.1044, -0.108, -0.1563, -1, -0.108, -1, -0.1329, -0.108, -0.1329, -0.0719, -0.108, -0.1737, -1, -0.108, -1, -0.1044, -0.108, -0.1563, -1, -0.108, -1, 0.0719, -0.108, -0.1737, 1, -0.108, -1, -1, -0.108, -1, 0.0367, -0.108, -0.1844, 0.0719, -0.108, -0.1737, -0.0367, -0.108, -0.1844, -1, -0.108, -1, -0.0719, -0.108, -0.1737, -1, -0.108, -1, 0, -0.108, -0.188, 0.0367, -0.108, -0.1844, -1, -0.108, -1, -0.0367, -0.108, -0.1844, 0, -0.108, -0.188, 0.1563, -0.108, -0.1044, 1, -0.108, -1, 0.1329, -0.108, -0.1329, -1, -0.108, -1, -0.1563, -0.108, -0.1044, -0.1329, -0.108, -0.1329, -1, -0.108, -1, -0.1737, -0.108, -0.0719, -0.1563, -0.108, -0.1044, 0.1563, -0.108, -0.1044, 1, -0.108, 1, 1, -0.108, -1, 0.1736, -0.108, -0.0719, 1, -0.108, 1, 0.1563, -0.108, -0.1044, -1, -0.108, 1, -0.1737, -0.108, -0.0719, -1, -0.108, -1, -1, -0.108, 1, -0.1844, -0.108, -0.0367, -0.1737, -0.108, -0.0719, 0.1843, -0.108, -0.0367, 1, -0.108, 1, 0.1736, -0.108, -0.0719, 0.1879, -0.108, 0, 1, -0.108, 1, 0.1843, -0.108, -0.0367, -1, -0.108, 1, -0.188, -0.108, 0, -0.1844, -0.108, -0.0367, -1, -0.108, 1, -0.1844, -0.108, 0.0367, -0.188, -0.108, 0, 0.1843, -0.108, 0.0367, 1, -0.108, 1, 0.1879, -0.108, 0, 0.1736, -0.108, 0.0719, 1, -0.108, 1, 0.1843, -0.108, 0.0367, -1, -0.108, 1, -0.1737, -0.108, 0.0719, -0.1844, -0.108, 0.0367, -1, -0.108, 1, -0.1563, -0.108, 0.1044, -0.1737, -0.108, 0.0719, 0.1563, -0.108, 0.1044, 1, -0.108, 1, 0.1736, -0.108, 0.0719, 0.1329, -0.108, 0.1329, 1, -0.108, 1, 0.1563, -0.108, 0.1044, -1, -0.108, 1, -0.1329, -0.108, 0.1329, -0.1563, -0.108, 0.1044, -1, -0.108, 1, -0.1044, -0.108, 0.1563, -0.1329, -0.108, 0.1329, 0.1044, -0.108, 0.1563, 1, -0.108, 1, 0.1329, -0.108, 0.1329, 0.0719, -0.108, 0.1736, 1, -0.108, 1, 0.1044, -0.108, 0.1563, 1, -0.108, 1, -0.1044, -0.108, 0.1563, -1, -0.108, 1, 1, -0.108, 1, -0.0719, -0.108, 0.1736, -0.1044, -0.108, 0.1563, 0.0367, -0.108, 0.1843, 1, -0.108, 1, 0.0719, -0.108, 0.1736, 0, -0.108, 0.1879, 1, -0.108, 1, 0.0367, -0.108, 0.1843, 1, -0.108, 1, -0.0367, -0.108, 0.1843, -0.0719, -0.108, 0.1736, 1, -0.108, 1, 0, -0.108, 0.1879, -0.0367, -0.108, 0.1843, 1, -0.108, -1, 1, -0.0074, 1, 1, -0.0074, -1, 1, -0.108, -1, 1, -0.108, 1, 1, -0.0074, 1, -1, -0.108, -1, 1, -0.0074, -1, -1, -0.0074, -1, -1, -0.108, -1, 1, -0.108, -1, 1, -0.0074, -1, 0.0367, -0.108, -0.1844, 0, -0.0074, -0.188, 0.0367, -0.0074, -0.1844, 0.0367, -0.108, -0.1844, 0, -0.108, -0.188, 0, -0.0074, -0.188, 0.0719, -0.108, -0.1737, 0.0367, -0.0074, -0.1844, 0.0719, -0.0074, -0.1737, 0.0719, -0.108, -0.1737, 0.0367, -0.108, -0.1844, 0.0367, -0.0074, -0.1844, 0.1044, -0.108, -0.1563, 0.0719, -0.0074, -0.1737, 0.1044, -0.0074, -0.1563, 0.1044, -0.108, -0.1563, 0.0719, -0.108, -0.1737, 0.0719, -0.0074, -0.1737, 0.1329, -0.108, -0.1329, 0.1044, -0.0074, -0.1563, 0.1329, -0.0074, -0.1329, 0.1329, -0.108, -0.1329, 0.1044, -0.108, -0.1563, 0.1044, -0.0074, -0.1563, 0.1563, -0.0074, -0.1044, 0.1329, -0.108, -0.1329, 0.1329, -0.0074, -0.1329, 0.1563, -0.0074, -0.1044, 0.1563, -0.108, -0.1044, 0.1329, -0.108, -0.1329, 0.1736, -0.0074, -0.0719, 0.1563, -0.108, -0.1044, 0.1563, -0.0074, -0.1044, 0.1736, -0.0074, -0.0719, 0.1736, -0.108, -0.0719, 0.1563, -0.108, -0.1044, 0.1843, -0.0074, -0.0367, 0.1736, -0.108, -0.0719, 0.1736, -0.0074, -0.0719, 0.1843, -0.0074, -0.0367, 0.1843, -0.108, -0.0367, 0.1736, -0.108, -0.0719, 0.1879, -0.0074, 0, 0.1843, -0.108, -0.0367, 0.1843, -0.0074, -0.0367, 0.1879, -0.0074, 0, 0.1879, -0.108, 0, 0.1843, -0.108, -0.0367, 0.1843, -0.0074, 0.0367, 0.1879, -0.108, 0, 0.1879, -0.0074, 0, 0.1843, -0.0074, 0.0367, 0.1843, -0.108, 0.0367, 0.1879, -0.108, 0, 0.1736, -0.0074, 0.0719, 0.1843, -0.108, 0.0367, 0.1843, -0.0074, 0.0367, 0.1736, -0.0074, 0.0719, 0.1736, -0.108, 0.0719, 0.1843, -0.108, 0.0367, 0.1563, -0.0074, 0.1044, 0.1736, -0.108, 0.0719, 0.1736, -0.0074, 0.0719, 0.1563, -0.0074, 0.1044, 0.1563, -0.108, 0.1044, 0.1736, -0.108, 0.0719, 0.1329, -0.0074, 0.1329, 0.1563, -0.108, 0.1044, 0.1563, -0.0074, 0.1044, 0.1329, -0.0074, 0.1329, 0.1329, -0.108, 0.1329, 0.1563, -0.108, 0.1044, 0.1044, -0.0074, 0.1563, 0.1329, -0.108, 0.1329, 0.1329, -0.0074, 0.1329, 0.1044, -0.0074, 0.1563, 0.1044, -0.108, 0.1563, 0.1329, -0.108, 0.1329, 0.0719, -0.0074, 0.1736, 0.1044, -0.108, 0.1563, 0.1044, -0.0074, 0.1563, 0.0719, -0.0074, 0.1736, 0.0719, -0.108, 0.1736, 0.1044, -0.108, 0.1563, 0.0367, -0.0074, 0.1843, 0.0719, -0.108, 0.1736, 0.0719, -0.0074, 0.1736, 0.0367, -0.0074, 0.1843, 0.0367, -0.108, 0.1843, 0.0719, -0.108, 0.1736, 0, -0.0074, 0.1879, 0.0367, -0.108, 0.1843, 0.0367, -0.0074, 0.1843, 0, -0.0074, 0.1879, 0, -0.108, 0.1879, 0.0367, -0.108, 0.1843, -0.0367, -0.0074, 0.1843, 0, -0.108, 0.1879, 0, -0.0074, 0.1879, -0.0367, -0.0074, 0.1843, -0.0367, -0.108, 0.1843, 0, -0.108, 0.1879, -0.0719, -0.0074, 0.1736, -0.0367, -0.108, 0.1843, -0.0367, -0.0074, 0.1843, -0.0719, -0.0074, 0.1736, -0.0719, -0.108, 0.1736, -0.0367, -0.108, 0.1843, -0.1044, -0.0074, 0.1563, -0.0719, -0.108, 0.1736, -0.0719, -0.0074, 0.1736, -0.1044, -0.0074, 0.1563, -0.1044, -0.108, 0.1563, -0.0719, -0.108, 0.1736, -0.1329, -0.0074, 0.1329, -0.1044, -0.108, 0.1563, -0.1044, -0.0074, 0.1563, -0.1329, -0.0074, 0.1329, -0.1329, -0.108, 0.1329, -0.1044, -0.108, 0.1563, -0.1563, -0.108, 0.1044, -0.1329, -0.0074, 0.1329, -0.1563, -0.0074, 0.1044, -0.1563, -0.108, 0.1044, -0.1329, -0.108, 0.1329, -0.1329, -0.0074, 0.1329, -0.1737, -0.108, 0.0719, -0.1563, -0.0074, 0.1044, -0.1737, -0.0074, 0.0719, -0.1737, -0.108, 0.0719, -0.1563, -0.108, 0.1044, -0.1563, -0.0074, 0.1044, -0.1844, -0.108, 0.0367, -0.1737, -0.0074, 0.0719, -0.1844, -0.0074, 0.0367, -0.1844, -0.108, 0.0367, -0.1737, -0.108, 0.0719, -0.1737, -0.0074, 0.0719, -0.188, -0.108, 0, -0.1844, -0.0074, 0.0367, -0.188, -0.0074, 0, -0.188, -0.108, 0, -0.1844, -0.108, 0.0367, -0.1844, -0.0074, 0.0367, -0.1844, -0.108, -0.0367, -0.188, -0.0074, 0, -0.1844, -0.0074, -0.0367, -0.1844, -0.108, -0.0367, -0.188, -0.108, 0, -0.188, -0.0074, 0, -0.1737, -0.108, -0.0719, -0.1844, -0.0074, -0.0367, -0.1737, -0.0074, -0.0719, -0.1737, -0.108, -0.0719, -0.1844, -0.108, -0.0367, -0.1844, -0.0074, -0.0367, -0.1563, -0.108, -0.1044, -0.1737, -0.0074, -0.0719, -0.1563, -0.0074, -0.1044, -0.1563, -0.108, -0.1044, -0.1737, -0.108, -0.0719, -0.1737, -0.0074, -0.0719, -0.1329, -0.108, -0.1329, -0.1563, -0.0074, -0.1044, -0.1329, -0.0074, -0.1329, -0.1329, -0.108, -0.1329, -0.1563, -0.108, -0.1044, -0.1563, -0.0074, -0.1044, -0.1044, -0.108, -0.1563, -0.1329, -0.0074, -0.1329, -0.1044, -0.0074, -0.1563, -0.1044, -0.108, -0.1563, -0.1329, -0.108, -0.1329, -0.1329, -0.0074, -0.1329, -0.0719, -0.108, -0.1737, -0.1044, -0.0074, -0.1563, -0.0719, -0.0074, -0.1737, -0.0719, -0.108, -0.1737, -0.1044, -0.108, -0.1563, -0.1044, -0.0074, -0.1563, -0.0367, -0.108, -0.1844, -0.0719, -0.0074, -0.1737, -0.0367, -0.0074, -0.1844, -0.0367, -0.108, -0.1844, -0.0719, -0.108, -0.1737, -0.0719, -0.0074, -0.1737, 0, -0.108, -0.188, -0.0367, -0.0074, -0.1844, 0, -0.0074, -0.188, 0, -0.108, -0.188, -0.0367, -0.108, -0.1844, -0.0367, -0.0074, -0.1844)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8w8nk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2fh5"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2y6p7"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kheii"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t5xpl"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6vq4k"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_be6oh"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p11hp"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w27xw"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0a8oc"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
@@ -127,8 +169,1176 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mhctu"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekso4"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lem0c"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqd44"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eis1"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fgn3"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_562tt"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ou7j5"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7komf"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5fr2"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwu6d"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_235wb"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yex1v"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7p0g"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyprr"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bduxe"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2cr0"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgg7n"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkqdj"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvov3"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgnmd"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21rwc"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icw8r"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt87q"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awybd"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oo6q"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv305"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg1ux"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch844"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd4pq"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwt6x"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4vrx"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6f2ye"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44qe5"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyw8w"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfddb"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skkx5"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qt6x"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfbto"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t40kh"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80m5n"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh2b0"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vni3w"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmg7h"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_niudv"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxafl"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqtda"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow0xl"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x35gk"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srseb"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gob6"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xu40"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riwgr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xk0p"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bxla"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwtbm"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heltj"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hdbr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1omv2"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihc3m"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qps88"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkxht"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baafg"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf8sr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cn06"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6q68"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0emt"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kjvw"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_111uy"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ihvk"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdcve"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04two"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dd4sm"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gboog"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwijx"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbwhf"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao840"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kood"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wefkg"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evnrp"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sua4t"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="Curve3D" id="Curve3D_urhbt"]
 _data = {
@@ -137,20 +1347,248 @@ _data = {
 }
 point_count = 12
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lnexy"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_we4lx")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/metalness = 1.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/lighting_power = 1.0
-shader_parameter/lighting_map = ExtResource("3_m5yje")
-shader_parameter/reflected_map_power = 0.4
-shader_parameter/reflected_map = ExtResource("3_m5yje")
-shader_parameter/use_refraction = false
-shader_parameter/refraction_amount = 4.055
-shader_parameter/refraction_brightness = 2.885
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr5mw"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_th2gi"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta6dc"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f675u"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruqv8"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jasvo"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2p58"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ats0l"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj8ob"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jff2a"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aeqp"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oldlm"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2xwl"]
 transparency = 1
@@ -160,8 +1598,357 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_no0x7"]
 size = Vector3(47.0475, 17.3685, 64.567)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smfoo"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd0ko"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcuqi"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxt6g"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0coe"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdnv5"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1n13"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ina75"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbmco"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47epu"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr7bl"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2piks"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtb4s"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mnn1"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1as2"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_go8ex")
+roughness_texture = ExtResource("16_3im5q")
+normal_enabled = true
+normal_texture = ExtResource("14_lcs3a")
+ao_enabled = true
+ao_texture = ExtResource("13_4i7d2")
+heightmap_texture = ExtResource("15_63pn4")
+refraction_texture = ExtResource("14_lcs3a")
+detail_albedo = ExtResource("12_go8ex")
+detail_normal = ExtResource("14_lcs3a")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_gpc0g"]
 size = Vector3(61.2348, 1, 160.819)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxjdq"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l31h3"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("7_1q4rt")
+roughness_texture = ExtResource("10_vousm")
+normal_enabled = true
+normal_texture = ExtResource("9_hchb4")
+ao_enabled = true
+ao_texture = ExtResource("8_lgbgg")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="Gradient" id="Gradient_a5gte"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cqgtd"]
+resource_local_to_scene = true
+noise_type = 2
+seed = 1
+frequency = 0.063
+fractal_lacunarity = 2.6
+fractal_gain = 1.78
+fractal_weighted_strength = 0.58
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_t8o4e"]
+resource_local_to_scene = true
+seamless = true
+seamless_blend_skirt = 0.27
+color_ramp = SubResource("Gradient_a5gte")
+noise = SubResource("FastNoiseLite_cqgtd")
+
+[sub_resource type="FogMaterial" id="FogMaterial_fcc7u"]
+resource_local_to_scene = true
+density = 16.0
+albedo = Color(0, 0, 0, 1)
+density_texture = SubResource("NoiseTexture3D_t8o4e")
 
 [node name="Dungeon" type="Node3D"]
 
@@ -169,19 +1956,14 @@ size = Vector3(61.2348, 1, 160.819)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_color = Color(0.796216, 0.821159, 0.848391, 1)
-light_energy = 0.543
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 6.495
+light_indirect_energy = 4.718
+light_volumetric_fog_energy = 5.848
 light_bake_mode = 1
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 5.81
+shadow_bias = 1.795
+shadow_normal_bias = 4.528
 shadow_reverse_cull_face = true
 shadow_opacity = 0.82
 shadow_blur = 7.857
-directional_shadow_mode = 1
-directional_shadow_split_1 = 0.281
 directional_shadow_fade_start = 0.485
 directional_shadow_max_distance = 77.3
 
@@ -197,52 +1979,31 @@ environment = SubResource("Environment_2fufs")
 [node name="Doors" type="Node3D" parent="Enviroment/Blocking/Main_Room"]
 
 [node name="Door" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-5.88839e-08, 0, -1, 0, 1.28309, 0, 1.34711, 0, -4.37114e-08, 4.49446, 0, 13.4317)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.97879, 0, 13.4317)
 
 [node name="Door2" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.56, 0, 13.432)
+transform = Transform3D(-3.4254e-08, 0, 1, 0, 0.984315, 0, -0.78364, 0, -4.37114e-08, -25.3664, 0.0142677, 13.432)
 door_locked = true
 
-[node name="Door_mesh" parent="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D" index="0"]
-transform = Transform3D(1.26594, 0, 0, 0, 1.19417, 0, 0, 0, 1, 0, 0, -0.279074)
-
-[node name="Door" parent="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D/Door_mesh" index="0"]
-surface_material_override/2 = SubResource("ShaderMaterial_bmn6j")
-
-[node name="Door_Frame" parent="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D/Door_mesh" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_bmn6j")
-
-[node name="door_creature_round2" parent="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D" index="2"]
-transform = Transform3D(0.0696555, 0.0330924, -0.955193, -0.3631, 0.699388, -0.0155849, 0.600303, 0.419193, 0.101408, 0.0448494, 1.28382, 0.462067)
-
 [node name="Door3" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.431, 9.5, 13.432)
+transform = Transform3D(-3.0542e-08, 0, -1, 0, 0.801808, 0, 0.698719, 0, -4.37114e-08, 5.01191, 9.56864, 13.432)
 
 [node name="Door6" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.42732, 9.5, -4)
+transform = Transform3D(-3.5253e-08, 0, -1, 0, 0.804282, 0, 0.806494, 0, -4.37114e-08, 4.99951, 9.52153, -4)
 
 [node name="Door4" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.573, 9.5, 13.432)
+transform = Transform3D(-3.41179e-08, 0, 1, 0, 0.889105, 0, -0.780527, 0, -4.37114e-08, -25.2931, 9.46771, 13.432)
 
 [node name="Door5" parent="Enviroment/Blocking/Main_Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.573, 9.5, -4)
+transform = Transform3D(-3.26866e-08, 0, 1, 0, 0.899204, 0, -0.747782, 0, -4.37114e-08, -25.3176, 9.72408, -3.89005)
 door_locked = true
 
 [node name="Interactables" type="Node" parent="Enviroment/Blocking/Main_Room"]
 
 [node name="Darkness" parent="Enviroment/Blocking/Main_Room/Interactables" node_paths=PackedStringArray("darkness_collision_physics", "darkness_collision_mesh") instance=ExtResource("3_m8l2y")]
-transform = Transform3D(6.88675, 0, 0, 0, 0.0330445, 0, 0, 0, 5.9058, -9.93276, 0, 4.12211)
+transform = Transform3D(6.88675, 0, 0, 0, 0.139187, 0, 0, 0, 6.84271, -9.93276, -0.117602, 4.12211)
 darkness_collision_physics = NodePath("Darkness_Collision2")
 darkness_collision_mesh = NodePath("StaticBody3D/Darkness_Collision")
-
-[node name="Darkness_Mesh" parent="Enviroment/Blocking/Main_Room/Interactables/Darkness" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_f05ij")
-
-[node name="Darkness_Collision" parent="Enviroment/Blocking/Main_Room/Interactables/Darkness/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_u25b3")
-
-[node name="Darkness_Collision2" parent="Enviroment/Blocking/Main_Room/Interactables/Darkness" index="2"]
-shape = SubResource("ConvexPolygonShape3D_u25b3")
 
 [node name="RevealedLightObject" parent="Enviroment/Blocking/Main_Room/Interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.38226, 13.3391)
@@ -257,6 +2018,7 @@ transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.14727
 [node name="Floor" type="MeshInstance3D" parent="Enviroment/Blocking/Main_Room/blocking/Main_Room_Floor"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -10.0484, 0.1, 4.05002)
 mesh = ExtResource("1_s85jt")
+surface_material_override/0 = SubResource("StandardMaterial3D_48u8k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Main_Room/blocking/Main_Room_Floor"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -10.0484, 0.1, 4.05002)
@@ -313,6 +2075,114 @@ transform = Transform3D(-1.51474e-07, 0, 0.997, 0, 13.703, 0, -3.46533, 0, -4.35
 [node name="Wall_12" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("15_yrns8")]
 transform = Transform3D(-1.87016e-07, 0, 0.997, 0, 5.19418, 0, -4.27843, 0, -4.35803e-08, 4.82352, 6.96834, 12.9214)
 
+[node name="arch_1_2" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.585242, 0, 0, 0, 0.457295, 4.09725, -0.0372131, 13.3364)
+
+[node name="arch_1_10" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.24618, 0, 0, 0, 0.483165, 0, 0, 0, 0.314207, 4.30489, 9.42251, 13.4335)
+
+[node name="arch_1_12" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.24618, 0, 0, 0, 0.483165, 0, 0, 0, 0.339395, 4.30489, 9.42251, -4.04423)
+
+[node name="arch_1_13" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.24618, 0, 0, 0, 0.483165, 0, 0, 0, 0.339395, 5.26163, 9.42251, -4.04423)
+
+[node name="arch_1_11" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.24618, 0, 0, 0, 0.483165, 0, 0, 0, 0.314207, 5.3929, 9.42251, 13.4335)
+
+[node name="arch_1_4" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.585242, 0, 0, 0, 0.387682, -24.545, -0.0372131, 13.3364)
+
+[node name="arch_1_6" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.488523, 0, 0, 0, 0.387682, -24.545, 9.82739, 13.3364)
+
+[node name="arch_1_8" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.522971, 0, 0, 0, 0.335893, -24.545, 9.686, -3.96171)
+
+[node name="arch_1_9" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.522971, 0, 0, 0, 0.335893, -25.7656, 9.686, -3.96171)
+
+[node name="arch_1_7" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.488523, 0, 0, 0, 0.387682, -25.7218, 9.82739, 13.3364)
+
+[node name="arch_1_5" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.585242, 0, 0, 0, 0.387682, -25.7898, -0.0372131, 13.3364)
+
+[node name="arch_1_3" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("10_18yxk")]
+transform = Transform3D(0.31931, 0, 0, 0, 0.585242, 0, 0, 0, 0.457295, 5.44595, -0.0372131, 13.3364)
+
+[node name="plate1" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.996, -0.368752, 3.99689)
+
+[node name="plate4" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.996, -0.368752, -4.11849)
+
+[node name="plate5" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0179, -0.368752, -4.11849)
+
+[node name="plate6" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0274, -0.368752, -4.11849)
+
+[node name="plate7" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09243, -0.368752, -4.11849)
+
+[node name="plate8" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09243, -0.368752, -12.1645)
+
+[node name="plate9" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.005, -0.368752, -12.1645)
+
+[node name="plate10" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9898, -0.368752, -12.1645)
+
+[node name="plate11" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0788, -0.368752, -12.1645)
+
+[node name="plate2" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0157, -0.368752, 12.025)
+
+[node name="plate12" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0157, -0.368752, 20.0552)
+
+[node name="plate13" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0293, -0.368752, 20.0552)
+
+[node name="plate14" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97439, -0.368752, 20.0552)
+
+[node name="plate15" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97439, -0.368752, 12.0052)
+
+[node name="plate16" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10348, -0.368752, 4.02972)
+
+[node name="plate19" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.770367, 0, 0, 0, 1, 0, 0, 0, 1, -3.29483, -0.368752, 4.02972)
+
+[node name="plate20" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.34516, 0, 0, 0, 1, 0, 0, 0, 1, -14.6965, -0.368752, 4.02972)
+
+[node name="plate17" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.53357, 0, 0, 0, 1, 0, 0, 0, 1, 2.16306, -0.368752, 20.0459)
+
+[node name="plate18" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.455724, 0, 0, 0, 1, 0, 0, 0, 1, 1.83401, -0.368752, 12.0199)
+
+[node name="plate3" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.014, -0.368752, 12.0694)
+
+[node name="column_small_2_3" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("12_8323h")]
+transform = Transform3D(0.612161, 0, 0, 0, 0.650412, 0, 0, 0, 0.670517, -12.2941, -0.010997, 7.36397)
+
+[node name="column_small_2_4" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("12_8323h")]
+transform = Transform3D(0.433867, 0, 0.473026, 0, 0.650412, 0, -0.431857, 0, 0.475227, -7.28665, -0.010997, 7.36397)
+
+[node name="column_small_2_5" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("12_8323h")]
+transform = Transform3D(-0.396314, 0, 0.511034, 0, 0.650412, 0, -0.466557, 0, -0.434094, -7.28665, -0.010997, 0.939154)
+
+[node name="column_small_2_6" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("12_8323h")]
+transform = Transform3D(-0.566072, 0, -0.255244, 0, 0.650412, 0, 0.233029, 0, -0.620036, -12.305, -0.010997, 0.939154)
+
 [node name="checkpoints" type="Node" parent="Enviroment/Blocking/Main_Room"]
 
 [node name="L-way" type="Node" parent="Enviroment/Blocking"]
@@ -324,6 +2194,7 @@ transform = Transform3D(-1.87016e-07, 0, 0.997, 0, 5.19418, 0, -4.27843, 0, -4.3
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring"]
 transform = Transform3D(8.77887, 0, 0, 0, 1, 0, 0, 0, 8.1871, 9.27402, -0.511393, 13.7008)
 mesh = SubResource("BoxMesh_8w8nk")
+surface_material_override/0 = SubResource("StandardMaterial3D_v2fh5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring"]
 transform = Transform3D(8.77887, 0, 0, 0, 1, 0, 0, 0, 8.1871, 9.27402, -0.511393, 13.7008)
@@ -335,6 +2206,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 12.663
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring2"]
 transform = Transform3D(8.77887, 0, 0, 0, 1, 0, 0, 0, 8.1871, 9.27402, -0.511393, 13.7008)
 mesh = SubResource("BoxMesh_8w8nk")
+surface_material_override/0 = SubResource("StandardMaterial3D_kheii")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring2"]
 transform = Transform3D(8.77887, 0, 0, 0, 1, 0, 0, 0, 8.1871, 9.27402, -0.511393, 13.7008)
@@ -345,6 +2217,7 @@ transform = Transform3D(24.0708, 0, 0, 0, 1, 0, 0, 0, 8.18674, 24.6852, -8.83592
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring3"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_be6oh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring3"]
 shape = SubResource("ConvexPolygonShape3D_p11hp")
@@ -354,6 +2227,7 @@ transform = Transform3D(-1.05217e-06, 0, 14.4734, 0, 1, 0, -24.0708, 0, -6.32654
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring4"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_w27xw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring4"]
 shape = SubResource("ConvexPolygonShape3D_0a8oc")
@@ -435,6 +2309,7 @@ transform = Transform3D(-1.43741e-06, 0, 14.2944, 0, 0.768272, 0, -32.8842, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring8"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekso4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring8"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -444,24 +2319,27 @@ transform = Transform3D(1.46872e-14, 3.35822e-08, 14.3611, 7.68688, -3.35822e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring9"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_lqd44")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring9"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring10" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks"]
-transform = Transform3D(1.00356e-13, 3.45614e-08, 8.72204, 52.5237, -3.45614e-08, 0, 2.29589e-06, 0.790672, -3.81253e-07, 17.8385, 3.90853, 9.3033)
+transform = Transform3D(2.78346e-13, 3.45614e-08, 8.72204, 145.679, -3.45614e-08, 0, 6.36785e-06, 0.790672, -3.81253e-07, 17.8385, 3.90853, 9.3033)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring10"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_6eis1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring10"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring13" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks"]
-transform = Transform3D(1.00299e-13, 3.45614e-08, 8.72204, 52.4936, -3.45614e-08, 0, 2.29458e-06, 0.790672, -3.81253e-07, 9.37167, 3.90853, 9.3033)
+transform = Transform3D(2.27311e-13, 3.45614e-08, 8.72204, 118.968, -3.45614e-08, 0, 5.20029e-06, 0.790672, -3.81253e-07, 9.37167, 3.90853, 9.3033)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring13"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_0fgn3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring13"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -471,6 +2349,7 @@ transform = Transform3D(-3.83656e-07, 0, 14.2944, 0, 0.768272, 0, -8.77702, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks/flooring14"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_562tt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks/flooring14"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -478,19 +2357,31 @@ shape = SubResource("ConvexPolygonShape3D_lem0c")
 [node name="blocks continued" type="Node" parent="Enviroment/Blocking/L-way"]
 
 [node name="flooring15" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(-1.10664e-06, -0.790672, 7.67261e-14, 25.3169, -3.45614e-08, 0, 0, 0, 28.2063, 36.5753, 3.90853, -9.14713)
+transform = Transform3D(-4.59416e-06, -0.790672, 7.67261e-14, 105.102, -3.45614e-08, 0, 0, 0, 28.2063, 36.5753, 3.90853, -9.14713)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring15"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ou7j5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring15"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
+[node name="flooring26" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
+transform = Transform3D(-1.5997e-06, -0.790672, 1.05542e-14, 36.5968, -3.45614e-08, 0, 0, 0, 3.87996, 36.5753, 30.6011, 6.75672)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring26"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ou7j5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring26"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
 [node name="flooring23" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(-1.10664e-06, -0.790672, 5.34478e-14, 25.3169, -3.45614e-08, 0, 0, 0, 19.6486, 36.5753, 3.90853, 18.2033)
+transform = Transform3D(-4.01112e-06, -0.790672, 5.34478e-14, 91.7635, -3.45614e-08, 0, 0, 0, 19.6486, 36.5753, 3.90853, 18.2033)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring23"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7komf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring23"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -500,51 +2391,57 @@ transform = Transform3D(-8.11813e-07, -0.790672, 4.5584e-14, 18.5721, -3.45614e-
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring24"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_q5fr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring24"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring16" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(-2.36896e-06, -0.790672, 0, 54.1954, -3.45614e-08, 0, 0, 0, 33.3898, 22.1474, 3.90853, -7.33842)
+transform = Transform3D(-5.92015e-06, -0.790672, 0, 135.437, -3.45614e-08, 0, 0, 0, 33.3898, 22.1474, 3.90853, -7.33842)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring16"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_wwu6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring16"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring20" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(-1.10664e-06, -0.790672, 0, 25.3169, -3.45614e-08, 0, 0, 0, 23.5852, 22.1474, 3.90853, -32.588)
+transform = Transform3D(-3.36332e-06, -0.790672, 0, 76.9435, -3.45614e-08, 0, 0, 0, 23.5852, 22.1474, 3.90853, -32.588)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring20"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_235wb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring20"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring21" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(-1.10664e-06, -0.790672, 0, 25.3169, -3.45614e-08, 0, 0, 0, 23.5852, 36.5737, 3.90853, -32.9567)
+transform = Transform3D(-6.25157e-06, -0.790672, 0, 143.019, -3.45614e-08, 0, 0, 0, 23.5852, 36.5737, 3.90853, -32.9567)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring21"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_yex1v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring21"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring17" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(4.83727e-14, 3.45614e-08, 5.26042, 25.3169, -3.45614e-08, 0, 1.10664e-06, 0.790672, -2.2994e-07, 33.6291, 3.90853, -23.7501)
+transform = Transform3D(1.37228e-13, 3.45614e-08, 5.26042, 71.8212, -3.45614e-08, 0, 3.13941e-06, 0.790672, -2.2994e-07, 33.6291, 3.90853, -23.7501)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring17"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_f7p0g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring17"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring18" type="StaticBody3D" parent="Enviroment/Blocking/L-way/blocks continued"]
-transform = Transform3D(4.83727e-14, 3.45614e-08, 5.26042, 25.3169, -3.45614e-08, 0, 1.10664e-06, 0.790672, -2.2994e-07, 25.0399, 3.90853, -23.7501)
+transform = Transform3D(1.31241e-13, 3.45614e-08, 5.26042, 68.6877, -3.45614e-08, 0, 3.00244e-06, 0.790672, -2.2994e-07, 25.0399, 3.90853, -23.7501)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring18"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_gyprr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring18"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -554,6 +2451,7 @@ transform = Transform3D(1.52571e-14, 3.45614e-08, 5.26042, 7.98517, -3.45614e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring19"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bduxe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring19"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -563,6 +2461,7 @@ transform = Transform3D(-3.49043e-07, 0, 3.55662, 0, 0.790672, 0, -7.98517, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring22"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_x2cr0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring22"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -572,17 +2471,24 @@ transform = Transform3D(-8.44815e-08, 0, 3.55662, 0, 0.790672, 0, -1.93271, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring25"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tgg7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/L-way/blocks continued/flooring25"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
+[node name="arch_1_2" parent="Enviroment/Blocking/L-way/blocks continued" instance=ExtResource("10_18yxk")]
+transform = Transform3D(-4.37114e-08, 0, 0.45625, 0, 0.596997, 0, -1, 0, -1.99433e-08, 29.3258, 0, -23.7151)
+
+[node name="arch_1_3" parent="Enviroment/Blocking/L-way/blocks continued" instance=ExtResource("10_18yxk")]
+transform = Transform3D(1, 0, 0, 0, 0.460115, 0, 0, 0, 0.437267, 36.5705, 8.85323, 6.67499)
+
 [node name="Doors" type="Node" parent="Enviroment/Blocking/L-way"]
 
 [node name="Door" parent="Enviroment/Blocking/L-way/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(1.34294, 0, 0, 0, 1.21105, 0, 0, 0, 0.535754, 29.3371, -0.0649021, -23.2796)
+transform = Transform3D(1.02475, 0, 0, 0, 1.03714, 0, 0, 0, 0.535754, 29.4066, -0.0649021, -23.9048)
 
 [node name="Door2" parent="Enviroment/Blocking/L-way/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.5969, 8.86, 6.71983)
+transform = Transform3D(-4.24639e-08, 0, -0.797184, 0, 0.781494, 0, 0.97146, 0, -3.4846e-08, 36.694, 8.86, 6.71983)
 
 [node name="platforms" type="Node" parent="Enviroment/Blocking/L-way"]
 
@@ -658,9 +2564,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3435, 13.8952, -23.6842)
 
 [node name="blocks" type="Node" parent="Enviroment/Blocking/Side Room"]
 
-[node name="flooring" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-5.84563e-07, 0, 11.5576, 0, 0.694044, 0, -13.3732, 0, -5.05199e-07, 42.368, 8.57313, 6.85279)
-
 [node name="flooring2" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
 transform = Transform3D(11.1649, 0, -3.7177e-07, -4.88035e-07, 1.40333e-15, -8.5051, 0, 0.734462, 1.62506e-14, 42.4745, 12.3625, 13.2585)
 
@@ -686,7 +2589,10 @@ transform = Transform3D(-1.91091e-07, -0.734462, 1.06192e-07, 0, -3.21044e-08, -
 transform = Transform3D(-1.91091e-07, -0.734462, 1.06192e-07, 0, -3.21044e-08, -2.42939, 4.37166, -3.21044e-08, 4.64179e-15, 44.6718, 15.3992, 2.23911)
 
 [node name="flooring4" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-5.87501e-07, -0.734462, 0, -5.87501e-07, 1.40333e-15, -8.5051, 13.4405, -3.21044e-08, -3.7177e-07, 48.2384, 12.3605, 6.72251)
+transform = Transform3D(-5.87501e-07, -0.734462, 0, -5.87501e-07, 1.40333e-15, -8.5051, 13.4405, -3.21044e-08, -3.7177e-07, 48.2384, 12.3604, 6.72217)
+
+[node name="Blocking" parent="Enviroment/Blocking/Side Room/blocks" instance=ExtResource("28_osvb2")]
+transform = Transform3D(11.8954, 0, 0, 0, 0.99787, 0, 0, 0, 13.2354, 42.9142, 8.42706, 6.94027)
 
 [node name="buttons" type="Node" parent="Enviroment/Blocking/Side Room"]
 
@@ -812,24 +2718,27 @@ transform = Transform3D(-2.27375e-06, 0, 46.672, 0, 0.768272, 0, -52.0175, 0, -2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring15"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_rkqdj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring15"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring16" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(-5.70517e-07, -0.490763, 19.1763, 18.4582, -3.03376e-08, 0, 5.70517e-07, 0.490763, 19.1763, 12.5884, 7.25653, -53.749)
+transform = Transform3D(-2.43033e-06, -0.490763, 19.1763, 78.6296, -3.03376e-08, 0, 2.43033e-06, 0.490763, 19.1763, 12.5884, 7.25653, -53.749)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring16"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_nvov3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring16"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring17" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(-8.06833e-07, -0.694044, 0, 18.4582, -3.03376e-08, 0, 0, 0, 27.1193, 7.16047, 7.25653, -70.7451)
+transform = Transform3D(-3.96367e-06, -0.694044, 0, 90.6782, -3.03376e-08, 0, 0, 0, 27.1193, 7.16047, 7.25653, -70.7451)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring17"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_kgnmd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring17"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -838,75 +2747,75 @@ shape = SubResource("ConvexPolygonShape3D_lem0c")
 transform = Transform3D(-5.70517e-07, -0.490763, -19.1763, 18.4582, -3.03376e-08, 0, -5.70517e-07, -0.490763, 19.1763, 12.6663, 7.25653, -86.5272)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring18"]
+transform = Transform3D(4.75976, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_21rwc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring18"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring19" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(5.19894e-07, 0.447217, -20.7387, 18.4582, -3.03376e-08, 0, -6.17001e-07, -0.530748, -17.4747, 42.5792, 7.25653, -87.6437)
+transform = Transform3D(2.48825e-06, 0.447217, -20.7387, 88.3421, -3.03376e-08, 0, -2.95301e-06, -0.530748, -17.4747, 42.5612, 7.25653, -87.4788)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring19"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_icw8r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring19"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring20" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(6.84671e-07, 0.691526, -2.30796, 15.7205, -3.03376e-08, 0, -5.84802e-08, -0.0590658, -27.021, 49.4338, 8.94242, -71.1712)
+transform = Transform3D(2.68487e-06, 0.691526, -2.30796, 61.6464, -3.03376e-08, 0, -2.29324e-07, -0.0590658, -27.021, 49.4338, 31.9837, -71.1712)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring20"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bt87q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring20"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring22" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(4.13342e-07, 0.650502, -0.704969, 9.49058, -2.85379e-08, 0, -3.5305e-08, -0.0555618, -8.25358, 48.8619, 3.69256, -79.107)
+transform = Transform3D(4.13342e-07, 0.650502, -0.704969, 9.49058, -2.85379e-08, 0, -3.5305e-08, -0.0555618, -8.25358, 48.7386, 3.69256, -79.107)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring22"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_awybd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring22"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring23" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(4.13342e-07, 0.682248, -1.15912, 9.49058, -2.99306e-08, 0, -3.5305e-08, -0.0582734, -13.5706, 49.9013, 3.69256, -66.9132)
+transform = Transform3D(4.13342e-07, 0.682248, -1.15912, 9.49058, -2.99306e-08, 0, -3.5305e-08, -0.0582734, -13.5706, 49.8768, 3.69256, -66.9132)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring23"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1oo6q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring23"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="flooring21" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(6.17001e-07, 0.530748, 17.4747, 18.4582, -3.03376e-08, 0, 5.19894e-07, 0.447217, -20.7387, 45.2911, 7.25653, -54.9778)
+transform = Transform3D(2.57906e-06, 0.530748, 17.4747, 77.1551, -3.03376e-08, 0, 2.17315e-06, 0.447217, -20.7387, 45.2911, 7.25653, -54.9778)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring21"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_fv305")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring21"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
-
-[node name="flooring24" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
-transform = Transform3D(1.22361e-14, 3.03376e-08, 15.7677, 6.40403, -3.03376e-08, 0, 2.79929e-07, 0.694044, -6.89226e-07, 27.4625, 7.80129, -96.0593)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring24"]
-mesh = SubResource("BoxMesh_6vq4k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring24"]
-shape = SubResource("ConvexPolygonShape3D_lem0c")
-
-[node name="flooring25" parent="Enviroment/Blocking/Mobile Room/blocking" instance=ExtResource("10_uqycr")]
 
 [node name="flooring26" type="StaticBody3D" parent="Enviroment/Blocking/Mobile Room/blocking"]
 transform = Transform3D(-3.79019e-07, 0, 10.7686, 0, 0.694044, 0, -8.67094, 0, -4.70711e-07, 26.922, -0.33, -100.101)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring26"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_qg1ux")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/blocking/flooring26"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="Blocking" parent="Enviroment/Blocking/Mobile Room/blocking" instance=ExtResource("28_osvb2")]
+transform = Transform3D(10.3363, 0, 0, 0, 1, 0, 0, 0, 9.79668, 27.0051, 10.5108, -95.7123)
 
 [node name="Maze Area" type="Node" parent="Enviroment/Blocking/Mobile Room"]
 
@@ -917,6 +2826,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 11.2371, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring24"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ch844")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring24"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -926,6 +2836,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 11.4142, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring25"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_hd4pq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring25"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -935,6 +2846,7 @@ transform = Transform3D(-9.55692e-08, 0, 12.2811, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring26"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwt6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring26"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -944,6 +2856,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring27"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_t4vrx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring27"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -953,6 +2866,7 @@ transform = Transform3D(-2.18637, 0, -9.82375e-07, 0, 0.694044, 0, 1.91138e-07, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring28"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_6f2ye")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring28"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -962,6 +2876,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring42"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_44qe5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring42"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -971,6 +2886,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 4.47452, 68.5585, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring44"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tyw8w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring44"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -980,6 +2896,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 4.47452, 76.5482, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring46"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfddb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring46"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -989,6 +2906,7 @@ transform = Transform3D(-9.55692e-08, 0, 4.47452, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring48"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_skkx5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring48"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -998,6 +2916,7 @@ transform = Transform3D(-9.55692e-08, 0, 4.47452, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring49"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qt6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring49"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1007,6 +2926,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 4.47452, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring50"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_cfbto")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring50"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1016,6 +2936,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 4.47452, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring51"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_t40kh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring51"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1025,6 +2946,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 4.47452, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring52"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_80m5n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring52"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1034,6 +2956,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring53"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_sh2b0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring53"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1043,6 +2966,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring54"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vni3w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring54"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1052,6 +2976,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring55"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_rmg7h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring55"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1061,6 +2986,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring56"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_niudv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring56"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1070,6 +2996,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring57"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_lxafl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring57"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1079,6 +3006,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring58"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqtda")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring58"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1088,6 +3016,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring59"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ow0xl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring59"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1097,6 +3026,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring60"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_x35gk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring60"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1106,6 +3036,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 2.26648, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring61"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_srseb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring61"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1115,6 +3046,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 2.26648, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring62"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7gob6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring62"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1124,6 +3056,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 2.26648, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring63"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_4xu40")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring63"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1133,6 +3066,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 21.6575, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring64"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_riwgr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring64"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1142,6 +3076,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 21.6575, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring65"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xk0p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring65"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1151,6 +3086,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 21.6575, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring66"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_2bxla")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring66"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1160,6 +3096,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 12.0964, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring67"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_pwtbm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring67"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1169,6 +3106,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 8.11305, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring68"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_heltj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring68"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1178,6 +3116,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 12.5788, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring69"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_4hdbr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring69"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1187,6 +3126,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 8.15622, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring70"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1omv2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring70"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1196,6 +3136,7 @@ transform = Transform3D(4.17746e-15, 3.03376e-08, 3.94068, 2.18637, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring71"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ihc3m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring71"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1205,6 +3146,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring72"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_qps88")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring72"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1214,6 +3156,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring76"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_dkxht")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring76"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1223,6 +3166,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring73"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_baafg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring73"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1232,6 +3176,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring74"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_rf8sr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring74"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1241,6 +3186,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring75"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_0cn06")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring75"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1250,6 +3196,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 4.47452, 76.548, 1.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring47"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_b6q68")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring47"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1259,6 +3206,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 4.47452, 68.559, 1.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring45"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_t0emt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring45"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1268,6 +3216,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring43"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7kjvw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring43"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1277,6 +3226,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring30"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_111uy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring30"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1286,6 +3236,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring32"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ihvk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring32"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1295,6 +3246,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 11.2371, 73.12, -0.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring34"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_xdcve")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring34"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1304,6 +3256,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 11.2371, 73.12, -0.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring36"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_04two")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring36"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1313,6 +3266,7 @@ transform = Transform3D(-9.55692e-08, 0, 19.7049, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring38"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_dd4sm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring38"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1322,6 +3276,7 @@ transform = Transform3D(-9.55692e-08, -0.694044, 0, 2.18637, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring40"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_gboog")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring40"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1331,6 +3286,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring41"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_wwijx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring41"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1340,6 +3296,7 @@ transform = Transform3D(-9.55692e-08, 0, 14.1387, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring39"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_tbwhf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring39"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1349,6 +3306,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 11.2371, 73.12, 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring37"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ao840")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring37"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1358,6 +3316,7 @@ transform = Transform3D(2.18637, 0, 0, 0, 0.694044, 0, 0, 0, 11.2371, 73.12, 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring35"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7kood")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring35"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1367,6 +3326,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring33"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_wefkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring33"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1376,6 +3336,7 @@ transform = Transform3D(-9.55692e-08, 0, 11.2371, 0, 0.694044, 0, -2.18637, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring31"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_evnrp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring31"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1385,9 +3346,22 @@ transform = Transform3D(-2.18637, 0, -9.82375e-07, 0, 0.694044, 0, 1.91138e-07, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring29"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_sua4t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking/flooring29"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="Blocking2" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 15.2446, 0, 0, 0, 11.7513, 50.7345, 7.42505, -57.0761)
+
+[node name="Blocking3" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 15.2446, 0, 0, 0, 7.45134, 50.7562, 7.42505, -44.9836)
+
+[node name="Blocking5" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(-4.37114e-08, 0, 12.9359, 0, 15.2446, 0, -1, 0, -5.65447e-07, 43.8774, 7.42505, -44.6541)
+
+[node name="Blocking4" parent="Enviroment/Blocking/Mobile Room/Maze Area/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 15.2446, 0, 0, 0, 2.55159, 50.7345, 9.38689, -49.9496)
 
 [node name="interactables" type="Node" parent="Enviroment/Blocking/Mobile Room/Maze Area"]
 
@@ -1397,10 +3371,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.103, 0.52085, -49.4374)
 [node name="doors" type="Node" parent="Enviroment/Blocking/Mobile Room"]
 
 [node name="Door" parent="Enviroment/Blocking/Mobile Room/doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(2.75952, 0, 0, 0, 1.4851, 0, 0, 0, 1, 27.083, -0.295104, -95.7804)
+transform = Transform3D(2.56278, 0, 0, 0, 1.17363, 0, 0, 0, 0.702834, 27.083, -0.295104, -96.3775)
 
 [node name="Door2" parent="Enviroment/Blocking/Mobile Room/doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(2.75952, 0, 0, 0, 1.86003, 0, 0, 0, 1, 27.083, 10.8018, -96.1805)
+transform = Transform3D(2.62371, 0, 0, 0, 1.91343, 0, 0, 0, 1, 27.083, 10.8018, -96.1805)
 
 [node name="mobile" type="Node" parent="Enviroment/Blocking/Mobile Room"]
 
@@ -1505,15 +3479,17 @@ transform = Transform3D(-2.89722e-06, 0, 48.3044, 0, 0.694044, 0, -66.2806, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/1"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_pr5mw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/1"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="2" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(-2.89722e-06, -0.694044, 0, -2.89722e-06, 1.3261e-15, -48.3044, 66.2806, -3.03376e-08, -2.11145e-06, 6.90871, 6.83377, -128.802)
+transform = Transform3D(-2.89722e-06, -0.694044, 0, -2.89722e-06, 1.3261e-15, -78.7257, 66.2806, -3.03376e-08, -3.44121e-06, 6.90871, 6.83377, -128.802)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/2"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_th2gi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/2"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1523,35 +3499,90 @@ transform = Transform3D(-2.89722e-06, -0.694044, 0, -2.89722e-06, 1.3261e-15, -4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/3"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ta6dc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/3"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
+[node name="14" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
+transform = Transform3D(-1.88706e-06, -0.694044, 0, -1.88706e-06, 1.3261e-15, -49.4774, 43.171, -3.03376e-08, -2.16272e-06, 51.8628, 13.6678, -116.995)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/14"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ta6dc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/14"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="16" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
+transform = Transform3D(-1.73002e-07, -0.694044, 0, -1.73002e-07, 1.3261e-15, -11.0211, 3.95782, -3.03376e-08, -4.81747e-07, 51.8628, 32.8666, -140.371)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/16"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ta6dc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/16"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="15" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
+transform = Transform3D(-1.88706e-06, -0.694044, 0, -1.88706e-06, 1.3261e-15, -49.4774, 43.171, -3.03376e-08, -2.16272e-06, 51.8628, 14.3669, -163.525)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/15"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ta6dc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/15"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
 [node name="4" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(66.2806, 0, 0, 0, -3.03376e-08, -48.3044, 0, 0.694044, -2.11145e-06, 29.632, -24.7292, -95.3117)
+transform = Transform3D(56.8229, 0, 0, 0, -3.03376e-08, -48.3044, 0, 0.694044, -2.11145e-06, 29.632, -24.7292, -96.2697)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/4"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_f675u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/4"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="5" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(28.4509, 0, 0, 0, -3.03376e-08, -48.3044, 0, 0.694044, -2.11145e-06, 46.5885, 22.9757, -96.269)
+transform = Transform3D(29.3045, 0, 0, 0, -5.99015e-08, -48.3044, 0, 1.37039, -2.11145e-06, 46.5885, 22.9757, -96.0521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/5"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ruqv8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/5"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="6" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(17.8639, 0, 0, 0, -3.03376e-08, -48.3044, 0, 0.694044, -2.11145e-06, 13.1566, 22.9757, -96.269)
+transform = Transform3D(29.3045, 0, 0, 0, -5.99015e-08, -48.3044, 0, 1.37039, -2.11145e-06, 8.0112, 22.9757, -96.0521)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/6"]
+transform = Transform3D(0.567156, 0, 0, 0, 1, 7.95808e-13, 0, 6.66134e-16, 1, 0.192697, 0, 0)
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ruqv8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/6"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="17" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
+transform = Transform3D(13.8908, 0, 0, 0, -5.99015e-08, -5.11867, 0, 1.37039, -2.23744e-07, 28.5134, 7.41273, -96.0521)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/17"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ruqv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/17"]
+shape = SubResource("ConvexPolygonShape3D_lem0c")
+
+[node name="18" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
+transform = Transform3D(13.8908, 0, 0, 0, -5.99015e-08, -23.2519, 0, 1.37039, -1.01637e-06, 28.5134, 30.7652, -96.0521)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/18"]
+mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ruqv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/18"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="7" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
@@ -1559,6 +3590,7 @@ transform = Transform3D(5.43608e-14, 3.03376e-08, 48.3044, 28.4509, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/7"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_jasvo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/7"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1568,24 +3600,27 @@ transform = Transform3D(-6.44749e-07, 0, 13.2016, 0, 0.694044, 0, -14.7501, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/8"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2p58")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/8"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="9" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(6.44501e-14, 3.03376e-08, 26.1638, 33.7314, -3.03376e-08, 0, 1.47445e-06, 0.694044, -1.14366e-06, 44.2178, 14.0584, -161.2)
+transform = Transform3D(1.20202e-13, 3.03376e-08, 26.1638, 62.9106, -3.03376e-08, 0, 2.74991e-06, 0.694044, -1.14366e-06, 44.2178, 14.0584, -161.2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/9"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ats0l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/9"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="10" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(6.44501e-14, 3.03376e-08, 26.1638, 33.7314, -3.03376e-08, 0, 1.47445e-06, 0.694044, -1.14366e-06, 14.3096, 14.0584, -161.2)
+transform = Transform3D(1.09846e-13, 3.03376e-08, 26.1638, 57.4903, -3.03376e-08, 0, 2.51299e-06, 0.694044, -1.14366e-06, 14.3096, 14.0584, -161.2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/10"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_cj8ob")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/10"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1595,15 +3630,17 @@ transform = Transform3D(3.48481e-14, 3.03376e-08, 5.29981, 18.2385, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/11"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_jff2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/11"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="12" type="StaticBody3D" parent="Enviroment/Blocking/Duck Room/blocking"]
-transform = Transform3D(7.60719e-15, 3.03376e-08, 5.29981, 3.98139, -3.03376e-08, 0, 1.74032e-07, 0.694044, -2.31662e-07, 29.1029, 28.908, -161.2)
+transform = Transform3D(2.33757e-14, 3.03376e-08, 5.29981, 12.2342, -3.03376e-08, 0, 5.34772e-07, 0.694044, -2.31662e-07, 29.1029, 33.7006, -161.2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/12"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7aeqp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/12"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1613,6 +3650,7 @@ transform = Transform3D(-4.24364e-07, 0, 8.96764, 0, 0.694044, 0, -9.70833, 0, -
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/blocking/13"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_oldlm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Duck Room/blocking/13"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1623,17 +3661,11 @@ shape = SubResource("ConvexPolygonShape3D_lem0c")
 transform = Transform3D(1.13775, 0, 0, 0, 1, 0, 0, 0, 1, 29.1673, -0.0932838, -161.521)
 
 [node name="Door3" parent="Enviroment/Blocking/Duck Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(1.47643, 0, 0, 0, 1.23859, 0, 0, 0, 1, 29.2298, 22.6738, -160.898)
+transform = Transform3D(1.09599, 0, 0, 0, 1.09902, 0, 0, 0, 0.623504, 29.263, 22.6738, -161.3)
 
-[node name="Door2" parent="Enviroment/Blocking/Duck Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.9218, 23.3318, -139.893)
+[node name="Door4" parent="Enviroment/Blocking/Duck Room/Doors" instance=ExtResource("1_a17sf")]
+transform = Transform3D(-4.12832e-08, 0, -0.686753, 0, 0.98552, 0, 0.94445, 0, -3.00189e-08, 51.9207, 22.9202, -140.317)
 door_locked = true
-
-[node name="Door" parent="Enviroment/Blocking/Duck Room/Doors/Door2/StaticBody3D/Door_mesh" index="0"]
-surface_material_override/2 = SubResource("ShaderMaterial_lnexy")
-
-[node name="Door_Frame" parent="Enviroment/Blocking/Duck Room/Doors/Door2/StaticBody3D/Door_mesh" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_lnexy")
 
 [node name="Platforms" type="Node" parent="Enviroment/Blocking/Duck Room"]
 
@@ -1779,6 +3811,7 @@ transform = Transform3D(-1.9229e-06, 0, 44.1448, 0, 0.694044, 0, -43.9909, 0, -1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/1"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_smfoo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/1"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1788,6 +3821,7 @@ transform = Transform3D(8.40528e-14, 3.03376e-08, 44.1448, 43.9909, -3.03376e-08
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/2"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vd0ko")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/2"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1797,6 +3831,7 @@ transform = Transform3D(-1.9229e-06, -0.694044, 0, 43.9909, -3.03376e-08, 0, 0, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/3"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_vcuqi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/3"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1806,15 +3841,17 @@ transform = Transform3D(-1.14164e-06, -0.694044, 0, 26.1176, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/4"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_gxt6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/4"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="5" type="StaticBody3D" parent="Enviroment/Blocking/Elevator Room/blocking"]
-transform = Transform3D(41.2293, 0, 0, 0, 0.694044, 0, 0, 0, 44.1448, 19.4531, 22.4219, -183.79)
+transform = Transform3D(41.2293, 0, 0, 0, 0.694044, 0, 0, 0, 44.6232, 19.4531, 22.4219, -183.79)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/5"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_k0coe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/5"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1824,6 +3861,7 @@ transform = Transform3D(-1.14164e-06, -0.694044, 0, 26.1176, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/6"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_xdnv5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/6"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1833,6 +3871,7 @@ transform = Transform3D(-5.01661e-07, -0.694044, 0, 11.4767, -3.03376e-08, 0, 0,
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/7"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_g1n13")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/7"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1842,6 +3881,7 @@ transform = Transform3D(-11.4767, 0, 0, 0, -0.694044, 0, 0, 0, -5.79995, -6.8233
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Elevator Room/blocking/8"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ina75")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Elevator Room/blocking/8"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1849,7 +3889,7 @@ shape = SubResource("ConvexPolygonShape3D_lem0c")
 [node name="Doors" type="Node" parent="Enviroment/Blocking/Elevator Room"]
 
 [node name="Door" parent="Enviroment/Blocking/Elevator Room/Doors" instance=ExtResource("1_a17sf")]
-transform = Transform3D(-5.37708e-08, 0, 1, 0, 1.22496, 0, -1.23013, 0, -4.37114e-08, 7.39344, 22.7109, -163.677)
+transform = Transform3D(-3.77935e-08, 0, 0.779806, 0, 0.983014, 0, -0.864614, 0, -3.40864e-08, 6.79017, 22.7109, -163.404)
 
 [node name="Platforms" type="Node" parent="Enviroment/Blocking/Elevator Room"]
 
@@ -1891,37 +3931,41 @@ transform = Transform3D(5.90265, 0, 0, 0, 1, 0, 0, 0, 6.16247, -18.7197, 17.2715
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Travel Room"]
 
 [node name="1" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(2.07166e-06, 0.694044, 0, -47.394, 3.03376e-08, 0, 0, 0, -56.9294, 1.24657, 7.13022, -133.146)
+transform = Transform3D(7.49544e-06, 0.694044, 0, -171.475, 3.03376e-08, 0, 0, 0, -56.9294, 1.24657, 7.13022, -133.146)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/1"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_sbmco")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/1"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="2" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(-5.70419e-14, -3.03376e-08, -42.1333, -29.8542, 3.03376e-08, 0, -1.30497e-06, -0.694044, 1.84171e-06, -13.8185, 24.7922, -167.553)
+transform = Transform3D(-3.19044e-13, -3.03376e-08, -42.1333, -166.979, 3.03376e-08, 0, -7.29889e-06, -0.694044, 1.84171e-06, -13.8185, 24.7922, -167.553)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/2"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_47epu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/2"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="3" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(1.30497e-06, 0.694044, 0, -29.8542, 3.03376e-08, 0, 0, 0, -121.895, -34.4253, 24.7922, -107.219)
+transform = Transform3D(7.23323e-06, 0.694044, 0, -165.477, 3.03376e-08, 0, 0, 0, -121.895, -34.4253, 24.7922, -107.219)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/3"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_kr7bl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/3"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="4" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(9.12452e-07, 0.230867, -42.4606, -29.8542, 1.44327e-08, 0, -9.32937e-07, -0.23605, -41.5283, -16.1512, 22.8814, -31.6986)
+transform = Transform3D(9.74187e-06, 0.230867, -42.4606, -318.741, 1.44327e-08, 0, -9.96057e-06, -0.23605, -41.5283, -16.1512, 22.8814, -31.6986)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/4"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_2piks")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/4"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -1931,24 +3975,27 @@ transform = Transform3D(-17.0035, 0, 0, 0, -0.330181, 0, 0, 0, -27.6532, 13.4291
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/5"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_rtb4s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/5"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="6" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(1.30497e-06, 0.694044, 0, -29.8542, 3.03376e-08, 0, 0, 0, -63.332, 1.25539, 15.8876, -74.2022)
+transform = Transform3D(6.18854e-06, 0.694044, 0, -141.577, 3.03376e-08, 0, 0, 0, -63.332, 1.25539, 15.8876, -74.2022)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/6"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_2mnn1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/6"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="7" type="StaticBody3D" parent="Enviroment/Blocking/Travel Room/blocking"]
-transform = Transform3D(1.00057e-06, 0.622498, -20.8954, -26.9886, 3.20819e-08, 0, -6.24959e-07, -0.388814, -33.4539, 11.528, 17.1615, -26.6372)
+transform = Transform3D(5.70606e-06, 0.622498, -20.8954, -153.911, 3.20819e-08, 0, -3.56402e-06, -0.388814, -33.4539, 11.528, 17.1615, -26.0845)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Travel Room/blocking/7"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1as2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Travel Room/blocking/7"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -2023,10 +4070,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2896, 9.57878, -10.0966)
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Power_room"]
 
 [node name="1" type="StaticBody3D" parent="Enviroment/Blocking/Power_room/blocking"]
-transform = Transform3D(-17.0035, 0, 0, 0, -0.330181, 0, 0, 0, -10.8204, -33.2136, -0.177935, 14.123)
+transform = Transform3D(-21.2511, 0, 0, 0, -0.330181, 0, 0, 0, -10.8204, -33.2136, -0.177935, 14.123)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Power_room/blocking/1"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_nxjdq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Power_room/blocking/1"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
@@ -2036,26 +4084,9 @@ transform = Transform3D(-9.92847, 0, 0, 0, -0.330181, 0, 0, 0, -9.58071, -30.001
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Power_room/blocking/2"]
 mesh = SubResource("BoxMesh_6vq4k")
+surface_material_override/0 = SubResource("StandardMaterial3D_l31h3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Power_room/blocking/2"]
-shape = SubResource("ConvexPolygonShape3D_lem0c")
-
-[node name="4" type="StaticBody3D" parent="Enviroment/Blocking/Power_room/blocking"]
-transform = Transform3D(-17.0035, 0, 9.19296e-07, 7.43245e-07, -6.30872e-16, 21.031, 0, -0.330181, -4.01837e-14, -33.4264, 4.92889, 8.88367)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Power_room/blocking/4"]
-mesh = SubResource("BoxMesh_6vq4k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Power_room/blocking/4"]
-shape = SubResource("ConvexPolygonShape3D_lem0c")
-
-[node name="5" type="StaticBody3D" parent="Enviroment/Blocking/Power_room/blocking"]
-transform = Transform3D(7.43245e-07, 0.330181, 0, -17.0035, 1.44327e-08, 0, 0, 0, -21.031, -41.4732, 6.88647, 8.88367)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Blocking/Power_room/blocking/5"]
-mesh = SubResource("BoxMesh_6vq4k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Blocking/Power_room/blocking/5"]
 shape = SubResource("ConvexPolygonShape3D_lem0c")
 
 [node name="power unlocker" parent="Enviroment/Blocking/Power_room" instance=ExtResource("7_as8mn")]
@@ -2092,11 +4123,8 @@ timing = 5.0
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
 
-[node name="flooring25" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(-5.38679e-07, 0, 22.5817, 0, 0.694044, 0, -12.3235, 0, -9.87081e-07, 62.9772, 23.0677, -140.554)
-
 [node name="flooring26" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
-transform = Transform3D(4.36981e-14, 3.03376e-08, 32.7196, 22.8704, -3.03376e-08, 0, 9.99697e-07, 0.694044, -1.43022e-06, 68.1651, 29.2184, -141.974)
+transform = Transform3D(4.36981e-14, 3.03376e-08, 32.7196, 22.8704, -3.03376e-08, 0, 9.99697e-07, 0.694044, -1.43022e-06, 68.1651, 29.2184, -142.36)
 
 [node name="flooring28" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("10_uqycr")]
 transform = Transform3D(-8.99222e-08, -0.694044, 0, 2.05718, -3.03376e-08, 0, 0, 0, 12.6057, 72.8731, 22.0039, -137.721)
@@ -2150,16 +4178,16 @@ transform = Transform3D(-6.30053e-08, -4.12234, 0, 1.4414, -1.80193e-07, 0, 0, 0
 transform = Transform3D(-8.99221e-08, 0, 12.6057, 0, 0.683352, 0, -2.05718, 0, -5.51013e-07, 81.3669, 22.5449, -136.65)
 
 [node name="Blocking" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("15_yrns8")]
-transform = Transform3D(-1.0665, 0, 0, 0, 2.37854, 0, 0, 0, 1, 69.4465, 26.9494, -137.899)
+transform = Transform3D(-34.9053, 0, 0, 0, 27.3622, 0, 0, 0, 1, 69.4465, 26.9494, -137.899)
 
 [node name="Blocking2" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("15_yrns8")]
-transform = Transform3D(-0.260785, 0, 0, 0, 1.98164, 0, 0, 0, 1, 93.4613, 38.1912, -137.899)
+transform = Transform3D(-17.9794, 0, 0, 0, 13.2432, 0, 0, 0, 1, 95.8934, 36.4226, -137.899)
 
 [node name="Blocking4" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("15_yrns8")]
-transform = Transform3D(-22.4026, 0, 1.03485e-07, 9.79247e-07, -3.26467e-13, 2.36746, 0, -170.864, -4.52346e-15, 70.2788, 39.2715, -137.899)
+transform = Transform3D(-1182, 0, 1.03485e-07, 5.16669e-05, -3.69014e-12, 2.36746, 0, -1931.32, -4.52346e-15, 70.2788, 39.2715, -137.899)
 
-[node name="Blocking3" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("15_yrns8")]
-transform = Transform3D(-0.0828389, 0, 0, 0, 1.39253, 0, 0, 0, 1, 88.4896, 39.6662, -137.899)
+[node name="Blocking3" parent="Enviroment/Blocking/Above_duck_as_below_room/blocking" instance=ExtResource("28_osvb2")]
+transform = Transform3D(22.7974, 0, 0, 0, 1, 0, 0, 0, 3.762, 63.3364, 22.9133, -140.215)
 
 [node name="interactables" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
 
@@ -2207,12 +4235,128 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.1578, 31.0748, -144.486)
 [node name="Slime_Enemy3" parent="Enviroment/Blocking/Above_duck_as_below_room/enemies" instance=ExtResource("21_e4ow1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.3959, 31.0748, -140.242)
 
+[node name="Block_Room" type="Node" parent="Enviroment/Blocking"]
+
+[node name="blocking" type="Node" parent="Enviroment/Blocking/Block_Room"]
+
+[node name="Blocking" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(18.4017, 0, 0, 0, 132.368, 0, 0, 0, 1, -34.877, 11.2371, -8.06432)
+
+[node name="Blocking2" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(18.4017, 0, 0, 0, 132.368, 0, 0, 0, 1, -34.877, 11.2371, 8.54404)
+
+[node name="Blocking3" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(-1.52874e-06, 0, 1, 0, 132.368, 0, -34.9734, 0, -4.37114e-08, -43.683, 11.2371, 8.54404)
+
+[node name="Blocking4" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("28_osvb2")]
+transform = Transform3D(18.1122, 0, 0, 0, 1, 0, 0, 0, 17.7986, -34.4572, 1, -0.882964)
+
+[node name="column_worn" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("42_lhjae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5406, 1.32818, -1.63504)
+
+[node name="column_worn2" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("42_lhjae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5406, 1.32818, 5.33503)
+
+[node name="plate_worn" parent="Enviroment/Blocking/Block_Room/blocking" instance=ExtResource("44_5xmt5")]
+transform = Transform3D(0.677314, 0, 0, 0, 1.00058, 0, 0, 0, 2.03439, -28.5812, 7, -0.112046)
+
+[node name="interactables" type="Node" parent="Enviroment/Blocking/Block_Room"]
+
+[node name="RevealedLightObject2" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("3_85wfg")]
+transform = Transform3D(7.90032, 0, 0, 0, 1, 0, 0, 0, 2.72643, -35.1857, 16.1916, -0.645351)
+
+[node name="RevealedLightObject" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("3_85wfg")]
+transform = Transform3D(6.60057, 0, 0, 0, 1, 0, 0, 0, 15.1201, -28.7906, 9.09613, 0.0544791)
+
+[node name="boss_key" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("46_lptwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3561, 1.5, -4.21813)
+
+[node name="MovingBlock" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("44_ovkqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6601, 2.12102, 1.68195)
+
+[node name="Darkness" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("3_m8l2y")]
+transform = Transform3D(3.26308, 0, 0.402116, 0, 0.205223, 0, -0.377955, 0, 3.47168, -40.8043, 16.7175, -0.617293)
+fade_time = 3.0
+
+[node name="MovingBlock2" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("44_ovkqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8275, 17.5407, -0.571253)
+
+[node name="Darkness2" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("3_m8l2y")]
+transform = Transform3D(1, 0, 0, 0, 8.38357, 0, 0, 0, 3.51378, -31.4248, 2.63172, 7.17195)
+
+[node name="doors" type="Node" parent="Enviroment/Blocking/Block_Room"]
+
+[node name="Jail_Door" parent="Enviroment/Blocking/Block_Room/doors" instance=ExtResource("12_m13l2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -31.8438, 1.5, -5.15726)
+z_axis = -10.0
+
+[node name="Jail_Door3" parent="Enviroment/Blocking/Block_Room/doors" instance=ExtResource("12_m13l2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -31.8438, 1.5, 1.89792)
+y_axis = -10.0
+
+[node name="Jail_Door2" parent="Enviroment/Blocking/Block_Room/doors" instance=ExtResource("12_m13l2")]
+transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, -28.0806, 1.5, -1.15499)
+
+[node name="Jail_Door4" parent="Enviroment/Blocking/Block_Room/doors" instance=ExtResource("12_m13l2")]
+transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, -28.0806, 1.5, 6.01836)
+
+[node name="buttons" type="Node" parent="Enviroment/Blocking/Block_Room"]
+
+[node name="Button" parent="Enviroment/Blocking/Block_Room/buttons" instance=ExtResource("9_sgdh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7448, 9.61201, 4.4987)
+is_a_block_button = true
+is_a_single_use = true
+
+[node name="Button2" parent="Enviroment/Blocking/Block_Room/buttons" instance=ExtResource("9_sgdh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6462, 1.5, 7.11573)
+is_a_single_use = true
+
+[node name="Button3" parent="Enviroment/Blocking/Block_Room/buttons" instance=ExtResource("9_sgdh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5812, 1.5, -6.61443)
+is_a_block_button = true
+is_a_single_use = true
+
+[node name="platforms" type="Node" parent="Enviroment/Blocking/Block_Room"]
+
+[node name="platform" parent="Enviroment/Blocking/Block_Room/platforms" instance=ExtResource("4_ue48o")]
+transform = Transform3D(0.0628557, 0, 0, 0, 4.89734, 0, 0, 0, 0.06364, -41.5536, 2.27763, -5.93373)
+button_or_not = true
+one_shot_button = true
+move_distance_y = 15.0
+move_time = 7.0
+
+[node name="Pre-Boss Room" type="Node" parent="Enviroment/Blocking"]
+
+[node name="blocking" type="Node" parent="Enviroment/Blocking/Pre-Boss Room"]
+
+[node name="Blocking" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("28_osvb2")]
+transform = Transform3D(26.9707, 0, 0, 0, 1, 0, 0, 0, 23.529, -10.9588, -14.8599, 3.60336)
+
+[node name="Blocking2" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 16.9667, 0, 0, 0, 19.548, -23.5488, -9.20715, 3.84769)
+
+[node name="Blocking3" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(-4.37114e-08, 0, 19.548, 0, 16.9667, 0, -1, 0, -8.54471e-07, -13.4541, -9.20715, -6.33918)
+
+[node name="Blocking4" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(-4.37114e-08, 0, 19.548, 0, 16.9667, 0, -1, 0, -8.54471e-07, -13.4541, -9.20715, 13.039)
+
+[node name="Blocking5" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 16.9667, 0, 0, 0, 12.9035, -3.20813, -9.20715, -5.1352)
+
+[node name="Blocking6" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
+transform = Transform3D(1, 0, 0, 0, 16.9667, 0, 0, 0, 12.9035, -3.20813, -9.20715, 11.9059)
+
+[node name="Fog_Area" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("46_0yre4")]
+transform = Transform3D(14.1995, 0, 0, 0, 2.07832, 0, 0, 0, 4.24683, -10.1093, 11.5823, 13.1799)
+material = SubResource("FogMaterial_fcc7u")
+
 [node name="collectibles" type="Node3D" parent="Enviroment"]
 
 [node name="entities" type="Node3D" parent="."]
 
 [node name="player" parent="entities" instance=ExtResource("1_jxnkr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.96357, 0.924596, 11.5898)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.674, 2.57704, -2.63796)
 
 [connection signal="trigger_effect" from="Enviroment/Blocking/L-way/Interactables/Button" to="Enviroment/Blocking/L-way/platforms/platform" method="_on_button_trigger_effect"]
 [connection signal="button_effect" from="Enviroment/Blocking/Side Room/buttons/Button" to="Enviroment/Blocking/Side Room/buttons/String_Storage" method="_on_button_effect"]
@@ -2236,10 +4380,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.963
 [connection signal="not_climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder" to="entities/player" method="_on_ladder_not_climbing"]
 [connection signal="climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder2" to="entities/player" method="_on_ladder_climbing"]
 [connection signal="not_climbing" from="Enviroment/Blocking/Above_duck_as_below_room/interactables/ladder2" to="entities/player" method="_on_ladder_not_climbing"]
+[connection signal="trigger_effect" from="Enviroment/Blocking/Block_Room/buttons/Button" to="Enviroment/Blocking/Block_Room/doors/Jail_Door" method="open_door"]
+[connection signal="trigger_effect" from="Enviroment/Blocking/Block_Room/buttons/Button2" to="Enviroment/Blocking/Block_Room/doors/Jail_Door3" method="open_door"]
+[connection signal="trigger_effect" from="Enviroment/Blocking/Block_Room/buttons/Button3" to="Enviroment/Blocking/Block_Room/platforms/platform" method="_on_button_trigger_effect"]
 
-[editable path="Enviroment/Blocking/Main_Room/Doors/Door2"]
-[editable path="Enviroment/Blocking/Main_Room/Doors/Door2/StaticBody3D/Door_mesh"]
-[editable path="Enviroment/Blocking/Main_Room/Interactables/Darkness"]
-[editable path="Enviroment/Blocking/Duck Room/Doors/Door2"]
-[editable path="Enviroment/Blocking/Duck Room/Doors/Door2/StaticBody3D/Door_mesh"]
 [editable path="Enviroment/Blocking/Duck Room/Interactables/platform"]

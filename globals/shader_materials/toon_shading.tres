@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://onveecl84hku"]
+
+[ext_resource type="Shader" path="res://globals/shaders/toon.gdshader" id="1_io6fl"]
+
+[sub_resource type="Gradient" id="Gradient_ku7lx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.386905, 0.672619)
+colors = PackedColorArray(0, 0, 0, 1, 0.281187, 0.281187, 0.281187, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oomx1"]
+gradient = SubResource("Gradient_ku7lx")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_io6fl")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_oomx1")

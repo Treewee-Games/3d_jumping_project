@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://8dd6obgkt4up"]
+
+[ext_resource type="PackedScene" uid="uid://fyq1doopa6ga" path="res://blends/enviorment/structures/ruins/column_small_2_3.fbx" id="1_qd431"]
+[ext_resource type="Material" uid="uid://onveecl84hku" path="res://globals/shader_materials/toon_shading.tres" id="3_736y6"]
+[ext_resource type="Texture2D" uid="uid://xh8tuxcpkve5" path="res://globals/stock_textures/stone/square_stone/Vol_58_1_Surface_Ambient_Occlusion.png" id="3_yc4c0"]
+[ext_resource type="Texture2D" uid="uid://dgtxyqky3pdau" path="res://globals/stock_textures/stone/square_stone/Vol_58_1_Surface_Normal.png" id="4_2wrpv"]
+[ext_resource type="Texture2D" uid="uid://loqowui3xpjs" path="res://globals/stock_textures/stone/square_stone/Vol_58_1_Surface_Roughness.png" id="5_y4dwh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqyb6"]
+render_priority = -1
+next_pass = ExtResource("3_736y6")
+transparency = 1
+blend_mode = 3
+cull_mode = 2
+depth_draw_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.145098, 0.168627, 0.203922, 1)
+roughness_texture = ExtResource("5_y4dwh")
+normal_enabled = true
+normal_texture = ExtResource("4_2wrpv")
+ao_enabled = true
+ao_texture = ExtResource("3_yc4c0")
+uv1_scale = Vector3(0.32, 0.32, 0.32)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6lkct"]
+size = Vector3(1.65527, 3.00989, 1.68903)
+
+[node name="column_small_2_3" instance=ExtResource("1_qd431")]
+
+[node name="column_small_2_3" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_qqyb6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00439453, 1.4941, 0.0105896)
+shape = SubResource("BoxShape3D_6lkct")

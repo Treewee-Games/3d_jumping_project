@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0mo5fadibvoh"]
+
+[ext_resource type="PackedScene" uid="uid://dyp0wwp8sxhyy" path="res://blends/enviorment/structures/ruins/plate_3.fbx" id="1_flmd2"]
+[ext_resource type="Material" uid="uid://vmqsivquofqf" path="res://globals/shader_materials/stone_surface_material.tres" id="2_c8l6b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhcba"]
+albedo_color = Color(1, 0.172458, 0.477596, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[node name="plate_3" instance=ExtResource("1_flmd2")]
+
+[node name="plate_3" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_c8l6b")
+surface_material_override/1 = SubResource("StandardMaterial3D_yhcba")

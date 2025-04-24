@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkosseamoiel1"]
+
+[ext_resource type="PackedScene" uid="uid://bqk4v4w1om7vi" path="res://Test_Level/test_blocks/Test_Block.tscn" id="1_uqxhg"]
+[ext_resource type="Texture2D" uid="uid://cmfjy8xohvxur" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Base_Color.png" id="2_dgy8r"]
+[ext_resource type="Texture2D" uid="uid://bmoah30iucbuo" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Ambient_Occlusion.png" id="3_l3fwf"]
+[ext_resource type="Texture2D" uid="uid://b2i1vl6s633tg" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Normal.png" id="4_acbbj"]
+[ext_resource type="Texture2D" uid="uid://cj0hb1h6i1mv7" path="res://globals/stock_textures/Dirt/Vol_19_4_Dirt_Roughness.png" id="5_hgu4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd138"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_dgy8r")
+roughness_texture = ExtResource("5_hgu4q")
+normal_enabled = true
+normal_texture = ExtResource("4_acbbj")
+ao_enabled = true
+ao_texture = ExtResource("3_l3fwf")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Blocking" instance=ExtResource("1_uqxhg")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kd138")

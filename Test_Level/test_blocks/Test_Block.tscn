@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqk4v4w1om7vi"]
+
+[ext_resource type="Texture2D" uid="uid://dean7gshpdssu" path="res://globals/stock_textures/Roots/Vol_75_2_Base_Color.png" id="1_8f766"]
+[ext_resource type="Texture2D" uid="uid://crjqsh2fxy5ap" path="res://globals/stock_textures/Roots/Vol_75_2_Ambient_Occlusion.png" id="2_32nrx"]
+[ext_resource type="Texture2D" uid="uid://b8jmjx7fxwp0e" path="res://globals/stock_textures/Roots/Vol_75_2_Normal.png" id="3_q02ub"]
+[ext_resource type="Texture2D" uid="uid://cnk4fg348073k" path="res://globals/stock_textures/Roots/Vol_75_2_Height.png" id="4_mlv7q"]
+[ext_resource type="Texture2D" uid="uid://bxuq78gh4xdso" path="res://globals/stock_textures/Roots/Vol_75_2_Roughness.png" id="5_vjead"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ayve"]
+size = Vector3(0.995258, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6y6l"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_8f766")
+roughness_texture = ExtResource("5_vjead")
+normal_enabled = true
+normal_texture = ExtResource("3_q02ub")
+ao_enabled = true
+ao_texture = ExtResource("2_32nrx")
+heightmap_texture = ExtResource("4_mlv7q")
+refraction_texture = ExtResource("3_q02ub")
+detail_albedo = ExtResource("1_8f766")
+detail_normal = ExtResource("3_q02ub")
+uv1_scale = Vector3(0.01, 0.01, 0.01)
+uv1_offset = Vector3(-1.775, -0.615, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(0.41, 0.41, 0.41)
+uv2_triplanar = true
+uv2_world_triplanar = true
+grow_amount = -2.723
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5h75"]
+material = SubResource("StandardMaterial3D_c6y6l")
+
+[node name="Blocking" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00142479, 0, 0)
+shape = SubResource("BoxShape3D_3ayve")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_c5h75")

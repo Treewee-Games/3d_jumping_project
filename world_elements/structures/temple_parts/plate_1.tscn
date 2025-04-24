@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvff0xgqtrxps"]
+
+[ext_resource type="PackedScene" uid="uid://c6vippeurmged" path="res://blends/enviorment/structures/ruins/plate_1_2.fbx" id="1_vmqjs"]
+[ext_resource type="Texture2D" uid="uid://0s6sq5ubep3c" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Base_Color.png" id="2_dopip"]
+[ext_resource type="Texture2D" uid="uid://63qhatj6r6ei" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Ambient_Occlusion.png" id="3_j78wk"]
+[ext_resource type="Material" uid="uid://onveecl84hku" path="res://globals/shader_materials/toon_shading.tres" id="4_e3hho"]
+[ext_resource type="Texture2D" uid="uid://lmy8jgmskltd" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Normal.png" id="4_r7oas"]
+[ext_resource type="Texture2D" uid="uid://dkmaxsgi804v" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Roughness.png" id="5_qthnm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5begw"]
+render_priority = -1
+next_pass = ExtResource("4_e3hho")
+transparency = 1
+blend_mode = 3
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.513947, 0.687865, 0.612296, 1)
+albedo_texture = ExtResource("2_dopip")
+roughness_texture = ExtResource("5_qthnm")
+normal_enabled = true
+normal_scale = 5.8
+normal_texture = ExtResource("4_r7oas")
+ao_enabled = true
+ao_texture = ExtResource("3_j78wk")
+subsurf_scatter_strength = 0.9
+subsurf_scatter_transmittance_depth = 5.082
+uv1_scale = Vector3(-0.015, -0.015, -0.015)
+uv1_triplanar = true
+disable_receive_shadows = true
+shadow_to_opacity = true
+distance_fade_max_distance = 3.0
+
+[node name="plate1" instance=ExtResource("1_vmqjs")]
+
+[node name="plate_1_2" parent="." index="0"]
+transform = Transform3D(0.969651, 0, 0, 0, 0.969651, 7.32066e-08, 0, -7.32066e-08, 0.969651, 0, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_5begw")

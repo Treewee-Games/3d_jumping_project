@@ -1,12 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://qjhb0kcsqc5w"]
+[gd_scene load_steps=8 format=3 uid="uid://qjhb0kcsqc5w"]
 
 [ext_resource type="Script" path="res://world_elements/Interactables/power_objects/darkness.gd" id="1_hjypp"]
+[ext_resource type="Shader" path="res://globals/shaders/Darkness.gdshader" id="2_whftn"]
+[ext_resource type="Texture2D" uid="uid://drgv202wvwuo1" path="res://globals/stock_noise/T_PerlinNoise_Tiled11_inv.png" id="3_lqg4w"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_6r55n"]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pewoq"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_whftn")
+shader_parameter/Color = null
+shader_parameter/glow_color = Color(0.0253413, 2.23206e-06, 0.190977, 1)
+shader_parameter/dist = 0.18
+shader_parameter/speed = 0.3
+shader_parameter/glow_intensity = 0.295
+shader_parameter/glow_amount = 1.735
+shader_parameter/posMult = 0.3
+shader_parameter/noise = ExtResource("3_lqg4w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y4u5"]
 resource_local_to_scene = true
+render_priority = -1
+next_pass = SubResource("ShaderMaterial_pewoq")
 transparency = 1
+blend_mode = 3
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wkcnw"]

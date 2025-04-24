@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://cva62gq28aqxi"]
+
+[ext_resource type="PackedScene" uid="uid://bqk4v4w1om7vi" path="res://Test_Level/test_blocks/Test_Block.tscn" id="1_g7p20"]
+[ext_resource type="Texture2D" uid="uid://dseup8167fxh2" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Base_Color.png" id="2_twdis"]
+[ext_resource type="Texture2D" uid="uid://y37e7vkkxv1s" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Ambient_Occlusion.png" id="3_3wh8q"]
+[ext_resource type="Texture2D" uid="uid://xrfd840ryc1a" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Height.png" id="4_qhwgo"]
+[ext_resource type="Texture2D" uid="uid://djohbktr7mpss" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Normal.png" id="5_pqnt6"]
+[ext_resource type="Texture2D" uid="uid://bqv5f3swyw01a" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Roughness.png" id="6_gj8pw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2rfd"]
+albedo_texture = ExtResource("2_twdis")
+roughness_texture = ExtResource("6_gj8pw")
+normal_enabled = true
+normal_texture = ExtResource("5_pqnt6")
+ao_enabled = true
+ao_texture = ExtResource("3_3wh8q")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_qhwgo")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="Blocking" instance=ExtResource("1_g7p20")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_g2rfd")

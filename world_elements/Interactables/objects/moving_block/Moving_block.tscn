@@ -1,10 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpf2lprm5kqpy"]
+[gd_scene load_steps=11 format=3 uid="uid://dpf2lprm5kqpy"]
 
 [ext_resource type="Script" path="res://world_elements/Interactables/objects/moving_block/moving_block.gd" id="1_sjwpi"]
+[ext_resource type="Shader" path="res://globals/shaders/outline_shader.gdshader" id="2_wyx43"]
+[ext_resource type="Texture2D" uid="uid://drgv202wvwuo1" path="res://globals/stock_noise/T_PerlinNoise_Tiled11_inv.png" id="3_bxquj"]
+[ext_resource type="Texture2D" uid="uid://lmy8jgmskltd" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Normal.png" id="4_2huy5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nm1bo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qu2m0"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="Gradient" id="Gradient_67wqu"]
+offsets = PackedFloat32Array(0, 0.988636)
+colors = PackedColorArray(0.343175, 0.65147, 0.43343, 1, 0.156863, 0.34902, 0.262745, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2wmdm"]
+gradient = SubResource("Gradient_67wqu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k8bl"]
+render_priority = -1
+shader = ExtResource("2_wyx43")
+shader_parameter/outline_thickness = -0.045
+shader_parameter/speed = 0.1
+shader_parameter/noise_scale = 2.035
+shader_parameter/alpha = 1.0
+shader_parameter/fire_noise = ExtResource("3_bxquj")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_2wmdm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mrcg"]
+next_pass = SubResource("ShaderMaterial_4k8bl")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.175867, 0.348114, 0.266845, 1)
+normal_enabled = true
+normal_texture = ExtResource("4_2huy5")
 
 [node name="MovingBlock" type="RigidBody3D" groups=["moving_blocks"]]
 collision_layer = 23
@@ -21,3 +50,4 @@ shape = SubResource("BoxShape3D_nm1bo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("BoxMesh_qu2m0")
+surface_material_override/0 = SubResource("StandardMaterial3D_7mrcg")

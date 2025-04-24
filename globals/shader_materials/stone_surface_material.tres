@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://vmqsivquofqf"]
+
+[ext_resource type="Texture2D" uid="uid://y37e7vkkxv1s" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Ambient_Occlusion.png" id="1_sbuyk"]
+[ext_resource type="Texture2D" uid="uid://djohbktr7mpss" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Normal.png" id="2_3ff7j"]
+[ext_resource type="Texture2D" uid="uid://bqv5f3swyw01a" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Roughness.png" id="3_kp02w"]
+
+[resource]
+blend_mode = 4
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.378743, 0.431224, 0.357445, 1)
+roughness_texture = ExtResource("3_kp02w")
+normal_enabled = true
+normal_texture = ExtResource("2_3ff7j")
+ao_enabled = true
+ao_texture = ExtResource("1_sbuyk")
+refraction_scale = 0.66
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true

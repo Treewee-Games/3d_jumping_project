@@ -8,6 +8,8 @@ var current_health: int = 0
 @onready var abil_2: TextureRect = $VSplitContainer/HBoxContainer/VBoxContainer/VBoxContainer2/abil_2
 @onready var abil_3: TextureRect = $VSplitContainer/HBoxContainer/VBoxContainer/HBoxContainer/abil_3
 @onready var abil_4: TextureRect = $VSplitContainer/HBoxContainer/VBoxContainer/VBoxContainer3/abil_4
+@onready var soulcount: Label = $VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer/Soulcount
+@onready var key_count: Label = $VSplitContainer/Bottom_Layer/VBoxContainer/HBoxContainer2/KeyCount
 
 var assigned_abilities: Dictionary = {
 	0: "None", #Slot 1
@@ -19,6 +21,8 @@ var assigned_abilities: Dictionary = {
 var ability_slots: Array
 func _ready() -> void:
 	ability_slots = [abil_1, abil_2, abil_3, abil_4]
+	soulcount.text = str(GlobalStats.soul_count)
+	key_count.text = str(GlobalStats.key_count)
 
 
 func setup(max_health_value: int, current_health_value: int) -> void:
@@ -81,3 +85,8 @@ func activate_power(slot_index: int)->void:
 		GlobalStats.use_power(power_name)
 	else:
 		print("No power assigned to slot", slot_index)
+func update_soul(value: int)->void:
+	soulcount.text = str(value)
+	
+func update_keys(value: int)->void:
+	key_count.text = str(value)

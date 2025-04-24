@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://6v13l8sbw7t6"]
+
+[ext_resource type="ArrayMesh" uid="uid://c0x5va1mblu5b" path="res://blends/enviorment/structures/doors/Standard Doors/Door.obj" id="1_vmjul"]
+[ext_resource type="Texture2D" uid="uid://cvtkl74ecs88e" path="res://blends/enviorment/structures/doors/Standard Doors/CBMaterial-color.png" id="2_526p6"]
+[ext_resource type="Texture2D" uid="uid://dumowjbiwjpm2" path="res://blends/enviorment/structures/doors/Standard Doors/CBMaterial-metallic.png" id="3_s75wg"]
+[ext_resource type="Texture2D" uid="uid://xqm7bmo2xkr6" path="res://blends/enviorment/structures/doors/Standard Doors/CBMaterial-roughness.png" id="4_nw2mg"]
+[ext_resource type="Material" uid="uid://onveecl84hku" path="res://globals/shader_materials/toon_shading.tres" id="4_yyj6k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7yhc"]
+render_priority = -1
+next_pass = ExtResource("4_yyj6k")
+transparency = 1
+blend_mode = 3
+cull_mode = 2
+depth_draw_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_526p6")
+metallic = 1.0
+metallic_texture = ExtResource("3_s75wg")
+roughness_texture = ExtResource("4_nw2mg")
+
+[node name="Door7" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1937, 2.4592, -7.18033)
+mesh = ExtResource("1_vmjul")
+surface_material_override/0 = SubResource("StandardMaterial3D_b7yhc")

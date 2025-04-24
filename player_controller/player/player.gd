@@ -21,8 +21,20 @@ var health = GlobalStats.player_health:
 			health = max_health
 		if health <= 0:
 			death()
-var souls = GlobalStats.soul_count
-var keys = GlobalStats.key_count
+var souls = GlobalStats.soul_count:
+	set(value):
+		hud.update_soul(value)
+		souls = value
+		GlobalStats.soul_count = value
+		if souls <= 0:
+			souls = 0
+var keys = GlobalStats.key_count:
+	set(value):
+		hud.update_keys(value)
+		keys = value
+		GlobalStats.key_count = value
+		if keys <= 0:
+			keys = 0
 var boss_key = GlobalStats.boss_key_count
 
 #endregion
@@ -67,6 +79,7 @@ var is_paused: bool = false
 @onready var collision_mesh := $collision
 @onready var world_checker: RayCast3D = $lil_skin/raycast_holders/world_checker
 @onready var wall_check: RayCast3D = $"lil_skin/raycast_holders/wall check"
+@onready var block_checks: RayCast3D = $lil_skin/raycast_holders/block_check
 @onready var ledge_check: RayCast3D = $lil_skin/raycast_holders/ledge_check
 @onready var stick_point_holder: Marker3D = $lil_skin/raycast_holders/stick_points/stick_point_holder
 @onready var sticking_point: Marker3D = $lil_skin/raycast_holders/stick_points/stick_point_holder/sticking_point
@@ -539,12 +552,17 @@ func death()->void:
 
 #region Moving Blocks
 func block_check()->void:
-	var block_checking = wall_check.get_collider()
+	var block_checking = block_checks.get_collider()
 	if block_checking and block_checking.is_in_group("moving_blocks"):
 		if Input.is_action_pressed("Use"):
 			blocking = true
 			block_checking.call("start_push", skin)
 		if Input.is_action_just_released("Use"):
 			blocking = false
-			block_checking.call("stop_push")
+			block_checking.call("stop_push", skin)
+	elif block_checking == null:
+		blocking = false
+		
+	else:
+		block_checking.call("stop_push", skin)
 #endregion

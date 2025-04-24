@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://onibuyfipqnh"]
+
+[ext_resource type="PackedScene" uid="uid://cu6mnfpv2rl7r" path="res://blends/enviorment/structures/ruins/arch_1_2.fbx" id="1_6d3jy"]
+[ext_resource type="Material" uid="uid://onveecl84hku" path="res://globals/shader_materials/toon_shading.tres" id="3_khyal"]
+[ext_resource type="Texture2D" uid="uid://y37e7vkkxv1s" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Ambient_Occlusion.png" id="3_rgnba"]
+[ext_resource type="Texture2D" uid="uid://djohbktr7mpss" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Normal.png" id="4_c0j4s"]
+[ext_resource type="Texture2D" uid="uid://bqv5f3swyw01a" path="res://globals/stock_textures/stone/blue_stone/Vol_49_5_Rocks_Roughness.png" id="5_mab3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7tod"]
+render_priority = -1
+next_pass = ExtResource("3_khyal")
+transparency = 1
+blend_mode = 3
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0.291873, 0.429714, 0.355477, 1)
+roughness_texture = ExtResource("5_mab3a")
+normal_enabled = true
+normal_texture = ExtResource("4_c0j4s")
+ao_enabled = true
+ao_light_affect = 0.47
+ao_texture = ExtResource("3_rgnba")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncmtr"]
+size = Vector3(1.99854, 3.6098, 2.13138)
+
+[node name="arch_1_2" instance=ExtResource("1_6d3jy")]
+
+[node name="arch_1_2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_a7tod")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0524674, 1.83783, 4.32098)
+shape = SubResource("BoxShape3D_ncmtr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0524674, 1.83783, -4.32062)
+shape = SubResource("BoxShape3D_ncmtr")

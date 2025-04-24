@@ -1,14 +1,46 @@
-[gd_scene load_steps=11 format=3 uid="uid://de8oi1sfspwb2"]
+[gd_scene load_steps=16 format=3 uid="uid://de8oi1sfspwb2"]
 
 [ext_resource type="Script" path="res://world_elements/Interactables/power_objects/revealed_light_object.gd" id="1_afwkd"]
-[ext_resource type="Texture2D" uid="uid://d32agxea8wogu" path="res://globals/stock_textures/lights.png" id="2_h56ug"]
+[ext_resource type="Texture2D" uid="uid://d32agxea8wogu" path="res://globals/stock_textures/lights/lights.png" id="2_h56ug"]
+[ext_resource type="Texture2D" uid="uid://b8jmjx7fxwp0e" path="res://globals/stock_textures/Roots/Vol_75_2_Normal.png" id="2_nc02e"]
+[ext_resource type="Shader" path="res://globals/shaders/clouds.gdshader" id="2_rr61m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nlsw4"]
 
+[sub_resource type="Gradient" id="Gradient_bw7qg"]
+offsets = PackedFloat32Array(0, 0.681818)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a4stq"]
+gradient = SubResource("Gradient_bw7qg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0knf"]
+render_priority = -1
+shader = ExtResource("2_rr61m")
+shader_parameter/height_scale = 0.065
+shader_parameter/wave_speed = 0.245
+shader_parameter/upper_transparency = 0.08
+shader_parameter/global_transparency = 0.22
+shader_parameter/time_factor = Vector2(3.81, 4.985)
+shader_parameter/uv1_scale = Vector3(-0.025, -0.37, 0)
+shader_parameter/uv1_offset = Vector3(-0.02, 0, 0)
+shader_parameter/color1 = Color(0.780392, 0.909804, 0.929412, 0)
+shader_parameter/color2 = Color(0.709804, 0.890196, 0.94902, 0)
+shader_parameter/texture_albedo = SubResource("GradientTexture1D_a4stq")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6d06"]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_e0knf")
 transparency = 1
-albedo_color = Color(0.155, 0.155, 0.155, 0)
+depth_draw_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.427451, 0.686275, 0.811765, 0)
+emission = Color(0.160284, 0.216321, 0.194445, 1)
+emission_energy_multiplier = 0.73
+emission_operator = 1
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("2_nc02e")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uxh6h"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
@@ -70,7 +102,7 @@ clearcoat_roughness = 1.0
 material = SubResource("StandardMaterial3D_6sg6t")
 
 [node name="RevealedLightObject" type="Area3D" node_paths=PackedStringArray("hidden_object", "static_body")]
-collision_layer = 64
+collision_layer = 0
 collision_mask = 64
 script = ExtResource("1_afwkd")
 hidden_object = NodePath("MeshInstance3D")

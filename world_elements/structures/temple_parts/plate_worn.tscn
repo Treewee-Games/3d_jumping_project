@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj6xhsk1wv4mj"]
+
+[ext_resource type="PackedScene" uid="uid://b4fc5lp0rwdn3" path="res://blends/enviorment/structures/ruins/plate_1_1.fbx" id="1_rb3pv"]
+[ext_resource type="Texture2D" uid="uid://0s6sq5ubep3c" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Base_Color.png" id="2_env7g"]
+[ext_resource type="Texture2D" uid="uid://63qhatj6r6ei" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Ambient_Occlusion.png" id="3_biw88"]
+[ext_resource type="Texture2D" uid="uid://lmy8jgmskltd" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Normal.png" id="4_4ya8g"]
+[ext_resource type="Texture2D" uid="uid://dkmaxsgi804v" path="res://globals/stock_textures/stone/standard_stone/Vol_23_1_Roughness.png" id="5_cx4ni"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4wn2"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.513947, 0.687865, 0.612296, 1)
+albedo_texture = ExtResource("2_env7g")
+roughness_texture = ExtResource("5_cx4ni")
+normal_enabled = true
+normal_scale = 5.8
+normal_texture = ExtResource("4_4ya8g")
+ao_enabled = true
+ao_texture = ExtResource("3_biw88")
+uv1_scale = Vector3(-0.015, -0.015, -0.015)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_br6hp"]
+points = PackedVector3Array(-4.31339, -0.5, -4.31339, -4.31339, -0.5, 4.31339, -4.0001, 0.5, -4.0001, 4.31339, -0.5, -4.31339, 4.31339, -0.5, 4.31339, -4.0001, 0.499902, 3.99926, 3.99926, 0.5, -4.0001, 3.99926, 0.499902, 3.99926)
+
+[node name="plate_worn" instance=ExtResource("1_rb3pv")]
+
+[node name="plate_1_1" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_i4wn2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.54979e-08, 0, -7.54979e-08, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_br6hp")

@@ -8,7 +8,7 @@ var code_array: Array = []
 func _on_button_effect(code: String)->void:
 	code_array.append(code)
 	if code_array.size() > 5:
-		if code_array == ["1", "2", "3", "4", "5", "6"]:
+		if code_array == ["6", "6", "1", "6", "5", "4"]:
 			emit_signal("open_up")
 			code_array.clear()
 		else:

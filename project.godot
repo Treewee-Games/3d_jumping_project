@@ -178,3 +178,11 @@ snap={
 3d_physics/layer_5="pushables"
 3d_physics/layer_6="Climbable"
 3d_physics/layer_7="Darkness"
+
+[rendering]
+
+reflections/sky_reflections/texture_array_reflections=false
+global_illumination/voxel_gi/quality=1
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+lightmapping/primitive_meshes/texel_size=1.0
+anti_aliasing/quality/use_debanding=true

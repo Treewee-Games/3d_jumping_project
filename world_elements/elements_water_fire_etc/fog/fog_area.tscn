@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://vuqdjyhe4h5y"]
+
+[ext_resource type="Script" path="res://world_elements/elements_water_fire_etc/fog/fog_area.gd" id="1_52yso"]
+
+[sub_resource type="Gradient" id="Gradient_a5gte"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_24v7q"]
+resource_local_to_scene = true
+noise_type = 2
+seed = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_abkhk"]
+resource_local_to_scene = true
+color_ramp = SubResource("Gradient_a5gte")
+noise = SubResource("FastNoiseLite_24v7q")
+
+[sub_resource type="FogMaterial" id="FogMaterial_6vwjm"]
+resource_local_to_scene = true
+density = 8.0
+density_texture = SubResource("NoiseTexture3D_abkhk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0f5a5"]
+size = Vector3(1.9696, 1.97708, 2.00757)
+
+[node name="Fog_Area" type="FogVolume"]
+material = SubResource("FogMaterial_6vwjm")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("fog_area") groups=["Light Area"]]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_52yso")
+fog_area = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0165405, 0.000564575, 0.0020752)
+shape = SubResource("BoxShape3D_0f5a5")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area3D" to="Area3D" method="_on_area_exited"]
