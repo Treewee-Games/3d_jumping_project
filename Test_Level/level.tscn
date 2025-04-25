@@ -1,10 +1,11 @@
-[gd_scene load_steps=183 format=3 uid="uid://dq8pyg0f83g7x"]
+[gd_scene load_steps=179 format=3 uid="uid://dq8pyg0f83g7x"]
 
 [ext_resource type="PackedScene" uid="uid://earksnkumevx" path="res://world_elements/doors/standard_door.tscn" id="1_a17sf"]
 [ext_resource type="PackedScene" uid="uid://creuusrbcuth8" path="res://player_controller/player/player.tscn" id="1_jxnkr"]
 [ext_resource type="ArrayMesh" uid="uid://jvjbb77wklf1" path="res://blends/enviorment/structures/floors/floor.res" id="1_s85jt"]
 [ext_resource type="PackedScene" uid="uid://de8oi1sfspwb2" path="res://world_elements/Interactables/power_objects/revealed_light_object.tscn" id="3_85wfg"]
 [ext_resource type="PackedScene" uid="uid://qjhb0kcsqc5w" path="res://world_elements/Interactables/power_objects/Darkness.tscn" id="3_m8l2y"]
+[ext_resource type="PackedScene" uid="uid://bhemkys40o5e5" path="res://world_elements/Interactables/objects/signs/sign.tscn" id="4_e8f02"]
 [ext_resource type="PackedScene" uid="uid://cywe4dkniuoq8" path="res://world_elements/platforms/platform.tscn" id="4_ue48o"]
 [ext_resource type="PackedScene" uid="uid://dwskdbteqiwyr" path="res://world_elements/collectibles/keys/key.tscn" id="5_qpbge"]
 [ext_resource type="PackedScene" uid="uid://k8ym120xhwi8" path="res://world_elements/platforms/falling_platform.tscn" id="6_1krqe"]
@@ -45,7 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://x6dflg3ef4wo" path="res://world_elements/structures/temple_parts/column_worn.tscn" id="42_lhjae"]
 [ext_resource type="PackedScene" uid="uid://cj6xhsk1wv4mj" path="res://world_elements/structures/temple_parts/plate_worn.tscn" id="44_5xmt5"]
 [ext_resource type="PackedScene" uid="uid://dpf2lprm5kqpy" path="res://world_elements/Interactables/objects/moving_block/Moving_block.tscn" id="44_ovkqi"]
-[ext_resource type="PackedScene" uid="uid://vuqdjyhe4h5y" path="res://world_elements/elements_water_fire_etc/fog/fog_area.tscn" id="46_0yre4"]
 [ext_resource type="PackedScene" uid="uid://dvbg81td2s25k" path="res://world_elements/collectibles/keys/boss_key.tscn" id="46_lptwy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mk158"]
@@ -1590,10 +1590,9 @@ ao_texture = ExtResource("8_lgbgg")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2xwl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_impw5"]
 transparency = 1
-blend_mode = 2
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_no0x7"]
 size = Vector3(47.0475, 17.3685, 64.567)
@@ -1926,30 +1925,6 @@ ao_texture = ExtResource("8_lgbgg")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="Gradient" id="Gradient_a5gte"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cqgtd"]
-resource_local_to_scene = true
-noise_type = 2
-seed = 1
-frequency = 0.063
-fractal_lacunarity = 2.6
-fractal_gain = 1.78
-fractal_weighted_strength = 0.58
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_t8o4e"]
-resource_local_to_scene = true
-seamless = true
-seamless_blend_skirt = 0.27
-color_ramp = SubResource("Gradient_a5gte")
-noise = SubResource("FastNoiseLite_cqgtd")
-
-[sub_resource type="FogMaterial" id="FogMaterial_fcc7u"]
-resource_local_to_scene = true
-density = 16.0
-albedo = Color(0, 0, 0, 1)
-density_texture = SubResource("NoiseTexture3D_t8o4e")
-
 [node name="Dungeon" type="Node3D"]
 
 [node name="Enviroment" type="Node3D" parent="."]
@@ -2010,6 +1985,10 @@ transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.38226
 
 [node name="RevealedLightObject2" parent="Enviroment/Blocking/Main_Room/Interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(30.5428, 0, 0, 0, 1, 0, 0, 0, 4.29494, -10.2225, 9.14727, -3.84248)
+
+[node name="Sign" parent="Enviroment/Blocking/Main_Room/Interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(-0.583896, 0, -0.811829, 0, 1, 0, 0.811829, 0, -0.583896, 3.16694, -0.0109999, 6.22881)
+text_messages = "The first born had six eyes, never growing to see what the world hides."
 
 [node name="blocking" type="Node" parent="Enviroment/Blocking/Main_Room"]
 
@@ -2123,14 +2102,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0179, -0.368752, -4.11849
 [node name="plate6" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0274, -0.368752, -4.11849)
 
-[node name="plate7" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09243, -0.368752, -4.11849)
-
-[node name="plate8" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09243, -0.368752, -12.1645)
-
 [node name="plate9" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.005, -0.368752, -12.1645)
+transform = Transform3D(0.918092, 0, 0, 0, 1, 0, 0, 0, 0.868051, -4.005, -0.368752, -12.1645)
+
+[node name="plate16" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.403634, 0, 0, 0, 1, 0, 0, 0, 0.868051, 2.51975, -0.368752, -7.09847)
+
+[node name="plate21" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
+transform = Transform3D(0.403634, 0, 0, 0, 1, 0, 0, 0, 0.868051, 2.51975, -0.368752, 1.70821)
 
 [node name="plate10" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9898, -0.368752, -12.1645)
@@ -2152,9 +2131,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97439, -0.368752, 20.0552)
 
 [node name="plate15" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97439, -0.368752, 12.0052)
-
-[node name="plate16" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10348, -0.368752, 4.02972)
 
 [node name="plate19" parent="Enviroment/Blocking/Main_Room/blocking" instance=ExtResource("11_8lniv")]
 transform = Transform3D(0.770367, 0, 0, 0, 1, 0, 0, 0, 1, -3.29483, -0.368752, 4.02972)
@@ -2546,6 +2522,10 @@ transform = Transform3D(2.19686, 0, 0, 0, 1.88438, 0, 0, 0, 2.1558, 15.5356, -7.
 [node name="RevealedLightObject" parent="Enviroment/Blocking/L-way/Interactables" instance=ExtResource("3_85wfg")]
 transform = Transform3D(5.82361, 0, 0, 0, 1, 0, 0, 0, 3.84658, 36.6201, 8.42272, 6.91838)
 
+[node name="Sign" parent="Enviroment/Blocking/L-way/Interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(0.749164, 0, -0.662385, 0, 1, 0, 0.662385, 0, 0.749164, 28.2748, 13.3699, -26.9764)
+text_messages = "The fifth born was always tired, fifth in line, fifth to die, chain to being the fifth of six."
+
 [node name="checkpoints" type="Node" parent="Enviroment/Blocking/L-way"]
 
 [node name="Checkpoint" parent="Enviroment/Blocking/L-way/checkpoints" instance=ExtResource("19_dd1t0")]
@@ -2688,6 +2668,10 @@ decal_image = ExtResource("21_pf8tb")
 [node name="Hidden_Decals6" parent="Enviroment/Blocking/Side Room/interactables" instance=ExtResource("25_f8oo7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3605, 10.8031, 12.3688)
 decal_image = ExtResource("22_feub0")
+
+[node name="Sign" parent="Enviroment/Blocking/Side Room/interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(-0.999881, 0, -0.0154107, 0, 1, 0, 0.0154107, 0, -0.999881, 42.647, 8.92599, 6.5737)
+text_messages = "The sixth born killed the fifth, tore down four pillars and crushed the rest. Alone, as we as always are."
 
 [node name="enemies" type="Node" parent="Enviroment/Blocking/Side Room"]
 
@@ -3759,8 +3743,8 @@ timing = 3.0
 collision_layer = 0
 collision_mask = 0
 
-[node name="MeshInstance3D" parent="Enviroment/Blocking/Duck Room/Interactables/platform/platform/CollisionShape3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_k2xwl")
+[node name="output" parent="Enviroment/Blocking/Duck Room/Interactables/platform/platform/Grave_stone" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_impw5")
 
 [node name="RevealedLightObject" parent="Enviroment/Blocking/Duck Room/Interactables/platform/platform" index="1" instance=ExtResource("3_85wfg")]
 transform = Transform3D(39.8483, 0, 0, 0, 0.187897, 0, 0, 0, 38.2162, -0.365173, 0.00945556, -0.0270386)
@@ -3778,6 +3762,10 @@ transform = Transform3D(6.76993, 0, 0, 0, 1, 0, 0, 0, 4.58164, 51.5158, 22.9156,
 [node name="Darkness2" parent="Enviroment/Blocking/Duck Room/Interactables" instance=ExtResource("3_m8l2y")]
 transform = Transform3D(2.90042, 0, 0, 0, 1, 0, 0, 0, 3.24446, 43.3068, 23.2262, -139.993)
 fade_time = 0.5
+
+[node name="Sign" parent="Enviroment/Blocking/Duck Room/Interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1558, 0.017022, -100.24)
+text_messages = "The second born had six limbs, only for parent and kin to go and devour them."
 
 [node name="hurtboxes" type="Node" parent="Enviroment/Blocking/Duck Room"]
 
@@ -4018,27 +4006,27 @@ move_time = 3.0
 timing = 5.0
 
 [node name="platform3" parent="Enviroment/Blocking/Travel Room/platforms" instance=ExtResource("4_ue48o")]
-transform = Transform3D(-1.00421e-08, -5.56951, 0, 0.229737, -2.43451e-07, 0, 0, 0, 0.106295, -33.4473, 17.8719, -115.03)
+transform = Transform3D(-1.00421e-08, -5.56951, 0, -1.00421e-08, 1.06416e-14, 0.177913, -0.229737, 2.43451e-07, -7.77684e-09, -33.4473, 18.9705, -115.03)
 move_distance_y = 0.0
 move_distance_x = 32.0
 move_time = 3.0
 timing = 0.0
 
 [node name="platform4" parent="Enviroment/Blocking/Travel Room/platforms" instance=ExtResource("4_ue48o")]
-transform = Transform3D(-1.00421e-08, -5.56951, 0, 0.229737, -2.43451e-07, 0, 0, 0, 0.106295, -33.4473, 17.8719, -99.7502)
+transform = Transform3D(-1.00421e-08, -5.56951, 0, -1.00421e-08, 1.06416e-14, 0.16526, -0.229737, 2.43451e-07, -7.22372e-09, -33.4473, 18.9937, -99.7502)
 move_distance_y = 0.0
 move_distance_x = 32.0
 move_time = 5.0
 timing = 0.0
 
 [node name="platform5" parent="Enviroment/Blocking/Travel Room/platforms" instance=ExtResource("4_ue48o")]
-transform = Transform3D(-1.00421e-08, -5.56951, 0, 0.229737, -2.43451e-07, 0, 0, 0, 0.106295, -33.4473, 17.8719, -79.1589)
+transform = Transform3D(-1.00421e-08, -5.56951, 0, -1.00421e-08, 1.06416e-14, 0.176961, -0.229737, 2.43451e-07, -7.73522e-09, -33.4473, 19.2296, -79.1589)
 move_distance_y = 0.0
 move_distance_x = 32.0
 timing = 0.0
 
 [node name="platform6" parent="Enviroment/Blocking/Travel Room/platforms" instance=ExtResource("4_ue48o")]
-transform = Transform3D(-7.85248e-09, -4.35511, 0.066257, 0.229737, -2.43451e-07, 1.38411e-16, 6.25958e-09, 3.47166, 0.0831176, -21.8113, 17.8719, -37.4036)
+transform = Transform3D(0.103072, 0, 0, 0, -2.43451e-07, 0.132726, 0, -5.56951, -5.80163e-09, -21.2644, 17.8719, -37.4036)
 move_distance_y = 0.0
 move_distance_x = 25.0
 timing = 0.0
@@ -4215,6 +4203,10 @@ transform = Transform3D(0.790268, 0, 0, 0, 0.396726, 0, 0, 0, 0.272869, 88.318, 
 [node name="ladder2" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("16_5ulcn")]
 transform = Transform3D(-0.790268, 0, -2.13729e-08, 0, 0.352495, 0, 6.90875e-08, 0, -0.244477, 96.0702, 25.9007, -146.779)
 
+[node name="Sign" parent="Enviroment/Blocking/Above_duck_as_below_room/interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.2431, 31.0748, -141.886)
+text_messages = "The third born was given a crown, singular in position until they drowned."
+
 [node name="checkpoints" type="Node" parent="Enviroment/Blocking/Above_duck_as_below_room"]
 
 [node name="Checkpoint" parent="Enviroment/Blocking/Above_duck_as_below_room/checkpoints" instance=ExtResource("19_dd1t0")]
@@ -4284,6 +4276,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8275, 17.5407, -0.571253)
 [node name="Darkness2" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("3_m8l2y")]
 transform = Transform3D(1, 0, 0, 0, 8.38357, 0, 0, 0, 3.51378, -31.4248, 2.63172, 7.17195)
 
+[node name="Sign" parent="Enviroment/Blocking/Block_Room/interactables" instance=ExtResource("4_e8f02")]
+transform = Transform3D(0.784289, 0, 0.620395, 0, 1, 0, -0.620395, 0, 0.784289, -41.7997, 1.5, 5.85563)
+text_messages = "The fourth born was set to stake, six burning flames licked around their nape."
+
 [node name="doors" type="Node" parent="Enviroment/Blocking/Block_Room"]
 
 [node name="Jail_Door" parent="Enviroment/Blocking/Block_Room/doors" instance=ExtResource("12_m13l2")]
@@ -4347,10 +4343,6 @@ transform = Transform3D(1, 0, 0, 0, 16.9667, 0, 0, 0, 12.9035, -3.20813, -9.2071
 [node name="Blocking6" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("15_yrns8")]
 transform = Transform3D(1, 0, 0, 0, 16.9667, 0, 0, 0, 12.9035, -3.20813, -9.20715, 11.9059)
 
-[node name="Fog_Area" parent="Enviroment/Blocking/Pre-Boss Room/blocking" instance=ExtResource("46_0yre4")]
-transform = Transform3D(14.1995, 0, 0, 0, 2.07832, 0, 0, 0, 4.24683, -10.1093, 11.5823, 13.1799)
-material = SubResource("FogMaterial_fcc7u")
-
 [node name="collectibles" type="Node3D" parent="Enviroment"]
 
 [node name="entities" type="Node3D" parent="."]
@@ -4385,3 +4377,4 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.67
 [connection signal="trigger_effect" from="Enviroment/Blocking/Block_Room/buttons/Button3" to="Enviroment/Blocking/Block_Room/platforms/platform" method="_on_button_trigger_effect"]
 
 [editable path="Enviroment/Blocking/Duck Room/Interactables/platform"]
+[editable path="Enviroment/Blocking/Duck Room/Interactables/platform/platform/Grave_stone"]

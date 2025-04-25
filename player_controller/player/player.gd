@@ -147,6 +147,7 @@ func _physics_process(delta: float) -> void:
 				can_stand_up()
 				attacked()
 				block_check()
+				current_cam(true)
 				move_and_slide()
 				if is_hit:
 					pass
@@ -442,8 +443,6 @@ func dialogue_menu(value:bool)->void:
 		get_tree().paused = is_paused
 #endregion
 
-
-
 #region ability activations
 func activate_abilities()->void:
 	if Input.is_action_just_pressed("ability_1"):
@@ -534,6 +533,12 @@ func target_switching()->void:
 		targeted.not_targeted()
 		main_cam.release_lock_on()
 		targeting = false
+		
+func current_cam(value: bool)->void:
+	if value == true:
+		main_cam.get_child(0).get_child(0).get_child(0).make_current()
+	else:
+		return
 #endregion
 
 #region respawning/death/saving

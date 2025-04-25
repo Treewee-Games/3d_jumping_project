@@ -25,9 +25,11 @@ func _process(_delta: float) -> void:
 			player.emit_signal("pausing", false)
 			var text_label: RichTextLabel = dialogue.get_child(0)
 			reading_cam.clear_current()
+			player.current_cam(true)
 			text_label.visible_characters = 0
 		else:
 			player.emit_signal("pausing", true)
 			dialogue.show()
 			reading_cam.make_current()
+			player.current_cam(false)
 			dialogue.update_message(text_messages)

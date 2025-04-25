@@ -44,9 +44,8 @@ shader_parameter/use_refraction = false
 shader_parameter/refraction_amount = 4.055
 shader_parameter/refraction_brightness = 2.885
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_q1a7n"]
-height = 3.44293
-radius = 37.384
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ijbxo"]
+points = PackedVector3Array(10, 6, 0, 10, -1, 6, 10, -1, -6, -1, -1, 4, -1, -1, -4)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rl5tp"]
 radius = 0.229416
@@ -70,23 +69,17 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Skeleton3D" parent="lil_skin/Armature" index="0"]
-bones/0/scale = Vector3(0.950271, 0.950271, 0.950271)
-bones/1/rotation = Quaternion(-2.66925e-08, -2.66925e-08, -0.707107, 0.707107)
-bones/3/scale = Vector3(0.826021, 0.826021, 0.826021)
-bones/4/position = Vector3(0, -0.0581067, 0)
-bones/5/position = Vector3(0, -0.00798906, 0)
-bones/5/rotation = Quaternion(0, 0.707107, 0.707107, 0)
-bones/6/rotation = Quaternion(-0.66633, -1.21483e-07, 1.08559e-07, 0.745657)
-bones/6/scale = Vector3(1, 1, 1)
+bones/0/scale = Vector3(0.969859, 0.969859, 0.969859)
+bones/3/scale = Vector3(0.894549, 0.894549, 0.894549)
+bones/4/position = Vector3(0, -0.0352191, 0)
+bones/5/position = Vector3(0, -0.0198965, 0)
 bones/7/position = Vector3(8.70045e-10, 0.831553, 3.99751e-09)
 bones/7/rotation = Quaternion(-0.357158, -2.969e-08, 1.2773e-07, 0.934044)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-4.24744e-12, -0.00798906, -7.75806e-10)
-bones/8/rotation = Quaternion(-0.707096, 0.00387128, 0.00387128, 0.707096)
-bones/9/rotation = Quaternion(0.0210459, 0.775914, -0.630486, 0.00105141)
+bones/8/position = Vector3(-9.04055e-13, -0.0198966, -1.65126e-10)
 
 [node name="skullarea" parent="lil_skin/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0, 0.950271, 0, -0.950271, 0, 7.17435e-08, 7.17435e-08, 0, 0.950271, -8.85009e-10, 0.950271, 0)
+transform = Transform3D(0, 0.969859, 0, -0.969859, 0, 7.32223e-08, 7.32223e-08, 0, 0.969859, -9.03251e-10, 0.969859, 0)
 
 [node name="Light_Area" type="Area3D" parent="lil_skin/Armature/Skeleton3D/skullarea/l_eye" index="1" groups=["Light Area"]]
 transform = Transform3D(2.56806, 0, 0, 0, 2.59442, -6.33655e-13, 0, 9.84775e-13, 1.66938, -2.17614, -0.296868, 0.165701)
@@ -104,7 +97,7 @@ amount = 200
 lifetime = 1.5
 
 [node name="l_equip" parent="lil_skin/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-1, 7.24754e-13, 3.89415e-07, -2.25694e-07, -0.814922, -0.579571, 3.17342e-07, -0.579571, 0.814922, -1.80133e-09, -0.834309, 0.380525)
+transform = Transform3D(-1, 7.24754e-13, 3.89415e-07, -2.25694e-07, -0.814922, -0.579571, 3.17342e-07, -0.579571, 0.814922, -1.80133e-09, -0.846217, 0.380525)
 
 [node name="claws" parent="lil_skin/Armature/Skeleton3D/l_equip" index="0"]
 transform = Transform3D(-0.531706, 0.758079, -0.377629, 0.151608, 0.523873, 0.838194, 0.833248, 0.388421, -0.393478, 0.188862, 0.453083, 0.708102)
@@ -122,7 +115,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
 surface_material_override/0 = SubResource("ShaderMaterial_yesgd")
 
 [node name="r_equip" parent="lil_skin/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.821549, -0.460547)
+transform = Transform3D(-0.999653, -1.58325e-08, -0.026329, -0.0131709, -0.865885, 0.50007, -0.0227979, 0.500243, 0.865585, 0.0232193, -0.833456, -0.460547)
 
 [node name="claw" parent="lil_skin/Armature/Skeleton3D/r_equip/claws" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_0dtxt")
@@ -177,8 +170,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lil_skin/Areas/targeting_radius"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71574, 0)
-shape = SubResource("CylinderShape3D_q1a7n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13906, 0)
+shape = SubResource("ConvexPolygonShape3D_ijbxo")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 process_mode = 1
